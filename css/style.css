@@ -608,6 +608,30 @@ section { position: relative; z-index: 1; }
   color: rgba(138,136,128,.45);
 }
 
+/* Consentimiento */
+.form-check--consent {
+  font-size: .78rem; color: rgba(184,180,168,.6);
+  line-height: 1.6; align-items: flex-start;
+}
+.form-check--consent input { margin-top: .25rem; flex-shrink: 0; }
+
+/* Mensajes de estado */
+.form-status {
+  margin-bottom: 1.5rem;
+  font-size: .82rem; line-height: 1.7; font-weight: 300;
+  min-height: 1.5rem;
+}
+.form-status--success {
+  color: rgba(176,200,130,.85);
+  border-left: 2px solid rgba(176,200,130,.4);
+  padding-left: 1rem;
+}
+.form-status--error {
+  color: rgba(220,140,100,.85);
+  border-left: 2px solid rgba(220,140,100,.3);
+  padding-left: 1rem;
+}
+
 /* ── 17. PROYECTO DESTACADO ──────────────────────────────── */
 .featured { padding: 13vh 0; border-top: var(--border); }
 .featured .section-label { display: block; margin-bottom: 4rem; }
