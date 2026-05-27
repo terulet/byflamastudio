@@ -293,7 +293,7 @@ section { position: relative; z-index: 1; }
 .hero-title-claim em { font-style: italic; color: var(--offwhite); }
 .hero-sub {
   font-size: clamp(.86rem, 1.2vw, 1rem);
-  color: rgba(138,136,128,.8); max-width: 480px;
+  color: rgba(232,229,222,.62); max-width: 480px;
   line-height: 1.9; margin-bottom: 3.4rem; font-weight: 300;
   opacity: 0; transform: translateY(16px);
   animation: fadeUp .9s .72s var(--ease) forwards;
