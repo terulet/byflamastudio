@@ -11,7 +11,7 @@
   <meta property="og:url" content="https://byflamastudio.com/">
   <meta property="og:locale" content="es_ES">
   <meta property="og:title" content="FLAMA Studio | Branding, dirección visual y diseño web premium">
-  <meta property="og:description" content="Creamos identidad, web y contenido premium para hospitality, lifestyle y turismo en la Costa Brava.">
+  <meta property="og:description" content="Creamos presencia visual para negocios que quieren sentirse como marca.">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230e0e0c'/%3E%3Ctext x='16' y='23' font-family='Georgia%2Cserif' font-size='18' font-weight='400' fill='%23f2ede4' text-anchor='middle'%3EF%3C/text%3E%3C/svg%3E">
   <meta name="theme-color" content="#0e0e0c">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -62,13 +62,14 @@
 
 <main id="main">
 
-  <!-- 1. HERO — identidad FLAMA, no gelatería -->
+  <!-- 1. HERO -->
   <section class="hero" id="inicio" aria-label="Portada">
     <div class="hero-bg" aria-hidden="true">
-      <img src="images/hero-flama-studio.jpg" alt="" class="hero-img" fetchpriority="high">
+      <img src="images/hero-flama-studio.jpg" alt="" class="hero-img" fetchpriority="high"
+        onerror="this.style.opacity='0'">
       <div class="hero-overlay"></div>
-      <div class="hero-bg-line hero-bg-line--1" aria-hidden="true"></div>
-      <div class="hero-bg-line hero-bg-line--2" aria-hidden="true"></div>
+      <div class="hero-bg-line hero-bg-line--1"></div>
+      <div class="hero-bg-line hero-bg-line--2"></div>
     </div>
     <div class="hero-content">
       <p class="hero-eyebrow">
@@ -105,8 +106,7 @@
         </h2>
         <p class="trust-text reveal rd2">
           Diseñamos webs, identidades y sistemas visuales para negocios que necesitan
-          transmitir nivel, coherencia y profesionalidad antes incluso de hablar
-          con el cliente.
+          transmitir nivel, coherencia y profesionalidad antes incluso de hablar con el cliente.
         </p>
       </div>
       <div class="trust-grid">
@@ -135,7 +135,7 @@
     </div>
   </section>
 
-  <!-- 3. DISEÑO WEB PREMIUM -->
+  <!-- 3. DISEÑO WEB -->
   <section class="webdesign" aria-labelledby="webdesign-title">
     <div class="container">
       <div class="webdesign-inner">
@@ -159,33 +159,29 @@
             <li>Integración con Google, Instagram y contacto</li>
             <li>Velocidad y limpieza técnica</li>
           </ul>
-          <a href="#contacto" class="btn btn--outline reveal rd4">Solicitar propuesta</a>
+          <a href="#planes" class="btn btn--outline reveal rd4">Ver planes web</a>
         </div>
         <div class="webdesign-visual reveal rd1">
           <div class="mockup-wrap">
-            <!-- Desktop mockup -->
             <div class="mockup mockup--desktop">
               <div class="mockup-bar" aria-hidden="true">
                 <span></span><span></span><span></span>
               </div>
-              <div class="mockup-screen">
+              <div class="mockup-screen" id="mockup-desktop">
                 <img src="images/web-mockup-desktop.jpg"
                   alt="Ejemplo de diseño web premium FLAMA Studio"
-                  loading="lazy"
-                  onerror="this.style.display='none'">
+                  loading="lazy">
                 <div class="mockup-placeholder" aria-hidden="true">
                   <span class="mockup-placeholder-label">Web Design</span>
                 </div>
               </div>
             </div>
-            <!-- Mobile mockup -->
             <div class="mockup mockup--mobile">
               <div class="mockup-notch" aria-hidden="true"></div>
-              <div class="mockup-screen">
+              <div class="mockup-screen" id="mockup-mobile">
                 <img src="images/web-mockup-mobile.jpg"
                   alt="Ejemplo de diseño web mobile FLAMA Studio"
-                  loading="lazy"
-                  onerror="this.style.display='none'">
+                  loading="lazy">
                 <div class="mockup-placeholder" aria-hidden="true">
                   <span class="mockup-placeholder-label">Mobile</span>
                 </div>
@@ -197,11 +193,97 @@
     </div>
   </section>
 
-  <!-- 4. PROYECTO DESTACADO — La Gelateria como caso real -->
+  <!-- 4. PLANES WEB -->
+  <section class="planes" id="planes" aria-labelledby="planes-title">
+    <div class="container">
+      <div class="planes-header">
+        <span class="section-label reveal">Planes web</span>
+        <h2 id="planes-title" class="planes-title reveal rd1">
+          Planes web para empezar<br>con <em>claridad.</em>
+        </h2>
+        <p class="planes-sub reveal rd2">
+          Tres formas de construir una presencia digital premium según el momento de tu negocio.
+        </p>
+      </div>
+      <div class="planes-grid">
+
+        <!-- Plan 1 -->
+        <article class="plan-card reveal">
+          <div class="plan-top">
+            <span class="plan-name">Web Esencial</span>
+            <p class="plan-desc">Para negocios que necesitan una presencia online clara, elegante y rápida.</p>
+          </div>
+          <ul class="plan-list" aria-label="Incluye">
+            <li>Landing page de una página</li>
+            <li>Diseño visual premium</li>
+            <li>Versión móvil</li>
+            <li>Formulario de contacto</li>
+            <li>Textos base estructurados</li>
+            <li>Publicación en dominio propio</li>
+            <li>SEO básico inicial</li>
+          </ul>
+          <div class="plan-bottom">
+            <p class="plan-price">Desde <span>790 €</span></p>
+            <a href="mailto:Terix@flamastudio.com?subject=Solicito Web Esencial" class="btn btn--outline">Solicitar Web Esencial</a>
+          </div>
+        </article>
+
+        <!-- Plan 2 — destacado -->
+        <article class="plan-card plan-card--featured reveal rd1">
+          <div class="plan-badge">Más elegida</div>
+          <div class="plan-top">
+            <span class="plan-name">Web Premium</span>
+            <p class="plan-desc">Para negocios que quieren una web más completa, cuidada y preparada para transmitir nivel.</p>
+          </div>
+          <ul class="plan-list" aria-label="Incluye">
+            <li>Web de hasta 5 secciones</li>
+            <li>Diseño premium personalizado</li>
+            <li>Mobile first</li>
+            <li>Dirección visual</li>
+            <li>Integración con Instagram / Google / contacto</li>
+            <li>Textos estructurados</li>
+            <li>SEO básico</li>
+            <li>Publicación final</li>
+          </ul>
+          <div class="plan-bottom">
+            <p class="plan-price">Desde <span>1.490 €</span></p>
+            <a href="mailto:Terix@flamastudio.com?subject=Solicito Web Premium" class="btn btn--primary">Solicitar Web Premium</a>
+          </div>
+        </article>
+
+        <!-- Plan 3 -->
+        <article class="plan-card reveal rd2">
+          <div class="plan-top">
+            <span class="plan-name">Web Pro</span>
+            <p class="plan-desc">Para marcas que necesitan una presencia digital más estratégica, visual y diferenciada.</p>
+          </div>
+          <ul class="plan-list" aria-label="Incluye">
+            <li>Web avanzada</li>
+            <li>Diseño totalmente personalizado</li>
+            <li>Sistema visual completo</li>
+            <li>Dirección estética</li>
+            <li>Contenido visual base</li>
+            <li>Optimización mobile</li>
+            <li>SEO base ampliado</li>
+            <li>Soporte de lanzamiento</li>
+          </ul>
+          <div class="plan-bottom">
+            <p class="plan-price">Desde <span>2.500 €</span></p>
+            <a href="mailto:Terix@flamastudio.com?subject=Solicito Web Pro" class="btn btn--outline">Solicitar Web Pro</a>
+          </div>
+        </article>
+
+      </div>
+      <p class="planes-note reveal">
+        Los precios son orientativos. Cada proyecto puede ajustarse según contenido, idiomas, funcionalidades y necesidades visuales.
+      </p>
+    </div>
+  </section>
+
+  <!-- 5. PROYECTO DESTACADO -->
   <section class="featured" id="proyectos" aria-labelledby="featured-title">
     <div class="container">
       <p class="section-label reveal">Proyecto destacado</p>
-
       <div class="featured-layout">
 
         <div class="featured-img-a reveal">
@@ -213,14 +295,11 @@
 
         <div class="featured-info reveal rd1">
           <span class="featured-index" aria-hidden="true">01</span>
-          <h2 id="featured-title" class="featured-title">
-            La Gelateria de Roses
-          </h2>
+          <h2 id="featured-title" class="featured-title">La Gelateria de Roses</h2>
           <p class="featured-desc">
             Dirección visual, branding, contenido digital y presencia web
             para una gelatería artesanal en la Costa Brava.
           </p>
-
           <div class="featured-case">
             <div class="case-block">
               <span class="case-label">Reto</span>
@@ -235,7 +314,6 @@
               <p class="case-text">Una presencia más sólida, reconocible y preparada para atraer cliente turístico desde la calle y el entorno digital.</p>
             </div>
           </div>
-
           <ul class="featured-tags" aria-label="Disciplinas del proyecto">
             <li>Branding</li>
             <li>Web</li>
@@ -257,7 +335,7 @@
     </div>
   </section>
 
-  <!-- 5. GALERÍA EDITORIAL -->
+  <!-- 6. GALERÍA -->
   <section class="gallery" id="galeria" aria-labelledby="gallery-title">
     <div class="container">
       <div class="gallery-header">
@@ -272,50 +350,44 @@
     <div class="gallery-grid">
       <figure class="g-item g-tall reveal" aria-label="Producto">
         <div class="img-frame">
-          <img src="images/gelateria-cubetas.jpg"
-            alt="Cubetas de helado artesanal — producto" loading="lazy">
+          <img src="images/gelateria-cubetas.jpg" alt="Cubetas de helado artesanal" loading="lazy">
         </div>
         <figcaption>Producto</figcaption>
       </figure>
       <figure class="g-item reveal rd1" aria-label="Proceso">
         <div class="img-frame">
-          <img src="images/gelateria-obrador.jpg"
-            alt="Obrador artesanal — proceso" loading="lazy">
+          <img src="images/gelateria-obrador.jpg" alt="Obrador artesanal — proceso" loading="lazy">
         </div>
         <figcaption>Proceso</figcaption>
       </figure>
       <figure class="g-item reveal rd2" aria-label="Atmósfera">
         <div class="img-frame">
-          <img src="images/gelateria-interior.jpg"
-            alt="Interior — atmósfera" loading="lazy">
+          <img src="images/gelateria-interior.jpg" alt="Interior — atmósfera" loading="lazy">
         </div>
         <figcaption>Atmósfera</figcaption>
       </figure>
       <figure class="g-item g-wide reveal rd1" aria-label="Branding">
         <div class="img-frame">
-          <img src="images/gelateria-producto-01.jpg"
-            alt="Producto — branding" loading="lazy">
+          <img src="images/gelateria-producto-01.jpg" alt="Branding" loading="lazy">
         </div>
         <figcaption>Branding</figcaption>
       </figure>
       <figure class="g-item reveal rd2" aria-label="Experiencia">
         <div class="img-frame">
-          <img src="images/gelateria-producto-02.jpg"
-            alt="Experiencia de marca" loading="lazy">
+          <img src="images/gelateria-producto-02.jpg" alt="Experiencia de marca" loading="lazy">
         </div>
         <figcaption>Experiencia</figcaption>
       </figure>
       <figure class="g-item reveal rd3" aria-label="Contenido">
         <div class="img-frame">
-          <img src="images/gelateria-detalle-01.jpg"
-            alt="Detalle visual — contenido" loading="lazy">
+          <img src="images/gelateria-detalle-01.jpg" alt="Detalle visual" loading="lazy">
         </div>
         <figcaption>Contenido</figcaption>
       </figure>
     </div>
   </section>
 
-  <!-- 6. SERVICIOS -->
+  <!-- 7. SERVICIOS -->
   <section class="services" id="servicios" aria-labelledby="services-title">
     <div class="container">
       <div class="services-header">
@@ -323,9 +395,7 @@
         <h2 id="services-title" class="services-title reveal rd1">
           Diseñamos la presencia visual<br>completa de <em>tu marca.</em>
         </h2>
-        <p class="services-sub reveal rd2">
-          Para negocios que necesitan destacar en el mundo físico y digital.
-        </p>
+        <p class="services-sub reveal rd2">Para negocios que necesitan destacar en el mundo físico y digital.</p>
       </div>
       <div class="services-grid">
         <article class="service-card reveal">
@@ -367,7 +437,7 @@
     </div>
   </section>
 
-  <!-- 7. CTA FINAL -->
+  <!-- 8. CTA -->
   <section class="cta" id="contacto" aria-labelledby="cta-title">
     <div class="cta-bg-word" aria-hidden="true">FLAMA</div>
     <div class="container">
