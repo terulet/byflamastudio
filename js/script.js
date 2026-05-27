@@ -134,14 +134,20 @@
       var btn    = document.getElementById('formBtn');
       var status = document.getElementById('formStatus');
 
-      /* Validación mínima */
+      /* Validación */
       var nombre  = (document.getElementById('f-nombre').value || '').trim();
       var email   = (document.getElementById('f-email').value  || '').trim();
+      var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
       var consent = document.getElementById('f-consent').checked;
 
       if (!nombre || !email) {
         status.className = 'form-status form-status--error';
         status.textContent = 'Por favor, rellena al menos tu nombre y email.';
+        return;
+      }
+      if (!emailOk) {
+        status.className = 'form-status form-status--error';
+        status.textContent = 'Introduce un email válido.';
         return;
       }
       if (!consent) {
@@ -193,10 +199,12 @@
 
       function showImage() {
         screen.classList.add('has-image');
+        img.style.display = 'block';
         placeholder.style.display = 'none';
       }
       function showPlaceholder() {
         screen.classList.remove('has-image');
+        img.style.display = 'none';
         placeholder.style.display = 'flex';
       }
 
