@@ -114,6 +114,48 @@
     sections.forEach(function (s) { secObs.observe(s); });
   }
 
+  /* ── 06. SELECT PLAN — desde botones de planes ──────────── */
+  window.selectPlan = function (plan) {
+    var select = document.getElementById('f-plan');
+    if (!select) return;
+    var map = { 'esencial': 'Web Esencial', 'premium': 'Web Premium', 'pro': 'Web Pro' };
+    var value = map[plan] || '';
+    for (var i = 0; i < select.options.length; i++) {
+      if (select.options[i].value === value) { select.selectedIndex = i; break; }
+    }
+  };
+
+  /* ── 07. FORMULARIO — mailto con todos los campos ───────── */
+  var form = document.getElementById('solicitudForm');
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var nombre   = (document.getElementById('f-nombre').value   || '').trim();
+      var negocio  = (document.getElementById('f-negocio').value  || '').trim();
+      var email    = (document.getElementById('f-email').value    || '').trim();
+      var telefono = (document.getElementById('f-telefono').value || '').trim();
+      var plan     = document.getElementById('f-plan').value;
+      var mensaje  = (document.getElementById('f-mensaje').value  || '').trim();
+      var tienesChecks = document.querySelectorAll('input[name="tienes"]:checked');
+      var tienes = Array.prototype.map.call(tienesChecks, function(c){ return c.value; }).join(', ') || 'No indicado';
+      var objetivoEl = document.querySelector('input[name="objetivo"]:checked');
+      var objetivo = objetivoEl ? objetivoEl.value : 'No indicado';
+      if (!nombre || !email) { alert('Por favor, rellena al menos tu nombre y email.'); return; }
+      var subject = encodeURIComponent('Solicitud web FLAMA Studio');
+      var body = encodeURIComponent(
+        'NOMBRE: '    + (nombre   || '-') + '\n' +
+        'NEGOCIO: '   + (negocio  || '-') + '\n' +
+        'EMAIL: '     + (email    || '-') + '\n' +
+        'TELEFONO: '  + (telefono || '-') + '\n' +
+        'PLAN: '      + (plan     || 'No indicado') + '\n' +
+        'QUE TIENE: ' + tienes + '\n' +
+        'OBJETIVO: '  + objetivo + '\n\n' +
+        'MENSAJE:\n'  + (mensaje  || '-')
+      );
+      window.location.href = 'mailto:Terix@flamastudio.com?subject=' + subject + '&body=' + body;
+    });
+  }
+
   /* ── 06. MOCKUPS — mostrar imagen si carga, placeholder si falla ── */
   function initMockups() {
     document.querySelectorAll('.mockup-screen').forEach(function (screen) {
