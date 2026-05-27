@@ -9,6 +9,442 @@
 <meta name="description" content="FLAMA Studio designs web presence, branding and creative direction for premium hospitality, tourism and lifestyle brands. Independent studio based on the Costa Brava.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://flamastudio.com/">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO -->
+  <title>FLAMA Studio | Branding, dirección visual y diseño web premium</title>
+  <meta name="description" content="Estudio creativo premium en Costa Brava especializado en branding, diseño web, dirección visual y contenido digital para hospitality, lifestyle y turismo.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://byflamastudio.com/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="FLAMA Studio | Branding, dirección visual y diseño web premium">
+  <meta property="og:description" content="Creamos marcas que se sienten antes de explicarse. Estudio creativo en la Costa Brava.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://byflamastudio.com/">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230e0e0c'/%3E%3Ctext x='16' y='24' font-family='Georgia%2Cserif' font-size='18' font-weight='400' fill='%23f2ede4' text-anchor='middle'%3EF%3C/text%3E%3C/svg%3E">
+  <meta name="theme-color" content="#0e0e0c">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Skip link -->
+  <a href="#main" class="skip-link">Saltar al contenido</a>
+
+  <!-- ─────────────────────────────────────
+       HEADER / NAV
+  ───────────────────────────────────── -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+
+      <!-- Logo -->
+      <a href="/" class="site-logo" aria-label="FLAMA Studio — Inicio">
+        <!-- Si tienes el PNG, descomenta la línea de img y comenta el SVG -->
+        <!-- <img src="images/flama-logo.png" alt="FLAMA Studio" class="logo-img"> -->
+        <svg class="logo-svg" viewBox="0 0 210 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="lg-flame" x1="0" y1="1" x2="0" y2="0">
+              <stop offset="0%" stop-color="#b09a6e"/>
+              <stop offset="100%" stop-color="#d4b87a"/>
+            </linearGradient>
+          </defs>
+          <text x="0" y="30" font-family="'Cormorant Garamond',Georgia,serif"
+                font-size="30" font-weight="400" letter-spacing="4" fill="#f2ede4">FLAMA</text>
+          <!-- llama sobre la A -->
+          <path d="M116 4 C117 9,121 12,119 18 C121 13,124.5 10,122 4 C123.5 8,126 13,122 20 C124 14,119 7,116 4Z"
+                fill="url(#lg-flame)" opacity="0.95"/>
+          <text x="25" y="42" font-family="'DM Sans',system-ui,sans-serif"
+                font-size="8" font-weight="400" letter-spacing="9" fill="#8a8880">STUDIO</text>
+        </svg>
+      </a>
+
+      <!-- Nav desktop -->
+      <nav class="nav-desktop" aria-label="Navegación principal">
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#proyectos">Proyectos</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <!-- Hamburger -->
+      <button class="nav-toggle" id="navToggle"
+        aria-label="Abrir menú" aria-expanded="false" aria-controls="navMobile">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile nav overlay -->
+  <div class="nav-mobile" id="navMobile" role="dialog" aria-modal="true" aria-label="Menú de navegación">
+    <button class="nav-mobile-close" aria-label="Cerrar menú" onclick="closeMenu()">✕</button>
+    <nav aria-label="Menú móvil">
+      <a href="#inicio"     onclick="closeMenu()">Inicio</a>
+      <a href="#proyectos"  onclick="closeMenu()">Proyectos</a>
+      <a href="#servicios"  onclick="closeMenu()">Servicios</a>
+      <a href="#contacto"   onclick="closeMenu()">Contacto</a>
+    </nav>
+  </div>
+
+  <main id="main">
+
+    <!-- ─────────────────────────────────────
+         1. HERO
+    ───────────────────────────────────── -->
+    <section class="hero" id="inicio" aria-label="Portada">
+      <div class="hero-media">
+        <img
+          src="images/hero-gelateria-noche.jpg"
+          alt="La Gelateria de Roses — noche mediterránea"
+          class="hero-img"
+          fetchpriority="high"
+        >
+        <div class="hero-overlay" aria-hidden="true"></div>
+      </div>
+
+      <!-- Línea vertical decorativa -->
+      <div class="hero-line" aria-hidden="true"></div>
+
+      <div class="hero-content">
+        <p class="hero-eyebrow">
+          <span>Costa Brava</span>
+          <span aria-hidden="true">·</span>
+          <span>Est. 2026</span>
+        </p>
+
+        <h1 class="hero-title">
+          <span class="hero-title-line">Presencia visual</span>
+          <span class="hero-title-line hero-title-line--italic">para negocios</span>
+          <span class="hero-title-line">que merecen <em>destacar.</em></span>
+        </h1>
+
+        <p class="hero-sub">
+          Branding, dirección visual y presencia digital<br>
+          para marcas hospitality, lifestyle y turismo.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#proyectos" class="btn btn--primary">Ver proyectos</a>
+          <a href="#contacto"  class="btn btn--ghost">Hablemos</a>
+        </div>
+      </div>
+
+      <div class="hero-scroll" aria-hidden="true">
+        <span class="hero-scroll-line"></span>
+        <span class="hero-scroll-label">Scroll</span>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────────────────
+         2. INTRO / FILOSOFÍA
+    ───────────────────────────────────── -->
+    <section class="intro" aria-labelledby="intro-heading">
+      <div class="container">
+        <div class="intro-inner">
+          <div class="intro-left reveal">
+            <span class="section-label">Filosofía</span>
+          </div>
+          <div class="intro-right">
+            <h2 id="intro-heading" class="intro-title reveal">
+              Creamos marcas que se sienten<br>
+              antes de <em>explicarse.</em>
+            </h2>
+            <p class="intro-text reveal reveal-d1">
+              En FLAMA Studio diseñamos identidades, webs y sistemas visuales
+              para negocios que quieren elevar su presencia y convertirse en
+              una experiencia memorable.
+            </p>
+            <p class="intro-seal reveal reveal-d2" aria-label="Disciplinas">
+              BRANDING&nbsp;· WEB&nbsp;· DIRECCIÓN VISUAL&nbsp;· CONTENIDO
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────────────────
+         3. PROYECTO DESTACADO
+    ───────────────────────────────────── -->
+    <section class="project-featured" id="proyectos" aria-labelledby="featured-heading">
+      <div class="container">
+        <div class="featured-header reveal">
+          <span class="section-label">Proyecto destacado</span>
+        </div>
+
+        <div class="featured-body">
+          <!-- Imagen principal -->
+          <div class="featured-img-main reveal">
+            <div class="img-frame">
+              <img
+                src="images/gelateria-mostrador.jpg"
+                alt="La Gelateria de Roses — mostrador"
+                loading="lazy"
+              >
+            </div>
+          </div>
+
+          <!-- Info -->
+          <div class="featured-info reveal reveal-d1">
+            <p class="featured-num" aria-hidden="true">01</p>
+            <h2 id="featured-heading" class="featured-title">
+              La Gelateria<br><em>de Roses</em>
+            </h2>
+            <p class="featured-desc">
+              Dirección visual, branding, contenido digital y presencia web
+              para una gelatería artesanal en la Costa Brava.
+            </p>
+            <ul class="featured-tags" aria-label="Disciplinas del proyecto">
+              <li>Branding</li>
+              <li>Cartelería</li>
+              <li>Instagram</li>
+              <li>Web</li>
+              <li>Dirección visual</li>
+            </ul>
+            <a href="#contacto" class="btn btn--outline">Ver caso visual →</a>
+          </div>
+
+          <!-- Imagen secundaria -->
+          <div class="featured-img-sec reveal reveal-d2">
+            <div class="img-frame">
+              <img
+                src="images/gelateria-cubetas.jpg"
+                alt="La Gelateria de Roses — cubetas de helado artesanal"
+                loading="lazy"
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────────────────
+         4. GALERÍA EDITORIAL
+    ───────────────────────────────────── -->
+    <section class="gallery-editorial" aria-labelledby="gallery-heading">
+      <div class="container">
+        <div class="gallery-header reveal">
+          <h2 id="gallery-heading" class="gallery-title">
+            Visual systems<br><em>for real businesses</em>
+          </h2>
+          <p class="gallery-sub reveal reveal-d1">
+            Un sistema visual coherente convierte un negocio en una marca reconocible.
+          </p>
+        </div>
+
+        <div class="gallery-grid">
+          <figure class="gallery-item gallery-item--tall reveal" data-caption="Producto">
+            <div class="img-frame">
+              <img src="images/gelateria-cubetas.jpg"
+                   alt="Cubetas de helado artesanal — producto"
+                   loading="lazy">
+            </div>
+            <figcaption>Producto</figcaption>
+          </figure>
+
+          <figure class="gallery-item reveal reveal-d1" data-caption="Proceso">
+            <div class="img-frame">
+              <img src="images/gelateria-obrador.jpg"
+                   alt="Obrador de la Gelateria de Roses — proceso artesanal"
+                   loading="lazy">
+            </div>
+            <figcaption>Proceso</figcaption>
+          </figure>
+
+          <figure class="gallery-item reveal reveal-d2" data-caption="Atmósfera">
+            <div class="img-frame">
+              <img src="images/gelateria-interior.jpg"
+                   alt="Interior de la Gelateria de Roses — atmósfera"
+                   loading="lazy">
+            </div>
+            <figcaption>Atmósfera</figcaption>
+          </figure>
+
+          <figure class="gallery-item gallery-item--wide reveal reveal-d1" data-caption="Branding">
+            <div class="img-frame">
+              <img src="images/gelateria-producto-01.jpg"
+                   alt="Producto — branding Gelateria de Roses"
+                   loading="lazy">
+            </div>
+            <figcaption>Branding</figcaption>
+          </figure>
+
+          <figure class="gallery-item reveal reveal-d2" data-caption="Experiencia">
+            <div class="img-frame">
+              <img src="images/gelateria-producto-02.jpg"
+                   alt="Gelateria de Roses — experiencia de marca"
+                   loading="lazy">
+            </div>
+            <figcaption>Experiencia</figcaption>
+          </figure>
+
+          <figure class="gallery-item reveal reveal-d3" data-caption="Contenido">
+            <div class="img-frame">
+              <img src="images/gelateria-detalle-01.jpg"
+                   alt="Detalle de contenido visual — Gelateria de Roses"
+                   loading="lazy">
+            </div>
+            <figcaption>Contenido</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────────────────
+         5. SERVICIOS
+    ───────────────────────────────────── -->
+    <section class="services" id="servicios" aria-labelledby="services-heading">
+      <div class="container">
+        <div class="services-header">
+          <span class="section-label reveal">Servicios</span>
+          <h2 id="services-heading" class="services-title reveal reveal-d1">
+            Diseñamos la presencia visual<br>
+            completa de <em>tu marca.</em>
+          </h2>
+          <p class="services-sub reveal reveal-d2">
+            Para negocios que necesitan destacar en el mundo físico y digital.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card reveal">
+            <span class="service-num" aria-hidden="true">01</span>
+            <div class="service-body">
+              <h3 class="service-name">Branding</h3>
+              <p class="service-desc">
+                Identidad visual, dirección estética, logos, manuales
+                y sistemas de marca que perduran.
+              </p>
+            </div>
+          </article>
+
+          <article class="service-card reveal reveal-d1">
+            <span class="service-num" aria-hidden="true">02</span>
+            <div class="service-body">
+              <h3 class="service-name">Diseño web premium</h3>
+              <p class="service-desc">
+                Webs visuales, rápidas y elegantes pensadas para
+                negocios hospitality y lifestyle.
+              </p>
+            </div>
+          </article>
+
+          <article class="service-card reveal reveal-d2">
+            <span class="service-num" aria-hidden="true">03</span>
+            <div class="service-body">
+              <h3 class="service-name">Dirección visual</h3>
+              <p class="service-desc">
+                Definición de estilo, fotografía, composición, color,
+                narrativa y experiencia de marca.
+              </p>
+            </div>
+          </article>
+
+          <article class="service-card reveal reveal-d3">
+            <span class="service-num" aria-hidden="true">04</span>
+            <div class="service-body">
+              <h3 class="service-name">Contenido digital</h3>
+              <p class="service-desc">
+                Piezas para Instagram, Google, campañas y comunicación
+                diaria que mantienen el nivel.
+              </p>
+            </div>
+          </article>
+
+          <article class="service-card reveal reveal-d4">
+            <span class="service-num" aria-hidden="true">05</span>
+            <div class="service-body">
+              <h3 class="service-name">Sistemas visuales IA</h3>
+              <p class="service-desc">
+                Uso de IA para acelerar procesos creativos manteniendo
+                una estética realista, coherente y premium.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────────────────
+         6. CTA FINAL
+    ───────────────────────────────────── -->
+    <section class="cta-final" id="contacto" aria-labelledby="cta-heading">
+      <div class="cta-bg" aria-hidden="true"></div>
+      <div class="container">
+        <div class="cta-inner">
+          <p class="cta-label reveal">Empieza aquí</p>
+          <h2 id="cta-heading" class="cta-title reveal reveal-d1">
+            Tu negocio puede sentirse<br>
+            como una <em>marca.</em>
+          </h2>
+          <p class="cta-sub reveal reveal-d2">
+            Creamos presencia visual para proyectos que quieren destacar sin parecer uno más.
+          </p>
+          <div class="cta-actions reveal reveal-d3">
+            <a href="mailto:hello@byflamastudio.com" class="btn btn--primary">
+              Iniciar proyecto
+            </a>
+          </div>
+          <p class="cta-email reveal reveal-d4">
+            <a href="mailto:hello@byflamastudio.com">hello@byflamastudio.com</a>
+          </p>
+          <p class="cta-geo reveal reveal-d4" aria-label="Zonas de trabajo">
+            Costa Brava&nbsp;·&nbsp;Girona&nbsp;·&nbsp;Hospitality&nbsp;·&nbsp;Lifestyle
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ─────────────────────────────────────
+       FOOTER
+  ───────────────────────────────────── -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+
+        <!-- Logo footer -->
+        <div class="footer-logo">
+          <svg viewBox="0 0 160 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="FLAMA Studio">
+            <text x="0" y="24" font-family="'Cormorant Garamond',Georgia,serif"
+                  font-size="22" font-weight="400" letter-spacing="3.5" fill="#e8e5de">FLAMA</text>
+            <path d="M90 2 C91 6,94 8,92.5 13 C94 10,96.5 7.5,95 2 C96 5.5,97.5 9,95 14 C96.5 10,93 5,90 2Z"
+                  fill="#7a6a4e" opacity="0.85"/>
+            <text x="13" y="32" font-family="'DM Sans',system-ui,sans-serif"
+                  font-size="6" font-weight="400" letter-spacing="6" fill="#3e3e3b">STUDIO</text>
+          </svg>
+          <p class="footer-tagline">Branding · Web · Dirección visual · Contenido</p>
+        </div>
+
+        <!-- Footer links -->
+        <nav class="footer-nav" aria-label="Navegación footer">
+          <a href="https://instagram.com/flamastudio" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="mailto:hello@byflamastudio.com">Email</a>
+          <a href="#proyectos">Proyectos</a>
+        </nav>
+
+        <p class="footer-copy">© 2026 FLAMA Studio. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
 
 <!-- Open Graph -->
 <meta property="og:title" content="FLAMA Studio — Web Design &amp; Creative Direction for Premium Brands">
