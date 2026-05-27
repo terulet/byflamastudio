@@ -1,19 +1,17 @@
 /* ═══════════════════════════════════════════════════════════
-   FLAMA STUDIO — js/script.js (v4)
+   FLAMA STUDIO — js/script.js (v5)
    Vanilla JS · Sin dependencias · Sin cursor personalizado
 ═══════════════════════════════════════════════════════════ */
 
 (function () {
   'use strict';
 
-  /* ── DOM ───────────────────────────────────────────────── */
   var header    = document.getElementById('site-header');
   var navToggle = document.getElementById('navToggle');
   var navMobile = document.getElementById('navMobile');
   var navClose  = document.getElementById('navClose');
 
-
-  /* ── 01. HEADER scroll state ────────────────────────────── */
+  /* ── 01. HEADER scroll ──────────────────────────────────── */
   if (header) {
     function updateHeader() {
       header.classList.toggle('scrolled', window.scrollY > 60);
@@ -21,7 +19,6 @@
     window.addEventListener('scroll', updateHeader, { passive: true });
     updateHeader();
   }
-
 
   /* ── 02. MENÚ MÓVIL ─────────────────────────────────────── */
   function openMenu() {
@@ -32,7 +29,6 @@
     navToggle.setAttribute('aria-label', 'Cerrar menú');
     document.body.style.overflow = 'hidden';
   }
-
   function closeMenu() {
     if (!navMobile || !navToggle) return;
     navMobile.classList.remove('open');
@@ -69,7 +65,6 @@
     if (window.innerWidth > 768) closeMenu();
   });
 
-
   /* ── 03. SCROLL REVEAL ──────────────────────────────────── */
   var revealEls = document.querySelectorAll('.reveal');
   if (revealEls.length > 0) {
@@ -88,7 +83,6 @@
     }
   }
 
-
   /* ── 04. SMOOTH SCROLL ──────────────────────────────────── */
   document.querySelectorAll('a[href^="#"]').forEach(function (a) {
     a.addEventListener('click', function (e) {
@@ -102,7 +96,6 @@
       window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
     });
   });
-
 
   /* ── 05. NAV activa ─────────────────────────────────────── */
   var sections = document.querySelectorAll('section[id]');
@@ -121,18 +114,32 @@
     sections.forEach(function (s) { secObs.observe(s); });
   }
 
-
-  /* ── 06. MOCKUP — ocultar placeholder si imagen carga ───── */
+  /* ── 06. MOCKUPS — mostrar imagen si carga, placeholder si falla ── */
   document.querySelectorAll('.mockup-screen').forEach(function (screen) {
     var img = screen.querySelector('img');
     var placeholder = screen.querySelector('.mockup-placeholder');
     if (!img || !placeholder) return;
-    if (img.complete && img.naturalWidth > 0) {
+
+    function showImage() {
+      screen.classList.add('has-image');
+      img.style.display = 'block';
       placeholder.style.display = 'none';
+    }
+    function showPlaceholder() {
+      screen.classList.remove('has-image');
+      img.style.display = 'none';
+      placeholder.style.display = 'flex';
+    }
+
+    img.addEventListener('load', showImage);
+    img.addEventListener('error', showPlaceholder);
+
+    if (img.complete && img.naturalWidth > 0) {
+      showImage();
+    } else if (img.complete && img.naturalWidth === 0) {
+      showPlaceholder();
     } else {
-      img.addEventListener('load', function () {
-        placeholder.style.display = 'none';
-      });
+      showPlaceholder(); /* estado inicial mientras carga */
     }
   });
 
