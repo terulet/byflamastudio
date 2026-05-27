@@ -489,7 +489,126 @@ section { position: relative; z-index: 1; }
   border-top: 1px solid rgba(138,136,128,.06);
 }
 
-/* ── 16. PROYECTO DESTACADO ──────────────────────────────── */
+/* ── 16. FORMULARIO DE SOLICITUD ─────────────────────────── */
+.solicitud { padding: 14vh 0; border-top: var(--border); }
+.solicitud-header { margin-bottom: 5rem; max-width: 680px; }
+.solicitud-header .section-label { display: block; margin-bottom: 1.4rem; }
+.solicitud-title {
+  font-family: var(--serif);
+  font-size: clamp(2.2rem, 4vw, 4.2rem);
+  font-weight: 300; color: var(--cream);
+  line-height: 1.1; letter-spacing: -.015em; margin-bottom: 1.2rem;
+}
+.solicitud-title em { font-style: italic; }
+.solicitud-sub {
+  font-size: .9rem; color: var(--warm-grey);
+  line-height: 1.9; font-weight: 300; max-width: 500px;
+}
+
+/* Form layout */
+.solicitud-form { max-width: 860px; }
+.form-row { margin-bottom: 2rem; }
+.form-row--2 {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+}
+.form-group { display: flex; flex-direction: column; gap: .5rem; }
+
+/* Labels */
+.form-group label,
+.form-fieldset legend {
+  font-size: .62rem; letter-spacing: .25em; text-transform: uppercase;
+  color: var(--gold-dim); font-family: var(--sans); font-weight: 400;
+}
+.form-fieldset { border: none; padding: 0; }
+.form-fieldset legend { display: block; margin-bottom: 1rem; }
+
+/* Inputs & textarea & select */
+.form-group input,
+.form-group textarea,
+.form-group select {
+  background: var(--graphite);
+  border: 1px solid rgba(138,136,128,.15);
+  color: var(--offwhite);
+  font-family: var(--sans); font-size: .88rem; font-weight: 300;
+  padding: .9rem 1.2rem;
+  transition: border-color .3s;
+  appearance: none; -webkit-appearance: none;
+  border-radius: 0;
+  width: 100%;
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(138,136,128,.45);
+}
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: rgba(176,154,110,.4);
+}
+.form-group textarea { resize: vertical; min-height: 120px; }
+
+/* Select arrow */
+.form-group select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237a6a4e' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 12px;
+  padding-right: 2.5rem;
+}
+.form-group select option { background: var(--graphite); color: var(--offwhite); }
+
+/* Checkboxes & radios */
+.form-checks,
+.form-radios {
+  display: flex; flex-wrap: wrap; gap: .6rem 1.2rem;
+}
+.form-check,
+.form-radio {
+  display: inline-flex; align-items: center; gap: .6rem;
+  font-size: .8rem; color: var(--warm-grey); font-weight: 300;
+  cursor: pointer;
+}
+.form-check input[type="checkbox"],
+.form-radio input[type="radio"] {
+  appearance: none; -webkit-appearance: none;
+  width: 14px; height: 14px; flex-shrink: 0;
+  border: 1px solid rgba(138,136,128,.3);
+  background: transparent;
+  transition: border-color .3s, background .3s;
+  cursor: pointer; padding: 0;
+}
+.form-check input[type="checkbox"] {
+  border-radius: 0;
+}
+.form-radio input[type="radio"] {
+  border-radius: 50%;
+}
+.form-check input[type="checkbox"]:checked {
+  background: var(--gold-dim);
+  border-color: var(--gold-dim);
+}
+.form-radio input[type="radio"]:checked {
+  background: var(--gold-dim);
+  border-color: var(--gold-dim);
+}
+.form-check:hover input,
+.form-radio:hover input {
+  border-color: var(--gold);
+}
+
+/* Submit */
+.form-submit {
+  display: flex; align-items: center; gap: 2rem;
+  padding-top: 1rem;
+  flex-wrap: wrap;
+}
+.form-note {
+  font-size: .7rem; letter-spacing: .15em; text-transform: uppercase;
+  color: rgba(138,136,128,.45);
+}
+
+/* ── 17. PROYECTO DESTACADO ──────────────────────────────── */
 .featured { padding: 13vh 0; border-top: var(--border); }
 .featured .section-label { display: block; margin-bottom: 4rem; }
 .featured-layout {
@@ -729,6 +848,7 @@ section { position: relative; z-index: 1; }
   .trust  { padding: 11vh 0; }
   .webdesign { padding: 11vh 0; }
   .planes { padding: 11vh 0; }
+  .solicitud { padding: 11vh 0; }
   .featured { padding: 11vh 0; }
   .gallery { padding: 11vh 0; }
   .services { padding: 11vh 0; }
@@ -739,6 +859,7 @@ section { position: relative; z-index: 1; }
   .g-wide .img-frame { aspect-ratio: 4 / 3; }
   .mockup-wrap { height: 240px; }
   .cta { padding: 14vh 0 10vh; }
+  .form-row--2 { grid-template-columns: 1fr; }
 }
 
 /* ── 24. RESPONSIVE — MÓVIL PEQUEÑO ≤ 480px ─────────────── */
