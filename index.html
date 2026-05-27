@@ -295,6 +295,11 @@
 
       <form class="solicitud-form reveal rd1" id="solicitudForm" novalidate>
 
+        <!-- Web3Forms campos obligatorios -->
+        <input type="hidden" name="access_key" value="628c9dda-8b27-4ae8-859b-bd711392d245">
+        <input type="hidden" name="subject" value="Solicitud web FLAMA Studio">
+        <input type="hidden" name="from_name" value="FLAMA Studio Web">
+
         <div class="form-row form-row--2">
           <div class="form-group">
             <label for="f-nombre">Nombre</label>
@@ -365,9 +370,20 @@
           </div>
         </div>
 
+        <!-- Consentimiento obligatorio -->
+        <div class="form-row">
+          <label class="form-check form-check--consent">
+            <input type="checkbox" id="f-consent" name="consentimiento" value="Aceptado" required>
+            He leído y acepto que FLAMA Studio contacte conmigo para responder a mi solicitud.
+          </label>
+        </div>
+
+        <!-- Mensajes de estado -->
+        <div class="form-status" id="formStatus" aria-live="polite"></div>
+
         <div class="form-submit">
-          <button type="submit" class="btn btn--primary">Enviar solicitud</button>
-          <p class="form-note">Te responderemos en menos de 48h.</p>
+          <button type="submit" class="btn btn--primary" id="formBtn">Enviar solicitud</button>
+          <p class="form-note">Te responderemos personalmente en 24–48h.</p>
         </div>
 
       </form>
