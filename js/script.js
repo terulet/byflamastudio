@@ -115,32 +115,36 @@
   }
 
   /* ── 06. MOCKUPS — mostrar imagen si carga, placeholder si falla ── */
-  document.querySelectorAll('.mockup-screen').forEach(function (screen) {
-    var img = screen.querySelector('img');
-    var placeholder = screen.querySelector('.mockup-placeholder');
-    if (!img || !placeholder) return;
+  function initMockups() {
+    document.querySelectorAll('.mockup-screen').forEach(function (screen) {
+      var img = screen.querySelector('img');
+      var placeholder = screen.querySelector('.mockup-placeholder');
+      if (!img || !placeholder) return;
 
-    function showImage() {
-      screen.classList.add('has-image');
-      img.style.display = 'block';
-      placeholder.style.display = 'none';
-    }
-    function showPlaceholder() {
-      screen.classList.remove('has-image');
-      img.style.display = 'none';
-      placeholder.style.display = 'flex';
-    }
+      function showImage() {
+        screen.classList.add('has-image');
+        placeholder.style.display = 'none';
+      }
+      function showPlaceholder() {
+        screen.classList.remove('has-image');
+        placeholder.style.display = 'flex';
+      }
 
-    img.addEventListener('load', showImage);
-    img.addEventListener('error', showPlaceholder);
+      if (img.complete) {
+        img.naturalWidth > 0 ? showImage() : showPlaceholder();
+      } else {
+        showPlaceholder();
+        img.addEventListener('load',  showImage);
+        img.addEventListener('error', showPlaceholder);
+      }
+    });
+  }
 
-    if (img.complete && img.naturalWidth > 0) {
-      showImage();
-    } else if (img.complete && img.naturalWidth === 0) {
-      showPlaceholder();
-    } else {
-      showPlaceholder(); /* estado inicial mientras carga */
-    }
-  });
+  /* Ejecutar ahora y también tras DOMContentLoaded por si acaso */
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMockups);
+  } else {
+    initMockups();
+  }
 
 })();
