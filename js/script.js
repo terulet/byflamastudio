@@ -1,6 +1,5 @@
-
 /* ═══════════════════════════════════════════════════════════
-   FLAMA STUDIO — js/script.js (versión corregida)
+   FLAMA STUDIO — js/script.js (v3 afinado)
    Vanilla JS · Sin dependencias · Sin cursor personalizado
 ═══════════════════════════════════════════════════════════ */
 
@@ -17,19 +16,14 @@
   /* ── 01. HEADER — scroll state ─────────────────────────── */
   if (header) {
     function updateHeader() {
-      if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
+      header.classList.toggle('scrolled', window.scrollY > 60);
     }
     window.addEventListener('scroll', updateHeader, { passive: true });
-    updateHeader(); // estado correcto al cargar
+    updateHeader();
   }
 
 
   /* ── 02. MENÚ MÓVIL ─────────────────────────────────────── */
-
   function openMenu() {
     if (!navMobile || !navToggle) return;
     navMobile.classList.add('open');
@@ -48,33 +42,33 @@
     document.body.style.overflow = '';
   }
 
-  // Asegurarse de que el menú está cerrado al cargar
+  /* Estado inicial: siempre cerrado */
   if (navMobile) {
     navMobile.classList.remove('open');
     navMobile.setAttribute('aria-hidden', 'true');
   }
 
-  // Toggle hamburger
+  /* Toggle hamburger */
   if (navToggle) {
     navToggle.addEventListener('click', function () {
       var isOpen = navMobile && navMobile.classList.contains('open');
-      if (isOpen) { closeMenu(); } else { openMenu(); }
+      isOpen ? closeMenu() : openMenu();
     });
   }
 
-  // Botón cerrar (X)
+  /* Botón cerrar (✕) */
   if (navClose) {
     navClose.addEventListener('click', closeMenu);
   }
 
-  // Cerrar al pulsar un enlace del menú
+  /* Cerrar al pulsar enlace */
   if (navMobile) {
     navMobile.querySelectorAll('a').forEach(function (link) {
       link.addEventListener('click', closeMenu);
     });
   }
 
-  // Cerrar con Escape
+  /* Cerrar con Escape */
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && navMobile && navMobile.classList.contains('open')) {
       closeMenu();
@@ -82,30 +76,36 @@
     }
   });
 
+  /* Cerrar al redimensionar a desktop */
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 768) {
+      closeMenu();
+    }
+  });
 
-  /* ── 03. SCROLL REVEAL — IntersectionObserver ───────────── */
+
+  /* ── 03. SCROLL REVEAL ──────────────────────────────────── */
   var revealEls = document.querySelectorAll('.reveal');
 
   if (revealEls.length > 0) {
     if ('IntersectionObserver' in window) {
-      var observer = new IntersectionObserver(function (entries, obs) {
+      var revealObs = new IntersectionObserver(function (entries, obs) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
             obs.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+      }, { threshold: 0.07, rootMargin: '0px 0px -36px 0px' });
 
-      revealEls.forEach(function (el) { observer.observe(el); });
+      revealEls.forEach(function (el) { revealObs.observe(el); });
     } else {
-      // Fallback sin soporte
       revealEls.forEach(function (el) { el.classList.add('visible'); });
     }
   }
 
 
-  /* ── 04. SMOOTH SCROLL — descuenta altura del header ────── */
+  /* ── 04. SMOOTH SCROLL ──────────────────────────────────── */
   document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
     anchor.addEventListener('click', function (e) {
       var id = this.getAttribute('href').slice(1);
@@ -114,13 +114,13 @@
       if (!target) return;
       e.preventDefault();
       var headerH = header ? header.offsetHeight : 0;
-      var top = target.getBoundingClientRect().top + window.scrollY - headerH - 16;
+      var top = target.getBoundingClientRect().top + window.scrollY - headerH - 20;
       window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
     });
   });
 
 
-  /* ── 05. NAV LINKS — estado activo por sección ──────────── */
+  /* ── 05. NAV ACTIVA por sección ─────────────────────────── */
   var sections = document.querySelectorAll('section[id]');
   var navLinks = document.querySelectorAll('.nav-desktop a[href^="#"]');
 
@@ -128,13 +128,13 @@
     var sectionObs = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
-          var activeId = entry.target.getAttribute('id');
+          var id = entry.target.getAttribute('id');
           navLinks.forEach(function (link) {
-            link.classList.toggle('active', link.getAttribute('href') === '#' + activeId);
+            link.classList.toggle('active', link.getAttribute('href') === '#' + id);
           });
         }
       });
-    }, { threshold: 0.4 });
+    }, { threshold: 0.35 });
     sections.forEach(function (s) { sectionObs.observe(s); });
   }
 
