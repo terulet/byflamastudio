@@ -125,34 +125,62 @@
     }
   };
 
-  /* ── 07. FORMULARIO — mailto con todos los campos ───────── */
+  /* ── 07. FORMULARIO — Web3Forms fetch ──────────────────── */
   var form = document.getElementById('solicitudForm');
   if (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      var nombre   = (document.getElementById('f-nombre').value   || '').trim();
-      var negocio  = (document.getElementById('f-negocio').value  || '').trim();
-      var email    = (document.getElementById('f-email').value    || '').trim();
-      var telefono = (document.getElementById('f-telefono').value || '').trim();
-      var plan     = document.getElementById('f-plan').value;
-      var mensaje  = (document.getElementById('f-mensaje').value  || '').trim();
-      var tienesChecks = document.querySelectorAll('input[name="tienes"]:checked');
-      var tienes = Array.prototype.map.call(tienesChecks, function(c){ return c.value; }).join(', ') || 'No indicado';
-      var objetivoEl = document.querySelector('input[name="objetivo"]:checked');
-      var objetivo = objetivoEl ? objetivoEl.value : 'No indicado';
-      if (!nombre || !email) { alert('Por favor, rellena al menos tu nombre y email.'); return; }
-      var subject = encodeURIComponent('Solicitud web FLAMA Studio');
-      var body = encodeURIComponent(
-        'NOMBRE: '    + (nombre   || '-') + '\n' +
-        'NEGOCIO: '   + (negocio  || '-') + '\n' +
-        'EMAIL: '     + (email    || '-') + '\n' +
-        'TELEFONO: '  + (telefono || '-') + '\n' +
-        'PLAN: '      + (plan     || 'No indicado') + '\n' +
-        'QUE TIENE: ' + tienes + '\n' +
-        'OBJETIVO: '  + objetivo + '\n\n' +
-        'MENSAJE:\n'  + (mensaje  || '-')
-      );
-      window.location.href = 'mailto:Terix@flamastudio.com?subject=' + subject + '&body=' + body;
+
+      var btn    = document.getElementById('formBtn');
+      var status = document.getElementById('formStatus');
+
+      /* Validación mínima */
+      var nombre  = (document.getElementById('f-nombre').value || '').trim();
+      var email   = (document.getElementById('f-email').value  || '').trim();
+      var consent = document.getElementById('f-consent').checked;
+
+      if (!nombre || !email) {
+        status.className = 'form-status form-status--error';
+        status.textContent = 'Por favor, rellena al menos tu nombre y email.';
+        return;
+      }
+      if (!consent) {
+        status.className = 'form-status form-status--error';
+        status.textContent = 'Debes aceptar el consentimiento para enviar la solicitud.';
+        return;
+      }
+
+      /* Estado enviando */
+      btn.disabled = true;
+      btn.textContent = 'Enviando...';
+      status.className = 'form-status';
+      status.textContent = '';
+
+      /* Recoger datos con FormData */
+      var data = new FormData(form);
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: data
+      })
+      .then(function (res) { return res.json(); })
+      .then(function (json) {
+        if (json.success) {
+          status.className = 'form-status form-status--success';
+          status.textContent = 'Solicitud enviada correctamente. Te responderemos personalmente en 24–48h.';
+          form.reset();
+        } else {
+          throw new Error(json.message || 'Error desconocido');
+        }
+      })
+      .catch(function () {
+        status.className = 'form-status form-status--error';
+        status.textContent = 'No se ha podido enviar la solicitud. Escríbenos directamente a Terix@flamastudio.com.';
+      })
+      .finally(function () {
+        btn.disabled = false;
+        btn.textContent = 'Enviar solicitud';
+      });
     });
   }
 
