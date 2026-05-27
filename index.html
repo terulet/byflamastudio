@@ -37,6 +37,7 @@
     <nav class="nav-desktop" aria-label="Navegación principal">
       <ul>
         <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#planes">Planes</a></li>
         <li><a href="#proyectos">Proyectos</a></li>
         <li><a href="#servicios">Servicios</a></li>
         <li><a href="#contacto">Contacto</a></li>
@@ -54,6 +55,7 @@
   <button class="nav-mobile-close" id="navClose" type="button" aria-label="Cerrar menú">✕</button>
   <nav aria-label="Menú móvil">
     <a href="#inicio">Inicio</a>
+    <a href="#planes">Planes</a>
     <a href="#proyectos">Proyectos</a>
     <a href="#servicios">Servicios</a>
     <a href="#contacto">Contacto</a>
@@ -222,7 +224,7 @@
           </ul>
           <div class="plan-bottom">
             <p class="plan-price">Desde <span>790 €</span></p>
-            <a href="mailto:Terix@flamastudio.com?subject=Solicito Web Esencial" class="btn btn--outline">Solicitar Web Esencial</a>
+            <a href="#solicitud" class="btn btn--outline" onclick="selectPlan('esencial')">Solicitar Web Esencial</a>
           </div>
         </article>
 
@@ -245,7 +247,7 @@
           </ul>
           <div class="plan-bottom">
             <p class="plan-price">Desde <span>1.490 €</span></p>
-            <a href="mailto:Terix@flamastudio.com?subject=Solicito Web Premium" class="btn btn--primary">Solicitar Web Premium</a>
+            <a href="#solicitud" class="btn btn--primary" onclick="selectPlan('premium')">Solicitar Web Premium</a>
           </div>
         </article>
 
@@ -267,7 +269,7 @@
           </ul>
           <div class="plan-bottom">
             <p class="plan-price">Desde <span>2.500 €</span></p>
-            <a href="mailto:Terix@flamastudio.com?subject=Solicito Web Pro" class="btn btn--outline">Solicitar Web Pro</a>
+            <a href="#solicitud" class="btn btn--outline" onclick="selectPlan('pro')">Solicitar Web Pro</a>
           </div>
         </article>
 
@@ -278,7 +280,101 @@
     </div>
   </section>
 
-  <!-- 5. PROYECTO DESTACADO -->
+  <!-- 5. FORMULARIO DE SOLICITUD -->
+  <section class="solicitud" id="solicitud" aria-labelledby="solicitud-title">
+    <div class="container">
+      <div class="solicitud-header">
+        <span class="section-label reveal">Solicitud</span>
+        <h2 id="solicitud-title" class="solicitud-title reveal rd1">
+          Cuéntanos qué <em>necesitas.</em>
+        </h2>
+        <p class="solicitud-sub reveal rd2">
+          Rellena este formulario y valoramos qué versión encaja mejor con tu proyecto.
+        </p>
+      </div>
+
+      <form class="solicitud-form reveal rd1" id="solicitudForm" novalidate>
+
+        <div class="form-row form-row--2">
+          <div class="form-group">
+            <label for="f-nombre">Nombre</label>
+            <input type="text" id="f-nombre" name="nombre" placeholder="Tu nombre" required>
+          </div>
+          <div class="form-group">
+            <label for="f-negocio">Nombre del negocio</label>
+            <input type="text" id="f-negocio" name="negocio" placeholder="Nombre de tu negocio">
+          </div>
+        </div>
+
+        <div class="form-row form-row--2">
+          <div class="form-group">
+            <label for="f-email">Email</label>
+            <input type="email" id="f-email" name="email" placeholder="tu@email.com" required>
+          </div>
+          <div class="form-group">
+            <label for="f-telefono">Teléfono / WhatsApp</label>
+            <input type="tel" id="f-telefono" name="telefono" placeholder="+34 600 000 000">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="f-plan">Plan de interés</label>
+            <select id="f-plan" name="plan">
+              <option value="">Selecciona un plan</option>
+              <option value="Web Esencial">Web Esencial — desde 790 €</option>
+              <option value="Web Premium">Web Premium — desde 1.490 €</option>
+              <option value="Web Pro">Web Pro — desde 2.500 €</option>
+              <option value="No lo sé todavía">No lo sé todavía</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <fieldset class="form-fieldset">
+            <legend>¿Qué tienes ya?</legend>
+            <div class="form-checks">
+              <label class="form-check"><input type="checkbox" name="tienes" value="Logo"> Logo</label>
+              <label class="form-check"><input type="checkbox" name="tienes" value="Fotos"> Fotos</label>
+              <label class="form-check"><input type="checkbox" name="tienes" value="Textos"> Textos</label>
+              <label class="form-check"><input type="checkbox" name="tienes" value="Dominio"> Dominio</label>
+              <label class="form-check"><input type="checkbox" name="tienes" value="Instagram"> Instagram</label>
+              <label class="form-check"><input type="checkbox" name="tienes" value="Nada todavía"> Nada todavía</label>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="form-row">
+          <fieldset class="form-fieldset">
+            <legend>Objetivo principal</legend>
+            <div class="form-radios">
+              <label class="form-radio"><input type="radio" name="objetivo" value="Presencia online"> Presencia online</label>
+              <label class="form-radio"><input type="radio" name="objetivo" value="Captar clientes"> Captar clientes</label>
+              <label class="form-radio"><input type="radio" name="objetivo" value="Mejorar imagen"> Mejorar imagen</label>
+              <label class="form-radio"><input type="radio" name="objetivo" value="Enseñar servicios"> Enseñar servicios</label>
+              <label class="form-radio"><input type="radio" name="objetivo" value="Reservas o contacto"> Reservas o contacto</label>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="f-mensaje">Mensaje breve</label>
+            <textarea id="f-mensaje" name="mensaje" rows="4"
+              placeholder="Cuéntanos brevemente qué tienes y qué quieres conseguir."></textarea>
+          </div>
+        </div>
+
+        <div class="form-submit">
+          <button type="submit" class="btn btn--primary">Enviar solicitud</button>
+          <p class="form-note">Te responderemos en menos de 48h.</p>
+        </div>
+
+      </form>
+    </div>
+  </section>
+
+  <!-- 6. PROYECTO DESTACADO -->
   <section class="featured" id="proyectos" aria-labelledby="featured-title">
     <div class="container">
       <p class="section-label reveal">Proyecto destacado</p>
