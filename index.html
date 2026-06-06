@@ -1,595 +1,723 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FLAMA Studio | Branding, dirección visual y diseño web premium — Costa Brava</title>
-  <meta name="description" content="Estudio creativo premium en Costa Brava. Branding, diseño web y dirección visual para hospitality, lifestyle y turismo. Presencia visual que genera confianza.">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://byflamastudio.com/">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://byflamastudio.com/">
-  <meta property="og:locale" content="es_ES">
-  <meta property="og:title" content="FLAMA Studio | Branding, dirección visual y diseño web premium">
-  <meta property="og:description" content="Creamos presencia visual para negocios que quieren sentirse como marca.">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230e0e0c'/%3E%3Ctext x='16' y='23' font-family='Georgia%2Cserif' font-size='18' font-weight='400' fill='%23f2ede4' text-anchor='middle'%3EF%3C/text%3E%3C/svg%3E">
-  <meta name="theme-color" content="#0e0e0c">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FLAMA Studio · Más reservas directas, menos dependencia de Booking</title>
+<meta name="description" content="Ayudamos a hoteles, apartamentos turísticos, beach clubs y negocios de hospitality de la Costa Brava a captar más clientes directos y reducir la dependencia de Booking y otros intermediarios.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#171513;
+  --graphite:#2b2724;
+  --sand:#d8c7a8;
+  --sand-deep:#b89b6e;
+  --bone:#f4efe6;
+  --bone-2:#ebe3d4;
+  --offwhite:#fbf9f4;
+  --gold:#b89b6e;
+  --line:rgba(23,21,19,.12);
+  --line-light:rgba(244,239,230,.16);
+  --maxw:1240px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Outfit',sans-serif;
+  background:var(--offwhite);
+  color:var(--ink);
+  line-height:1.6;
+  font-weight:300;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:300;line-height:1.05;letter-spacing:-.01em}
+.serif{font-family:'Fraunces',serif}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.eyebrow{font-family:'Outfit',sans-serif;font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;font-weight:500;color:var(--sand-deep)}
+
+/* ===== reveal ===== */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1s cubic-bezier(.2,.6,.2,1),transform 1s cubic-bezier(.2,.6,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.12s}.reveal.d2{transition-delay:.24s}.reveal.d3{transition-delay:.36s}.reveal.d4{transition-delay:.48s}
+
+/* ===== nav ===== */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:22px 0;transition:all .5s ease;mix-blend-mode:difference}
+nav.scrolled{mix-blend-mode:normal;background:rgba(251,249,244,.82);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);padding:14px 0}
+.nav-in{display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Fraunces',serif;font-size:1.35rem;letter-spacing:.02em;color:#fff;display:flex;align-items:center;gap:.5em}
+nav.scrolled .logo{color:var(--ink)}
+.logo b{font-weight:500}
+.logo .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);display:inline-block}
+.nav-links{display:flex;align-items:center;gap:34px}
+.nav-links a{font-size:.82rem;letter-spacing:.06em;color:#fff;font-weight:400;opacity:.92;transition:opacity .3s}
+nav.scrolled .nav-links a{color:var(--ink)}
+.nav-links a:hover{opacity:.6}
+.nav-cta{border:1px solid rgba(255,255,255,.5);padding:9px 20px;border-radius:40px;font-size:.78rem!important;letter-spacing:.08em;transition:all .4s!important}
+nav.scrolled .nav-cta{border-color:var(--ink)}
+.nav-cta:hover{background:#fff;color:var(--ink)!important;opacity:1!important}
+nav.scrolled .nav-cta:hover{background:var(--ink);color:#fff!important}
+.lang{display:flex;gap:2px;font-size:.74rem;letter-spacing:.08em;align-items:center}
+.lang button{background:none;border:none;color:inherit;font-family:inherit;font-size:inherit;cursor:pointer;opacity:.55;padding:4px 6px;transition:opacity .3s;font-weight:400}
+.lang button.active{opacity:1;font-weight:500}
+.menu-btn{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:6px}
+.menu-btn span{width:24px;height:1.5px;background:#fff;display:block;transition:.3s}
+nav.scrolled .menu-btn span{background:var(--ink)}
+
+/* ===== hero ===== */
+.hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;overflow:hidden;background:var(--ink)}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.62;transform:scale(1.08);animation:slowzoom 18s ease-out forwards}
+@keyframes slowzoom{to{transform:scale(1)}}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(23,21,19,.55) 0%,rgba(23,21,19,.15) 40%,rgba(23,21,19,.85) 100%)}
+.hero-in{position:relative;z-index:2;width:100%;padding-bottom:64px;padding-top:140px}
+.hero .eyebrow{color:var(--sand);margin-bottom:26px}
+.hero h1{color:var(--bone);font-size:clamp(2.6rem,6.4vw,5.6rem);max-width:16ch}
+.hero h1 em{font-style:italic;color:var(--sand)}
+.hero p.sub{color:rgba(244,239,230,.82);font-size:clamp(1.02rem,1.5vw,1.22rem);max-width:54ch;margin-top:28px;font-weight:300}
+.hero-actions{display:flex;gap:16px;margin-top:40px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:.7em;padding:16px 32px;border-radius:46px;font-family:'Outfit',sans-serif;font-size:.9rem;letter-spacing:.04em;font-weight:500;cursor:pointer;transition:all .45s cubic-bezier(.2,.6,.2,1);border:1px solid transparent}
+.btn-primary{background:var(--sand);color:var(--ink)}
+.btn-primary:hover{background:var(--bone);transform:translateY(-2px)}
+.btn-ghost{border-color:rgba(244,239,230,.4);color:var(--bone)}
+.btn-ghost:hover{border-color:var(--bone);background:rgba(244,239,230,.06)}
+.btn .arr{transition:transform .4s}
+.btn:hover .arr{transform:translateX(4px)}
+.hero-trust{margin-top:54px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;color:rgba(244,239,230,.6);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase}
+.hero-trust span.sep{width:4px;height:4px;border-radius:50%;background:var(--sand-deep)}
+
+/* ===== sections base ===== */
+section{position:relative}
+.pad{padding:120px 0}
+.pad-lg{padding:150px 0}
+.sec-head{max-width:62ch}
+.sec-head .eyebrow{display:block;margin-bottom:20px}
+.sec-head h2{font-size:clamp(2rem,4.4vw,3.6rem)}
+.sec-head h2 em{font-style:italic;color:var(--sand-deep)}
+.sec-head p{margin-top:22px;font-size:1.08rem;color:var(--graphite);max-width:56ch}
+
+/* ===== problem / cost ===== */
+.cost{background:var(--ink);color:var(--bone)}
+.cost .eyebrow{color:var(--sand)}
+.cost h2{color:var(--bone)}
+.cost h2 em{color:var(--sand)}
+.cost p{color:rgba(244,239,230,.7)}
+.calc{margin-top:64px;display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
+.calc-box{background:linear-gradient(160deg,#221f1c,#191613);border:1px solid var(--line-light);border-radius:20px;padding:44px}
+.calc-box h3{color:var(--bone);font-size:1.4rem;margin-bottom:8px}
+.calc-box .small{font-size:.85rem;color:rgba(244,239,230,.55);margin-bottom:30px}
+.calc-row{margin-bottom:26px}
+.calc-row label{display:flex;justify-content:space-between;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;color:var(--sand);margin-bottom:12px}
+.calc-row label b{color:var(--bone);font-weight:500}
+input[type=range]{-webkit-appearance:none;width:100%;height:2px;background:rgba(244,239,230,.2);outline:none;border-radius:2px}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--sand);cursor:pointer;border:3px solid var(--ink);box-shadow:0 0 0 1px var(--sand)}
+input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--sand);cursor:pointer;border:3px solid var(--ink)}
+.calc-result{text-align:center;border-top:1px solid var(--line-light);margin-top:14px;padding-top:30px}
+.calc-result .lbl{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(244,239,230,.55)}
+.calc-result .num{font-family:'Fraunces',serif;font-size:clamp(2.6rem,6vw,3.8rem);color:var(--sand);line-height:1;margin:10px 0 4px}
+.calc-result .note{font-size:.82rem;color:rgba(244,239,230,.5)}
+.cost-list{list-style:none}
+.cost-list li{display:flex;gap:18px;padding:20px 0;border-bottom:1px solid var(--line-light);align-items:flex-start}
+.cost-list li:last-child{border-bottom:none}
+.cost-list .x{color:var(--sand);font-family:'Fraunces',serif;font-size:1.1rem;flex-shrink:0;margin-top:2px}
+.cost-list b{color:var(--bone);font-weight:500;display:block;margin-bottom:2px}
+.cost-list span.txt{color:rgba(244,239,230,.6);font-size:.92rem}
+
+/* ===== solution flow ===== */
+.solution .sec-head{margin:0 auto;text-align:center}
+.solution .sec-head p{margin-left:auto;margin-right:auto}
+.flow{margin-top:70px;display:flex;align-items:stretch;justify-content:center;gap:0;flex-wrap:wrap}
+.flow-step{flex:1;min-width:180px;max-width:240px;text-align:center;padding:34px 22px;position:relative}
+.flow-step .n{font-family:'Fraunces',serif;font-size:.9rem;color:var(--sand-deep);letter-spacing:.2em}
+.flow-step h4{font-size:1.5rem;margin:14px 0 8px}
+.flow-step p{font-size:.9rem;color:var(--graphite)}
+.flow-arrow{display:flex;align-items:center;color:var(--sand-deep);font-size:1.5rem;padding:0 4px}
+@media(max-width:860px){.flow-arrow{transform:rotate(90deg)}}
+
+/* ===== services ===== */
+.services{background:var(--bone)}
+.svc-grid{margin-top:64px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.svc{background:var(--offwhite);border:1px solid var(--line);border-radius:18px;padding:40px 34px;display:flex;flex-direction:column;transition:transform .5s cubic-bezier(.2,.6,.2,1),box-shadow .5s}
+.svc:hover{transform:translateY(-6px);box-shadow:0 30px 60px -30px rgba(23,21,19,.25)}
+.svc.featured{background:var(--ink);color:var(--bone);border-color:var(--ink)}
+.svc-lvl{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--sand-deep);font-weight:500}
+.svc.featured .svc-lvl{color:var(--sand)}
+.svc h3{font-size:1.7rem;margin:14px 0 6px}
+.svc.featured h3{color:var(--bone)}
+.svc .tag{font-size:.88rem;color:var(--graphite);margin-bottom:26px;min-height:42px}
+.svc.featured .tag{color:rgba(244,239,230,.7)}
+.svc ul{list-style:none;margin-bottom:30px;flex:1}
+.svc li{font-size:.92rem;padding:9px 0;border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:flex-start}
+.svc.featured li{border-color:var(--line-light)}
+.svc li::before{content:"—";color:var(--sand-deep);flex-shrink:0}
+.svc.featured li::before{color:var(--sand)}
+.svc .goal{font-family:'Fraunces',serif;font-style:italic;font-size:1.02rem;color:var(--sand-deep);margin-top:auto}
+.svc.featured .goal{color:var(--sand)}
+.badge{position:absolute;top:-1px;right:34px;background:var(--sand);color:var(--ink);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;padding:6px 14px;border-radius:0 0 8px 8px}
+.svc{position:relative}
+
+/* ===== cases ===== */
+.cases{background:var(--ink);color:var(--bone)}
+.cases .eyebrow{color:var(--sand)}
+.cases h2{color:var(--bone)}
+.case-grid{margin-top:64px;display:grid;grid-template-columns:1.4fr 1fr;gap:24px}
+.case{border:1px solid var(--line-light);border-radius:18px;overflow:hidden;position:relative;display:flex;flex-direction:column;min-height:300px;transition:transform .5s}
+.case:hover{transform:translateY(-5px)}
+.case-star{grid-row:span 2}
+.case-img{position:absolute;inset:0;z-index:0}
+.case-img img{width:100%;height:100%;object-fit:cover;opacity:.4;transition:opacity .6s,transform 6s ease-out}
+.case:hover .case-img img{opacity:.5;transform:scale(1.06)}
+.case-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(23,21,19,.2),rgba(23,21,19,.92))}
+.case-body{position:relative;z-index:2;margin-top:auto;padding:34px}
+.case .kicker{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--sand);margin-bottom:10px}
+.case h3{font-size:1.7rem;color:var(--bone);margin-bottom:14px}
+.case-star h3{font-size:2.2rem}
+.case dl{display:grid;gap:10px}
+.case dt{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--sand-deep);margin-bottom:2px}
+.case dd{font-size:.92rem;color:rgba(244,239,230,.78);margin-bottom:8px}
+
+/* ===== founder ===== */
+.founder{background:var(--bone-2);overflow:hidden}
+.founder-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:70px;align-items:center}
+.founder-photo{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:4/5;background:var(--graphite)}
+.founder-photo img{width:100%;height:100%;object-fit:cover}
+.founder-photo .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;color:var(--sand);text-align:center;padding:30px}
+.founder-photo .ph .serif{font-size:1.3rem;font-style:italic;opacity:.8}
+.founder .eyebrow{color:var(--sand-deep)}
+.founder h2{font-size:clamp(2rem,4vw,3.2rem);margin:18px 0 28px}
+.founder h2 em{font-style:italic;color:var(--sand-deep)}
+.founder .lead{font-size:1.18rem;color:var(--ink);font-family:'Fraunces',serif;font-weight:300;line-height:1.4;margin-bottom:26px}
+.founder p{color:var(--graphite);margin-bottom:18px}
+.founder-stats{display:flex;gap:40px;margin-top:36px;flex-wrap:wrap}
+.fstat .n{font-family:'Fraunces',serif;font-size:2.6rem;color:var(--ink);line-height:1}
+.fstat .l{font-size:.82rem;color:var(--graphite);letter-spacing:.04em;margin-top:6px}
+.founder-sign{margin-top:34px;font-family:'Fraunces',serif;font-style:italic;font-size:1.4rem;color:var(--ink)}
+
+/* ===== audit form ===== */
+.audit{background:var(--offwhite)}
+.audit-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:start}
+.audit .sticky{position:sticky;top:120px}
+.audit h2{font-size:clamp(2rem,4vw,3.2rem)}
+.audit h2 em{font-style:italic;color:var(--sand-deep)}
+.audit .lead{margin-top:22px;font-size:1.08rem;color:var(--graphite)}
+.audit-perks{margin-top:34px;list-style:none}
+.audit-perks li{padding:14px 0;border-top:1px solid var(--line);font-size:.95rem;display:flex;gap:12px;align-items:center}
+.audit-perks li::before{content:"✓";color:var(--sand-deep);font-weight:600}
+.form{background:var(--bone);border:1px solid var(--line);border-radius:20px;padding:44px}
+.fg{margin-bottom:22px}
+.fg label{display:block;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--graphite);margin-bottom:9px;font-weight:500}
+.fg input,.fg select{width:100%;padding:14px 16px;border:1px solid var(--line);border-radius:11px;background:var(--offwhite);font-family:'Outfit',sans-serif;font-size:.98rem;color:var(--ink);transition:border-color .3s}
+.fg input:focus,.fg select:focus{outline:none;border-color:var(--sand-deep)}
+.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.form .btn{width:100%;justify-content:center;background:var(--ink);color:var(--bone);margin-top:8px}
+.form .btn:hover{background:var(--graphite);transform:translateY(-2px)}
+.form-note{text-align:center;font-size:.8rem;color:var(--graphite);margin-top:16px;opacity:.7}
+
+/* ===== faq ===== */
+.faq{background:var(--bone)}
+.faq-grid{margin-top:54px;max-width:820px;margin-left:auto;margin-right:auto}
+.qa{border-bottom:1px solid var(--line)}
+.qa button{width:100%;background:none;border:none;cursor:pointer;text-align:left;padding:26px 0;display:flex;justify-content:space-between;gap:20px;align-items:center;font-family:'Fraunces',serif;font-size:1.22rem;color:var(--ink);font-weight:400}
+.qa .ic{font-family:'Outfit',sans-serif;font-size:1.4rem;color:var(--sand-deep);transition:transform .4s;flex-shrink:0;font-weight:300}
+.qa.open .ic{transform:rotate(45deg)}
+.qa .ans{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.2,.6,.2,1)}
+.qa .ans p{padding:0 0 26px;color:var(--graphite);font-size:1rem;max-width:64ch}
+
+/* ===== final cta ===== */
+.final{background:var(--ink);color:var(--bone);text-align:center;position:relative;overflow:hidden}
+.final-bg{position:absolute;inset:0;z-index:0}
+.final-bg img{width:100%;height:100%;object-fit:cover;opacity:.22}
+.final-bg::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(23,21,19,.5),rgba(23,21,19,.95))}
+.final-in{position:relative;z-index:2}
+.final .eyebrow{color:var(--sand)}
+.final h2{font-size:clamp(2.2rem,5.4vw,4.4rem);color:var(--bone);margin:24px auto 0;max-width:18ch}
+.final h2 em{font-style:italic;color:var(--sand)}
+.final p{color:rgba(244,239,230,.7);max-width:52ch;margin:26px auto 0;font-size:1.1rem}
+.final .btn{margin-top:42px}
+
+/* ===== footer ===== */
+footer{background:#100e0c;color:rgba(244,239,230,.6);padding:70px 0 40px}
+.foot-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;border-bottom:1px solid var(--line-light);padding-bottom:40px}
+.foot-brand .logo{color:var(--bone);font-size:1.6rem;margin-bottom:14px}
+.foot-brand p{max-width:34ch;font-size:.92rem}
+.foot-cols{display:flex;gap:64px;flex-wrap:wrap}
+.foot-col h5{font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--sand-deep);margin-bottom:16px;font-weight:500;font-family:'Outfit',sans-serif}
+.foot-col a,.foot-col p{display:block;font-size:.92rem;margin-bottom:10px;transition:color .3s}
+.foot-col a:hover{color:var(--bone)}
+.foot-bottom{padding-top:30px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.8rem;letter-spacing:.04em}
+
+/* ===== mobile ===== */
+@media(max-width:980px){
+  .calc,.audit-grid,.founder-grid,.case-grid{grid-template-columns:1fr}
+  .svc-grid{grid-template-columns:1fr}
+  .case-star{grid-row:auto}
+  .audit .sticky{position:static}
+  .founder-photo{max-width:380px}
+}
+@media(max-width:760px){
+  .nav-links{position:fixed;inset:0;background:var(--ink);flex-direction:column;justify-content:center;gap:30px;transform:translateX(100%);transition:transform .5s cubic-bezier(.2,.6,.2,1)}
+  .nav-links.open{transform:none}
+  .nav-links a{color:var(--bone)!important;font-size:1.3rem}
+  .nav-cta{border-color:var(--sand)!important}
+  .menu-btn{display:flex;z-index:101}
+  .lang{order:-1}
+  .pad,.pad-lg{padding:90px 0}
+  .wrap{padding:0 20px}
+  .flow{flex-direction:column;align-items:center}
+  .calc-box{padding:30px}
+}
+</style>
 </head>
 <body>
 
-<a href="#main" class="skip-link">Saltar al contenido</a>
+<nav id="nav">
+  <div class="wrap nav-in">
+    <a href="#" class="logo"><span class="dot"></span><b>FLAMA</b> Studio</a>
+    <div class="nav-links" id="navlinks">
+      <a href="#problema" data-i="nav1">El coste</a>
+      <a href="#servicios" data-i="nav2">Servicios</a>
+      <a href="#casos" data-i="nav3">Casos</a>
+      <a href="#fundador" data-i="nav4">Quiénes somos</a>
+      <a href="#auditoria" class="nav-cta" data-i="navcta">Solicitar auditoría</a>
+    </div>
+    <div style="display:flex;align-items:center;gap:18px">
+      <div class="lang">
+        <button class="active" data-lang="es">ES</button>
+        <span style="opacity:.4">/</span>
+        <button data-lang="en">EN</button>
+      </div>
+      <button class="menu-btn" id="menubtn" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
 
-<!-- HEADER -->
-<header class="site-header" id="site-header">
-  <div class="header-inner">
-    <a href="/" class="site-logo" aria-label="FLAMA Studio — Inicio">
-      <img src="images/flama-logo.png" alt="FLAMA Studio" class="logo-img"
-        onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-      <span class="logo-fallback" aria-hidden="true">
-        <span class="logo-fallback-main">FLAMA</span>
-        <span class="logo-fallback-sub">STUDIO</span>
-      </span>
-    </a>
-    <nav class="nav-desktop" aria-label="Navegación principal">
-      <ul>
-        <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#planes">Planes</a></li>
-        <li><a href="#proyectos">Proyectos</a></li>
-        <li><a href="#servicios">Servicios</a></li>
-        <li><a href="#contacto">Contacto</a></li>
-      </ul>
-    </nav>
-    <button class="nav-toggle" id="navToggle" type="button"
-      aria-label="Abrir menú" aria-expanded="false" aria-controls="navMobile">
-      <span></span><span></span><span></span>
-    </button>
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=2000&q=80" alt="Hotel mediterráneo">
+  </div>
+  <div class="wrap hero-in">
+    <span class="eyebrow reveal" data-i="hero_eye">Partner de crecimiento digital · Hospitality Costa Brava</span>
+    <h1 class="reveal d1" data-i="hero_h">Más reservas directas.<br><em>Menos dependencia de Booking.</em></h1>
+    <p class="sub reveal d2" data-i="hero_sub">Ayudamos a hoteles, apartamentos turísticos, beach clubs y negocios de hospitality a aumentar su presencia digital, mejorar la conversión y captar más clientes directos.</p>
+    <div class="hero-actions reveal d3">
+      <a href="#auditoria" class="btn btn-primary" data-i="hero_cta1">Solicitar auditoría <span class="arr">→</span></a>
+      <a href="#casos" class="btn btn-ghost" data-i="hero_cta2">Ver casos reales</a>
+    </div>
+    <div class="hero-trust reveal d4">
+      <span data-i="hero_trust1">Costa Brava · Empordà</span><span class="sep"></span>
+      <span data-i="hero_trust2">14 años en hoteles</span><span class="sep"></span>
+      <span data-i="hero_trust3">Negocios reales, no teoría</span>
+    </div>
   </div>
 </header>
 
-<!-- MENÚ MÓVIL -->
-<div class="nav-mobile" id="navMobile" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Menú">
-  <button class="nav-mobile-close" id="navClose" type="button" aria-label="Cerrar menú">✕</button>
-  <nav aria-label="Menú móvil">
-    <a href="#inicio">Inicio</a>
-    <a href="#planes">Planes</a>
-    <a href="#proyectos">Proyectos</a>
-    <a href="#servicios">Servicios</a>
-    <a href="#contacto">Contacto</a>
-  </nav>
-</div>
-
-<main id="main">
-
-  <!-- 1. HERO -->
-  <section class="hero" id="inicio" aria-label="Portada">
-    <div class="hero-bg" aria-hidden="true">
-      <img src="images/hero-flama-studio.jpg" alt="" class="hero-img" fetchpriority="high"
-        onerror="this.style.opacity='0'">
-      <div class="hero-overlay"></div>
-      <div class="hero-bg-line hero-bg-line--1"></div>
-      <div class="hero-bg-line hero-bg-line--2"></div>
+<!-- PROBLEMA / COSTE -->
+<section class="cost pad-lg" id="problema">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow" data-i="cost_eye">El problema</span>
+      <h2 data-i="cost_h">¿Cuánto te cuesta <em>depender de otros?</em></h2>
+      <p data-i="cost_p">Cada reserva que entra por una OTA se lleva entre un 15% y un 20% de comisión. Multiplícalo por una temporada entera y verás el dinero que regalas cada año.</p>
     </div>
-    <div class="hero-content">
-      <p class="hero-eyebrow">
-        <span>Costa Brava</span>
-        <span aria-hidden="true">·</span>
-        <span>Estudio creativo</span>
-      </p>
-      <h1 class="hero-title">
-        <span class="hero-title-studio">FLAMA STUDIO</span>
-        <span class="hero-title-claim">Creamos presencia visual para negocios<br>que quieren sentirse como <em>marca.</em></span>
-      </h1>
-      <p class="hero-sub">
-        Branding, web y dirección visual premium para hospitality,
-        lifestyle y turismo en la Costa Brava.
-      </p>
-      <div class="hero-actions">
-        <a href="#proyectos" class="btn btn--primary">Ver proyectos</a>
-        <a href="#solicitud" class="btn btn--ghost">Solicitar propuesta</a>
-      </div>
-    </div>
-    <div class="hero-scroll" aria-hidden="true">
-      <span class="hero-scroll-line"></span>
-      <span>Scroll</span>
-    </div>
-  </section>
-
-  <!-- 2. CONFIANZA -->
-  <section class="trust" aria-labelledby="trust-title">
-    <div class="container">
-      <div class="trust-header">
-        <span class="section-label reveal">Por qué FLAMA</span>
-        <h2 id="trust-title" class="trust-title reveal rd1">
-          Una presencia visual que genera<br>confianza desde el <em>primer clic.</em>
-        </h2>
-        <p class="trust-text reveal rd2">
-          Diseñamos webs, identidades y sistemas visuales para negocios que necesitan
-          transmitir nivel, coherencia y profesionalidad antes incluso de hablar con el cliente.
-        </p>
-      </div>
-      <div class="trust-grid">
-        <div class="trust-card reveal">
-          <span class="trust-num" aria-hidden="true">01</span>
-          <div>
-            <h3 class="trust-name">Identidad clara</h3>
-            <p class="trust-desc">Tu marca debe reconocerse, recordarse y sentirse coherente en cada punto de contacto con el cliente.</p>
-          </div>
+    <div class="calc">
+      <div class="calc-box reveal d1">
+        <h3 data-i="calc_h">Calcula lo que pierdes</h3>
+        <p class="small" data-i="calc_sub">Mueve los valores según tu negocio. Cálculo orientativo de comisiones anuales.</p>
+        <div class="calc-row">
+          <label data-i="calc_l1">Habitaciones / unidades <b><span id="vUnits">20</span></b></label>
+          <input type="range" id="rUnits" min="3" max="80" value="20">
         </div>
-        <div class="trust-card reveal rd1">
-          <span class="trust-num" aria-hidden="true">02</span>
-          <div>
-            <h3 class="trust-name">Web premium</h3>
-            <p class="trust-desc">Diseñamos webs elegantes, rápidas y visuales, pensadas para convertir visitas en contactos reales.</p>
-          </div>
+        <div class="calc-row">
+          <label data-i="calc_l2">Precio medio por noche <b>€<span id="vPrice">120</span></b></label>
+          <input type="range" id="rPrice" min="40" max="500" value="120" step="5">
         </div>
-        <div class="trust-card reveal rd2">
-          <span class="trust-num" aria-hidden="true">03</span>
-          <div>
-            <h3 class="trust-name">Contenido con dirección</h3>
-            <p class="trust-desc">Creamos una línea visual coherente para Instagram, Google, campañas y comunicación diaria.</p>
-          </div>
+        <div class="calc-row">
+          <label data-i="calc_l3">Ocupación media <b><span id="vOcc">65</span>%</b></label>
+          <input type="range" id="rOcc" min="20" max="95" value="65">
+        </div>
+        <div class="calc-row">
+          <label data-i="calc_l4">Reservas vía OTA <b><span id="vOta">55</span>%</b></label>
+          <input type="range" id="rOta" min="0" max="100" value="55">
+        </div>
+        <div class="calc-result">
+          <div class="lbl" data-i="calc_rlbl">Comisiones que regalas al año</div>
+          <div class="num">€<span id="vResult">0</span></div>
+          <div class="note" data-i="calc_rnote">Estimación con un 17% de comisión media. Recuperar solo una parte cambia tu cuenta de resultados.</div>
         </div>
       </div>
+      <ul class="cost-list reveal d2">
+        <li><span class="x">01</span><div><b data-i="cl1b">Comisiones OTA</b><span class="txt" data-i="cl1t">Booking, Expedia y compañía se quedan un margen que sale directo de tu bolsillo.</span></div></li>
+        <li><span class="x">02</span><div><b data-i="cl2b">Web que no convierte</b><span class="txt" data-i="cl2t">Visitas que no terminan en reserva porque la web es lenta, confusa o no inspira confianza.</span></div></li>
+        <li><span class="x">03</span><div><b data-i="cl3b">Google Business abandonado</b><span class="txt" data-i="cl3t">La ficha que decide si te eligen o pasan de largo, sin actualizar ni optimizar.</span></div></li>
+        <li><span class="x">04</span><div><b data-i="cl4b">SEO local inexistente</b><span class="txt" data-i="cl4t">No apareces cuando el cliente busca dónde dormir en tu zona.</span></div></li>
+        <li><span class="x">05</span><div><b data-i="cl5b">Mala experiencia móvil</b><span class="txt" data-i="cl5t">8 de cada 10 viajeros reservan desde el móvil. Si ahí fallas, pierdes.</span></div></li>
+      </ul>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- 3. DISEÑO WEB -->
-  <section class="webdesign" aria-labelledby="webdesign-title">
-    <div class="container">
-      <div class="webdesign-inner">
-        <div class="webdesign-content">
-          <span class="section-label reveal">Diseño web</span>
-          <h2 id="webdesign-title" class="webdesign-title reveal rd1">
-            Webs premium para negocios<br>que necesitan <em>destacar.</em>
-          </h2>
-          <p class="webdesign-text reveal rd2">
-            Una web no es solo una tarjeta de visita. Es la primera impresión de
-            tu negocio, tu escaparate digital y una herramienta para convertir
-            interés en contacto.
-          </p>
-          <ul class="webdesign-list reveal rd3" aria-label="Qué incluye">
-            <li>Diseño visual premium</li>
-            <li>Mobile first</li>
-            <li>Estructura clara y navegación intuitiva</li>
-            <li>Textos y dirección estética</li>
-            <li>Publicación en dominio propio</li>
-            <li>SEO básico</li>
-            <li>Integración con Google, Instagram y contacto</li>
-            <li>Velocidad y limpieza técnica</li>
-          </ul>
-          <a href="#planes" class="btn btn--outline reveal rd4">Ver planes web</a>
+<!-- SOLUCION -->
+<section class="solution pad-lg">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow" data-i="sol_eye">La solución</span>
+      <h2 data-i="sol_h">No vendemos webs.<br><em>Creamos sistemas de captación.</em></h2>
+      <p data-i="sol_p">Conectamos cada pieza para que el cliente te encuentre, confíe y reserve directamente contigo. Sin intermediarios entre tú y tu huésped.</p>
+    </div>
+    <div class="flow">
+      <div class="flow-step reveal d1"><div class="n">01</div><h4 data-i="fl1h">Google</h4><p data-i="fl1p">Te encuentran cuando buscan dónde alojarse.</p></div>
+      <div class="flow-arrow reveal d1">→</div>
+      <div class="flow-step reveal d2"><div class="n">02</div><h4 data-i="fl2h">Web</h4><p data-i="fl2p">Una experiencia que inspira confianza y convierte.</p></div>
+      <div class="flow-arrow reveal d2">→</div>
+      <div class="flow-step reveal d3"><div class="n">03</div><h4 data-i="fl3h">Reserva directa</h4><p data-i="fl3p">Sin comisiones. El margen se queda contigo.</p></div>
+      <div class="flow-arrow reveal d3">→</div>
+      <div class="flow-step reveal d4"><div class="n">04</div><h4 data-i="fl4h">Cliente</h4><p data-i="fl4p">Una relación directa que puedes fidelizar.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section class="services pad-lg" id="servicios">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow" data-i="svc_eye">Servicios</span>
+      <h2 data-i="svc_h">Tres niveles, <em>un objetivo</em></h2>
+      <p data-i="svc_p">Empezamos donde estás y crecemos contigo. Cada nivel está pensado para un momento distinto de tu negocio.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc reveal d1">
+        <span class="svc-lvl" data-i="n1lvl">Nivel 1</span>
+        <h3 data-i="n1h">Presencia digital premium</h3>
+        <p class="tag" data-i="n1tag">Ideal para negocios con presencia digital débil.</p>
+        <ul>
+          <li data-i="n1i1">Web premium optimizada</li>
+          <li data-i="n1i2">Experiencia móvil impecable</li>
+          <li data-i="n1i3">Google Business profesional</li>
+          <li data-i="n1i4">SEO local</li>
+          <li data-i="n1i5">Fotografía y contenido visual</li>
+        </ul>
+        <span class="goal" data-i="n1g">Que existas, y bien, en digital.</span>
+      </div>
+      <div class="svc featured reveal d2">
+        <span class="badge" data-i="n2badge">Más solicitado</span>
+        <span class="svc-lvl" data-i="n2lvl">Nivel 2</span>
+        <h3 data-i="n2h">Reserva directa</h3>
+        <p class="tag" data-i="n2tag">Para dejar de depender de los intermediarios.</p>
+        <ul>
+          <li data-i="n2i1">Auditoría completa</li>
+          <li data-i="n2i2">Funnel de reservas</li>
+          <li data-i="n2i3">Optimización de conversión</li>
+          <li data-i="n2i4">Landing pages</li>
+          <li data-i="n2i5">Google Business avanzado</li>
+          <li data-i="n2i6">SEO turístico</li>
+        </ul>
+        <span class="goal" data-i="n2g">Más reservas, sin comisiones.</span>
+      </div>
+      <div class="svc reveal d3">
+        <span class="svc-lvl" data-i="n3lvl">Nivel 3</span>
+        <h3 data-i="n3h">Growth partner</h3>
+        <p class="tag" data-i="n3tag">Para crecer mes a mes con un equipo detrás.</p>
+        <ul>
+          <li data-i="n3i1">Seguimiento mensual</li>
+          <li data-i="n3i2">SEO continuo</li>
+          <li data-i="n3i3">IA y automatizaciones aplicadas</li>
+          <li data-i="n3i4">Gestión de Google Business</li>
+          <li data-i="n3i5">Contenido y reporting</li>
+        </ul>
+        <span class="goal" data-i="n3g">Crecimiento continuo y medible.</span>
+      </div>
+    </div>
+    <p class="reveal" style="text-align:center;margin-top:40px;font-size:.95rem;color:var(--graphite)" data-i="svc_foot">Proyectos a medida según el tamaño y los objetivos de tu negocio. Lo definimos juntos tras la auditoría.</p>
+  </div>
+</section>
+
+<!-- CASOS -->
+<section class="cases pad-lg" id="casos">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow" data-i="case_eye">Casos reales</span>
+      <h2 data-i="case_h">Negocios de la zona, <em>resultados reales</em></h2>
+    </div>
+    <div class="case-grid">
+      <div class="case case-star reveal d1">
+        <div class="case-img"><img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1400&q=80" alt="Apartamentos turísticos"></div>
+        <div class="case-body">
+          <div class="kicker" data-i="cs1k">Apartaments El Bergantí · Roses</div>
+          <h3 data-i="cs1h">15 apartamentos hacia la reserva directa</h3>
+          <dl>
+            <div><dt data-i="cs1dt1">Situación</dt><dd data-i="cs1dd1">Complejo de 15 apartamentos con supermercado integrado, sin web propia que captara reserva directa.</dd></div>
+            <div><dt data-i="cs1dt2">Acciones</dt><dd data-i="cs1dd2">Web propia en 6 idiomas, orientada a conversión, con datos reales, prueba de confianza y experiencia móvil optimizada.</dd></div>
+            <div><dt data-i="cs1dt3">Resultado</dt><dd data-i="cs1dd3">Canal de reserva directa propio, sin depender de portales, listo para captar al viajero internacional.</dd></div>
+          </dl>
         </div>
-        <div class="webdesign-visual reveal rd1">
-          <div class="mockup-wrap">
-            <div class="mockup mockup--desktop">
-              <div class="mockup-bar" aria-hidden="true">
-                <span></span><span></span><span></span>
-              </div>
-              <div class="mockup-screen" id="mockup-desktop">
-                <img src="images/web-mockup-desktop.jpg"
-                  alt="Ejemplo de diseño web premium FLAMA Studio">
-                <div class="mockup-placeholder" aria-hidden="true">
-                  <span class="mockup-placeholder-label">Web Design</span>
-                </div>
-              </div>
-            </div>
-            <div class="mockup mockup--mobile">
-              <div class="mockup-notch" aria-hidden="true"></div>
-              <div class="mockup-screen" id="mockup-mobile">
-                <img src="images/web-mockup-mobile.jpg"
-                  alt="Ejemplo de diseño web mobile FLAMA Studio">
-                <div class="mockup-placeholder" aria-hidden="true">
-                  <span class="mockup-placeholder-label">Mobile</span>
-                </div>
-              </div>
-            </div>
-          </div>
+      </div>
+      <div class="case reveal d2">
+        <div class="case-img"><img src="https://images.unsplash.com/photo-1567206563064-6f60f40a2b57?auto=format&fit=crop&w=1000&q=80" alt="Heladería"></div>
+        <div class="case-body">
+          <div class="kicker" data-i="cs2k">La Gelateria de Roses</div>
+          <h3 data-i="cs2h">Marca y conversión local</h3>
+          <dd data-i="cs2dd">Identidad premium, web multiidioma y captación directa por WhatsApp para un negocio de temporada con mucho turista.</dd>
+        </div>
+      </div>
+      <div class="case reveal d3">
+        <div class="case-img"><img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&w=1000&q=80" alt="Servicio premium"></div>
+        <div class="case-body">
+          <div class="kicker" data-i="cs3k">Go Detailing · Alt Empordà</div>
+          <h3 data-i="cs3h">Posicionamiento premium</h3>
+          <dd data-i="cs3dd">Landing de alto nivel con estética de lujo para diferenciar un servicio móvil en un mercado saturado.</dd>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- 4. PLANES WEB -->
-  <section class="planes" id="planes" aria-labelledby="planes-title">
-    <div class="container">
-      <div class="planes-header">
-        <span class="section-label reveal">Planes web</span>
-        <h2 id="planes-title" class="planes-title reveal rd1">
-          Planes web para empezar<br>con <em>claridad.</em>
-        </h2>
-        <p class="planes-sub reveal rd2">
-          Tres formas de construir una presencia digital premium según el momento de tu negocio.
-        </p>
+<!-- FUNDADOR -->
+<section class="founder pad-lg" id="fundador">
+  <div class="wrap">
+    <div class="founder-grid">
+      <div class="founder-photo reveal">
+        <div class="ph"><span class="serif">Eloi</span><span style="font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;margin-top:10px;opacity:.6">Foto del fundador</span></div>
       </div>
-      <div class="planes-grid">
-
-        <!-- Plan 1 -->
-        <article class="plan-card reveal">
-          <div class="plan-top">
-            <span class="plan-name">Web Esencial</span>
-            <p class="plan-desc">Para negocios que necesitan una presencia online clara, elegante y rápida.</p>
-          </div>
-          <ul class="plan-list" aria-label="Incluye">
-            <li>Landing page de una página</li>
-            <li>Diseño visual premium</li>
-            <li>Versión móvil</li>
-            <li>Formulario de contacto</li>
-            <li>Textos base estructurados</li>
-            <li>Publicación en dominio propio</li>
-            <li>SEO básico inicial</li>
-          </ul>
-          <div class="plan-bottom">
-            <p class="plan-price">Desde <span>790 €</span></p>
-            <a href="#solicitud" class="btn btn--outline" onclick="selectPlan('esencial')">Solicitar Web Esencial</a>
-          </div>
-        </article>
-
-        <!-- Plan 2 — destacado -->
-        <article class="plan-card plan-card--featured reveal rd1">
-          <div class="plan-badge">Más elegida</div>
-          <div class="plan-top">
-            <span class="plan-name">Web Premium</span>
-            <p class="plan-desc">Para negocios que quieren una web más completa, cuidada y preparada para transmitir nivel.</p>
-          </div>
-          <ul class="plan-list" aria-label="Incluye">
-            <li>Web de hasta 5 secciones</li>
-            <li>Diseño premium personalizado</li>
-            <li>Mobile first</li>
-            <li>Dirección visual</li>
-            <li>Integración con Instagram / Google / contacto</li>
-            <li>Textos estructurados</li>
-            <li>SEO básico</li>
-            <li>Publicación final</li>
-          </ul>
-          <div class="plan-bottom">
-            <p class="plan-price">Desde <span>1.490 €</span></p>
-            <a href="#solicitud" class="btn btn--primary" onclick="selectPlan('premium')">Solicitar Web Premium</a>
-          </div>
-        </article>
-
-        <!-- Plan 3 -->
-        <article class="plan-card reveal rd2">
-          <div class="plan-top">
-            <span class="plan-name">Web Pro</span>
-            <p class="plan-desc">Para marcas que necesitan una presencia digital más estratégica, visual y diferenciada.</p>
-          </div>
-          <ul class="plan-list" aria-label="Incluye">
-            <li>Web avanzada</li>
-            <li>Diseño totalmente personalizado</li>
-            <li>Sistema visual completo</li>
-            <li>Dirección estética</li>
-            <li>Contenido visual base</li>
-            <li>Optimización mobile</li>
-            <li>SEO base ampliado</li>
-            <li>Soporte de lanzamiento</li>
-          </ul>
-          <div class="plan-bottom">
-            <p class="plan-price">Desde <span>2.500 €</span></p>
-            <a href="#solicitud" class="btn btn--outline" onclick="selectPlan('pro')">Solicitar Web Pro</a>
-          </div>
-        </article>
-
-      </div>
-      <p class="planes-note reveal">
-        Los precios son orientativos. Cada proyecto puede ajustarse según contenido, idiomas, funcionalidades y necesidades visuales.
-      </p>
-    </div>
-  </section>
-
-  <!-- 5. FORMULARIO DE SOLICITUD -->
-  <section class="solicitud" id="solicitud" aria-labelledby="solicitud-title">
-    <div class="container">
-      <div class="solicitud-header">
-        <span class="section-label reveal">Solicitud</span>
-        <h2 id="solicitud-title" class="solicitud-title reveal rd1">
-          Cuéntanos qué <em>necesitas.</em>
-        </h2>
-        <p class="solicitud-sub reveal rd2">
-          Rellena este formulario y valoramos qué versión encaja mejor con tu proyecto.
-        </p>
-      </div>
-
-      <form class="solicitud-form reveal rd1" id="solicitudForm" novalidate>
-
-        <!-- Web3Forms campos obligatorios -->
-        <input type="hidden" name="access_key" value="628c9dda-8b27-4ae8-859b-bd711392d245">
-        <input type="hidden" name="subject" value="Solicitud web FLAMA Studio">
-        <input type="hidden" name="from_name" value="FLAMA Studio Web">
-
-        <div class="form-row form-row--2">
-          <div class="form-group">
-            <label for="f-nombre">Nombre</label>
-            <input type="text" id="f-nombre" name="nombre" placeholder="Tu nombre" required>
-          </div>
-          <div class="form-group">
-            <label for="f-negocio">Nombre del negocio</label>
-            <input type="text" id="f-negocio" name="negocio" placeholder="Nombre de tu negocio">
-          </div>
+      <div class="founder-text">
+        <span class="eyebrow reveal" data-i="fo_eye">Quiénes somos</span>
+        <h2 class="reveal d1" data-i="fo_h">Entendemos el turismo <em>por dentro</em></h2>
+        <p class="lead reveal d1" data-i="fo_lead">No vengo del marketing. Vengo de la hostelería.</p>
+        <p class="reveal d2" data-i="fo_p1">He pasado 14 años trabajando dentro de hoteles —10 en el Hotel Vistabella y 4 en el Hotel Terraza— y llevo 10 años dirigiendo mi propio negocio: tres heladerías abiertas y en funcionamiento.</p>
+        <p class="reveal d2" data-i="fo_p2">Sé lo que es la temporada alta, llenar habitaciones, atender al cliente a cualquier hora y, sobre todo, lo que duele regalar margen a los intermediarios. Por eso FLAMA no vende webs bonitas: construye sistemas para que captes cliente directo.</p>
+        <div class="founder-stats reveal d3">
+          <div class="fstat"><div class="n">14</div><div class="l" data-i="fo_s1">años dentro de hoteles</div></div>
+          <div class="fstat"><div class="n">10</div><div class="l" data-i="fo_s2">años dirigiendo negocio propio</div></div>
+          <div class="fstat"><div class="n">3</div><div class="l" data-i="fo_s3">locales abiertos y en marcha</div></div>
         </div>
-
-        <div class="form-row form-row--2">
-          <div class="form-group">
-            <label for="f-email">Email</label>
-            <input type="email" id="f-email" name="email" placeholder="tu@email.com" required>
-          </div>
-          <div class="form-group">
-            <label for="f-telefono">Teléfono / WhatsApp</label>
-            <input type="tel" id="f-telefono" name="telefono" placeholder="+34 600 000 000">
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="f-plan">Plan de interés</label>
-            <select id="f-plan" name="plan">
-              <option value="">Selecciona un plan</option>
-              <option value="Web Esencial">Web Esencial — desde 790 €</option>
-              <option value="Web Premium">Web Premium — desde 1.490 €</option>
-              <option value="Web Pro">Web Pro — desde 2.500 €</option>
-              <option value="No lo sé todavía">No lo sé todavía</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="form-row">
-          <fieldset class="form-fieldset">
-            <legend>¿Qué tienes ya?</legend>
-            <div class="form-checks">
-              <label class="form-check"><input type="checkbox" name="tienes" value="Logo"> Logo</label>
-              <label class="form-check"><input type="checkbox" name="tienes" value="Fotos"> Fotos</label>
-              <label class="form-check"><input type="checkbox" name="tienes" value="Textos"> Textos</label>
-              <label class="form-check"><input type="checkbox" name="tienes" value="Dominio"> Dominio</label>
-              <label class="form-check"><input type="checkbox" name="tienes" value="Instagram"> Instagram</label>
-              <label class="form-check"><input type="checkbox" name="tienes" value="Nada todavía"> Nada todavía</label>
-            </div>
-          </fieldset>
-        </div>
-
-        <div class="form-row">
-          <fieldset class="form-fieldset">
-            <legend>Objetivo principal</legend>
-            <div class="form-radios">
-              <label class="form-radio"><input type="radio" name="objetivo" value="Presencia online"> Presencia online</label>
-              <label class="form-radio"><input type="radio" name="objetivo" value="Captar clientes"> Captar clientes</label>
-              <label class="form-radio"><input type="radio" name="objetivo" value="Mejorar imagen"> Mejorar imagen</label>
-              <label class="form-radio"><input type="radio" name="objetivo" value="Enseñar servicios"> Enseñar servicios</label>
-              <label class="form-radio"><input type="radio" name="objetivo" value="Reservas o contacto"> Reservas o contacto</label>
-            </div>
-          </fieldset>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="f-mensaje">Mensaje breve</label>
-            <textarea id="f-mensaje" name="mensaje" rows="4"
-              placeholder="Cuéntanos brevemente qué tienes y qué quieres conseguir."></textarea>
-          </div>
-        </div>
-
-        <!-- Consentimiento obligatorio -->
-        <div class="form-row">
-          <label class="form-check form-check--consent">
-            <input type="checkbox" id="f-consent" name="consentimiento" value="Aceptado" required>
-            He leído y acepto que FLAMA Studio contacte conmigo para responder a mi solicitud.
-          </label>
-        </div>
-
-        <!-- Mensajes de estado -->
-        <div class="form-status" id="formStatus" aria-live="polite"></div>
-
-        <div class="form-submit">
-          <button type="submit" class="btn btn--primary" id="formBtn">Enviar solicitud</button>
-          <p class="form-note">Te responderemos personalmente en 24–48h.</p>
-        </div>
-
-      </form>
-    </div>
-  </section>
-
-  <!-- 6. PROYECTO DESTACADO -->
-  <section class="featured" id="proyectos" aria-labelledby="featured-title">
-    <div class="container">
-      <p class="section-label reveal">Proyecto destacado</p>
-      <div class="featured-layout">
-
-        <div class="featured-img-a reveal">
-          <div class="img-frame">
-            <img src="images/hero-gelateria-noche.jpg"
-              alt="La Gelateria de Roses — noche" loading="lazy">
-          </div>
-        </div>
-
-        <div class="featured-info reveal rd1">
-          <span class="featured-index" aria-hidden="true">01</span>
-          <h2 id="featured-title" class="featured-title">La Gelateria de Roses</h2>
-          <p class="featured-desc">
-            Dirección visual, branding, contenido digital y presencia web
-            para una gelatería artesanal en la Costa Brava.
-          </p>
-          <div class="featured-case">
-            <div class="case-block">
-              <span class="case-label">Reto</span>
-              <p class="case-text">Destacar en una zona turística competitiva con una imagen coherente, premium y reconocible.</p>
-            </div>
-            <div class="case-block">
-              <span class="case-label">Solución</span>
-              <p class="case-text">Dirección visual completa: branding, cartelería, web, contenido para Instagram, pantallas y sistema visual diario.</p>
-            </div>
-            <div class="case-block">
-              <span class="case-label">Resultado</span>
-              <p class="case-text">Una presencia más sólida, reconocible y preparada para atraer cliente turístico desde la calle y el entorno digital.</p>
-            </div>
-          </div>
-          <ul class="featured-tags" aria-label="Disciplinas del proyecto">
-            <li>Branding</li>
-            <li>Web</li>
-            <li>Cartelería</li>
-            <li>Instagram</li>
-            <li>Dirección visual</li>
-            <li>Contenido</li>
-          </ul>
-        </div>
-
-        <div class="featured-img-b reveal rd2">
-          <div class="img-frame">
-            <img src="images/gelateria-mostrador.jpg"
-              alt="La Gelateria de Roses — mostrador" loading="lazy">
-          </div>
-        </div>
-
+        <div class="founder-sign reveal d3">— Eloi, FLAMA Studio</div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- 6. GALERÍA -->
-  <section class="gallery" id="galeria" aria-labelledby="gallery-title">
-    <div class="container">
-      <div class="gallery-header">
-        <h2 id="gallery-title" class="gallery-title reveal">
-          Sistemas visuales<br><em>para marcas reales</em>
-        </h2>
-        <p class="gallery-sub reveal rd1">
-          Un sistema visual coherente convierte un negocio en una marca reconocible.
-        </p>
+<!-- AUDITORIA -->
+<section class="audit pad-lg" id="auditoria">
+  <div class="wrap">
+    <div class="audit-grid">
+      <div class="sticky reveal">
+        <span class="eyebrow" data-i="au_eye">Auditoría gratuita</span>
+        <h2 data-i="au_h">Veamos qué <em>estás dejando escapar</em></h2>
+        <p class="lead" data-i="au_lead">Revisamos tu presencia digital y te decimos, sin compromiso, dónde estás perdiendo reservas directas y cómo recuperarlas.</p>
+        <ul class="audit-perks">
+          <li data-i="au_p1">Análisis de tu web y experiencia de reserva</li>
+          <li data-i="au_p2">Revisión de Google Business y SEO local</li>
+          <li data-i="au_p3">Estimación de tu dependencia de OTAs</li>
+          <li data-i="au_p4">Plan de acción concreto y priorizado</li>
+        </ul>
+      </div>
+      <div class="form reveal d1">
+        <div class="fg">
+          <label data-i="f_l1">Tipo de negocio</label>
+          <select id="f_type">
+            <option data-i="f_o0">Selecciona…</option>
+            <option data-i="f_o1">Hotel boutique / independiente</option>
+            <option data-i="f_o2">Apartamentos turísticos / aparthotel</option>
+            <option data-i="f_o3">Villa vacacional</option>
+            <option data-i="f_o4">Beach club</option>
+            <option data-i="f_o5">Charter náutico / excursiones</option>
+            <option data-i="f_o6">Restaurante premium</option>
+            <option data-i="f_o7">Otro hospitality</option>
+          </select>
+        </div>
+        <div class="fg"><label data-i="f_l2">Web actual (si tienes)</label><input type="text" id="f_web" placeholder="www..."></div>
+        <div class="fg-row">
+          <div class="fg"><label data-i="f_l3">¿Tienes Google Business?</label>
+            <select id="f_gb"><option data-i="f_gb0">Selecciona…</option><option data-i="f_gb1">Sí, optimizado</option><option data-i="f_gb2">Sí, sin optimizar</option><option data-i="f_gb3">No / no lo sé</option></select>
+          </div>
+          <div class="fg"><label data-i="f_l4">% reservas directas</label>
+            <select id="f_dir"><option data-i="f_dir0">Selecciona…</option><option>0–25%</option><option>25–50%</option><option>50–75%</option><option>+75%</option></select>
+          </div>
+        </div>
+        <div class="fg"><label data-i="f_l5">Objetivo principal</label>
+          <select id="f_goal"><option data-i="f_g0">Selecciona…</option><option data-i="f_g1">Reducir comisiones de Booking/OTAs</option><option data-i="f_g2">Aumentar reservas directas</option><option data-i="f_g3">Mejorar mi web / conversión</option><option data-i="f_g4">Mejorar posicionamiento (SEO)</option><option data-i="f_g5">Empezar de cero en digital</option></select>
+        </div>
+        <div class="fg-row">
+          <div class="fg"><label data-i="f_l6">Email</label><input type="email" id="f_email" placeholder="tu@email.com"></div>
+          <div class="fg"><label data-i="f_l7">Teléfono</label><input type="tel" id="f_phone" placeholder="+34"></div>
+        </div>
+        <a href="#" class="btn" id="submitBtn" data-i="f_submit">Solicitar auditoría <span class="arr">→</span></a>
+        <p class="form-note" data-i="f_note">Sin compromiso. Te respondemos en menos de 48h.</p>
       </div>
     </div>
-    <div class="gallery-grid">
-      <figure class="g-item g-tall reveal" aria-label="Producto">
-        <div class="img-frame">
-          <img src="images/gelateria-cubetas.jpg" alt="Cubetas de helado artesanal" loading="lazy">
-        </div>
-        <figcaption>Producto</figcaption>
-      </figure>
-      <figure class="g-item reveal rd1" aria-label="Proceso">
-        <div class="img-frame">
-          <img src="images/gelateria-obrador.jpg" alt="Obrador artesanal — proceso" loading="lazy">
-        </div>
-        <figcaption>Proceso</figcaption>
-      </figure>
-      <figure class="g-item reveal rd2" aria-label="Atmósfera">
-        <div class="img-frame">
-          <img src="images/gelateria-interior.jpg" alt="Interior — atmósfera" loading="lazy">
-        </div>
-        <figcaption>Atmósfera</figcaption>
-      </figure>
-      <figure class="g-item g-wide reveal rd1" aria-label="Branding">
-        <div class="img-frame">
-          <img src="images/gelateria-producto-01.jpg" alt="Branding" loading="lazy">
-        </div>
-        <figcaption>Branding</figcaption>
-      </figure>
-      <figure class="g-item reveal rd2" aria-label="Experiencia">
-        <div class="img-frame">
-          <img src="images/gelateria-producto-02.jpg" alt="Experiencia de marca" loading="lazy">
-        </div>
-        <figcaption>Experiencia</figcaption>
-      </figure>
-      <figure class="g-item reveal rd3" aria-label="Contenido">
-        <div class="img-frame">
-          <img src="images/gelateria-detalle-01.jpg" alt="Detalle visual" loading="lazy">
-        </div>
-        <figcaption>Contenido</figcaption>
-      </figure>
-    </div>
-  </section>
+  </div>
+</section>
 
-  <!-- 7. SERVICIOS -->
-  <section class="services" id="servicios" aria-labelledby="services-title">
-    <div class="container">
-      <div class="services-header">
-        <span class="section-label reveal">Servicios</span>
-        <h2 id="services-title" class="services-title reveal rd1">
-          Diseñamos la presencia visual<br>completa de <em>tu marca.</em>
-        </h2>
-        <p class="services-sub reveal rd2">Para negocios que necesitan destacar en el mundo físico y digital.</p>
-      </div>
-      <div class="services-grid">
-        <article class="service-card reveal">
-          <span class="service-num" aria-hidden="true">01</span>
-          <div>
-            <h3 class="service-name">Branding</h3>
-            <p class="service-desc">Identidad visual, logos, dirección estética y sistemas de marca coherentes.</p>
-          </div>
-        </article>
-        <article class="service-card reveal rd1">
-          <span class="service-num" aria-hidden="true">02</span>
-          <div>
-            <h3 class="service-name">Diseño web premium</h3>
-            <p class="service-desc">Webs elegantes, rápidas y visuales para negocios hospitality, lifestyle y turismo.</p>
-          </div>
-        </article>
-        <article class="service-card reveal rd2">
-          <span class="service-num" aria-hidden="true">03</span>
-          <div>
-            <h3 class="service-name">Dirección visual</h3>
-            <p class="service-desc">Definición de estilo, fotografía, color, composición y narrativa de marca.</p>
-          </div>
-        </article>
-        <article class="service-card reveal rd3">
-          <span class="service-num" aria-hidden="true">04</span>
-          <div>
-            <h3 class="service-name">Contenido digital</h3>
-            <p class="service-desc">Piezas para Instagram, Google, campañas, pantallas y comunicación diaria.</p>
-          </div>
-        </article>
-        <article class="service-card reveal rd4">
-          <span class="service-num" aria-hidden="true">05</span>
-          <div>
-            <h3 class="service-name">Sistemas visuales IA</h3>
-            <p class="service-desc">IA aplicada con criterio para acelerar contenido manteniendo una estética realista y premium.</p>
-          </div>
-        </article>
-      </div>
+<!-- FAQ -->
+<section class="faq pad-lg">
+  <div class="wrap">
+    <div class="sec-head reveal" style="text-align:center;margin:0 auto">
+      <span class="eyebrow" style="display:block" data-i="faq_eye">Preguntas frecuentes</span>
+      <h2 data-i="faq_h">Lo que <em>querrás saber</em></h2>
     </div>
-  </section>
-
-  <!-- 8. CTA -->
-  <section class="cta" id="contacto" aria-labelledby="cta-title">
-    <div class="cta-bg-word" aria-hidden="true">FLAMA</div>
-    <div class="container">
-      <div class="cta-inner">
-        <span class="section-label cta-label reveal">Empieza aquí</span>
-        <h2 id="cta-title" class="cta-title reveal rd1">
-          ¿Quieres que tu negocio se vea<br>al nivel que <em>merece?</em>
-        </h2>
-        <p class="cta-sub reveal rd2">
-          Cuéntanos tu proyecto y valoramos cómo podemos ayudarte a construir
-          una presencia visual más clara, premium y memorable.
-        </p>
-        <div class="cta-action reveal rd3">
-          <a href="#solicitud" class="btn btn--primary">Solicitar propuesta</a>
-        </div>
-        <p class="cta-email reveal rd3">
-          <a href="mailto:Terix@flamastudio.com">Terix@flamastudio.com</a>
-        </p>
-        <p class="cta-geo reveal rd4">
-          Costa Brava&nbsp;·&nbsp;Girona&nbsp;·&nbsp;Hospitality&nbsp;·&nbsp;Lifestyle
-        </p>
-      </div>
+    <div class="faq-grid">
+      <div class="qa reveal"><button><span data-i="q1">¿Trabajáis con hoteles pequeños?</span><span class="ic">+</span></button><div class="ans"><p data-i="a1">Sí. De hecho, los negocios independientes y pequeños son los que más pierden con las comisiones y los que más ganan recuperando reserva directa. No necesitas ser una gran cadena para trabajar con nosotros.</p></div></div>
+      <div class="qa reveal"><button><span data-i="q2">¿Solo trabajáis en la Costa Brava?</span><span class="ic">+</span></button><div class="ans"><p data-i="a2">Conocemos la Costa Brava y el Empordà como nadie, pero trabajamos con negocios de hospitality de cualquier zona del Mediterráneo. El sistema es el mismo: menos intermediarios, más cliente directo.</p></div></div>
+      <div class="qa reveal"><button><span data-i="q3">¿Necesito cambiar mi motor de reservas?</span><span class="ic">+</span></button><div class="ans"><p data-i="a3">No necesariamente. Trabajamos sobre lo que ya tienes siempre que sea viable. Si tu motor actual frena las reservas, te lo decimos con datos y vemos alternativas, pero nunca te obligamos a cambiar por cambiar.</p></div></div>
+      <div class="qa reveal"><button><span data-i="q4">¿Cuánto tarda un proyecto?</span><span class="ic">+</span></button><div class="ans"><p data-i="a4">Depende del nivel. Una presencia digital premium suele estar lista en pocas semanas; un sistema completo de reserva directa lleva algo más. Tras la auditoría te damos plazos concretos.</p></div></div>
+      <div class="qa reveal"><button><span data-i="q5">¿Trabajáis con apartamentos turísticos?</span><span class="ic">+</span></button><div class="ans"><p data-i="a5">Sí, es uno de nuestros casos estrella. Los apartamentos y aparthoteles dependen muchísimo de los portales, y ahí es donde más impacto tiene recuperar canal directo.</p></div></div>
+      <div class="qa reveal"><button><span data-i="q6">¿Y con charter náutico o excursiones?</span><span class="ic">+</span></button><div class="ans"><p data-i="a6">También. Cualquier negocio que viva de captar clientes y reservas —náutico, beach clubs, experiencias— encaja en lo que hacemos. La lógica de la reserva directa es la misma.</p></div></div>
     </div>
-  </section>
+  </div>
+</section>
 
-</main>
+<!-- FINAL CTA -->
+<section class="final pad-lg">
+  <div class="final-bg"><img src="https://images.unsplash.com/photo-1505228395891-9a51e7e86bf6?auto=format&fit=crop&w=2000&q=80" alt="Mediterráneo"></div>
+  <div class="wrap final-in">
+    <span class="eyebrow reveal" data-i="fin_eye">Da el paso</span>
+    <h2 class="reveal d1" data-i="fin_h">Tu negocio ya tiene clientes. Ahora necesita <em>más clientes directos.</em></h2>
+    <p class="reveal d2" data-i="fin_p">Empieza por una auditoría gratuita y descubre cuánto puedes recuperar dejando de depender de los intermediarios.</p>
+    <a href="#auditoria" class="btn btn-primary reveal d3" data-i="fin_cta">Solicitar auditoría <span class="arr">→</span></a>
+  </div>
+</section>
 
 <!-- FOOTER -->
-<footer class="site-footer" role="contentinfo">
-  <div class="container">
-    <div class="footer-inner">
-      <p class="footer-name">FLAMA STUDIO</p>
-      <p class="footer-tagline">Branding · Web · Dirección visual · Contenido</p>
-      <p class="footer-email">
-        <a href="mailto:Terix@flamastudio.com">Terix@flamastudio.com</a>
-      </p>
-      <p class="footer-geo">Costa Brava · Girona · Hospitality · Lifestyle</p>
-      <p class="footer-copy">© 2026 FLAMA Studio. Todos los derechos reservados.</p>
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <div class="logo"><span class="dot"></span><b>FLAMA</b> Studio</div>
+        <p data-i="ft_tag">Partner de crecimiento digital para negocios de hospitality en la Costa Brava y el Mediterráneo.</p>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-col">
+          <h5 data-i="ft_c1">Navegación</h5>
+          <a href="#problema" data-i="ft_l1">El coste</a>
+          <a href="#servicios" data-i="ft_l2">Servicios</a>
+          <a href="#casos" data-i="ft_l3">Casos reales</a>
+          <a href="#fundador" data-i="ft_l4">Quiénes somos</a>
+        </div>
+        <div class="foot-col">
+          <h5 data-i="ft_c2">Contacto</h5>
+          <a href="#auditoria" data-i="ft_l5">Solicitar auditoría</a>
+          <p>Roses · Empordà</p>
+          <a href="https://byflamastudio.com">byflamastudio.com</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 FLAMA Studio</span>
+      <span data-i="ft_made">Hecho desde la Costa Brava, por alguien que ha estado en tu lado del mostrador.</span>
     </div>
   </div>
 </footer>
 
-<script src="js/script.js"></script>
+<script>
+/* ===== nav scroll ===== */
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40));
+
+/* ===== mobile menu ===== */
+const mb=document.getElementById('menubtn'),nl=document.getElementById('navlinks');
+mb.addEventListener('click',()=>nl.classList.toggle('open'));
+nl.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nl.classList.remove('open')));
+
+/* ===== reveal ===== */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.14});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ===== faq ===== */
+document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()=>{
+  const qa=b.parentElement,open=qa.classList.contains('open');
+  document.querySelectorAll('.qa').forEach(q=>{q.classList.remove('open');q.querySelector('.ans').style.maxHeight=null});
+  if(!open){qa.classList.add('open');qa.querySelector('.ans').style.maxHeight=qa.querySelector('.ans').scrollHeight+'px'}
+}));
+
+/* ===== calculator ===== */
+const rU=document.getElementById('rUnits'),rP=document.getElementById('rPrice'),rO=document.getElementById('rOcc'),rOta=document.getElementById('rOta');
+function calc(){
+  const u=+rU.value,p=+rP.value,o=+rO.value/100,ota=+rOta.value/100,comm=.17;
+  document.getElementById('vUnits').textContent=u;
+  document.getElementById('vPrice').textContent=p;
+  document.getElementById('vOcc').textContent=rO.value;
+  document.getElementById('vOta').textContent=rOta.value;
+  const annual=u*p*365*o*ota*comm;
+  document.getElementById('vResult').textContent=Math.round(annual).toLocaleString('es-ES');
+}
+[rU,rP,rO,rOta].forEach(r=>r.addEventListener('input',calc));calc();
+
+/* ===== form ===== */
+document.getElementById('submitBtn').addEventListener('click',e=>{
+  e.preventDefault();
+  const email=document.getElementById('f_email').value;
+  const btn=e.currentTarget;
+  if(!email||!email.includes('@')){btn.innerHTML=I18N[curLang].f_err;setTimeout(()=>btn.innerHTML=I18N[curLang].f_submit+' <span class="arr">→</span>',2200);return}
+  btn.innerHTML=I18N[curLang].f_ok;
+});
+
+/* ===== i18n ===== */
+const I18N={
+ es:{
+  nav1:'El coste',nav2:'Servicios',nav3:'Casos',nav4:'Quiénes somos',navcta:'Solicitar auditoría',
+  hero_eye:'Partner de crecimiento digital · Hospitality Costa Brava',hero_h:'Más reservas directas.<br><em>Menos dependencia de Booking.</em>',hero_sub:'Ayudamos a hoteles, apartamentos turísticos, beach clubs y negocios de hospitality a aumentar su presencia digital, mejorar la conversión y captar más clientes directos.',hero_cta1:'Solicitar auditoría <span class="arr">→</span>',hero_cta2:'Ver casos reales',hero_trust1:'Costa Brava · Empordà',hero_trust2:'14 años en hoteles',hero_trust3:'Negocios reales, no teoría',
+  cost_eye:'El problema',cost_h:'¿Cuánto te cuesta <em>depender de otros?</em>',cost_p:'Cada reserva que entra por una OTA se lleva entre un 15% y un 20% de comisión. Multiplícalo por una temporada entera y verás el dinero que regalas cada año.',
+  calc_h:'Calcula lo que pierdes',calc_sub:'Mueve los valores según tu negocio. Cálculo orientativo de comisiones anuales.',calc_l1:'Habitaciones / unidades ',calc_l2:'Precio medio por noche ',calc_l3:'Ocupación media ',calc_l4:'Reservas vía OTA ',calc_rlbl:'Comisiones que regalas al año',calc_rnote:'Estimación con un 17% de comisión media. Recuperar solo una parte cambia tu cuenta de resultados.',
+  cl1b:'Comisiones OTA',cl1t:'Booking, Expedia y compañía se quedan un margen que sale directo de tu bolsillo.',cl2b:'Web que no convierte',cl2t:'Visitas que no terminan en reserva porque la web es lenta, confusa o no inspira confianza.',cl3b:'Google Business abandonado',cl3t:'La ficha que decide si te eligen o pasan de largo, sin actualizar ni optimizar.',cl4b:'SEO local inexistente',cl4t:'No apareces cuando el cliente busca dónde dormir en tu zona.',cl5b:'Mala experiencia móvil',cl5t:'8 de cada 10 viajeros reservan desde el móvil. Si ahí fallas, pierdes.',
+  sol_eye:'La solución',sol_h:'No vendemos webs.<br><em>Creamos sistemas de captación.</em>',sol_p:'Conectamos cada pieza para que el cliente te encuentre, confíe y reserve directamente contigo. Sin intermediarios entre tú y tu huésped.',
+  fl1h:'Google',fl1p:'Te encuentran cuando buscan dónde alojarse.',fl2h:'Web',fl2p:'Una experiencia que inspira confianza y convierte.',fl3h:'Reserva directa',fl3p:'Sin comisiones. El margen se queda contigo.',fl4h:'Cliente',fl4p:'Una relación directa que puedes fidelizar.',
+  svc_eye:'Servicios',svc_h:'Tres niveles, <em>un objetivo</em>',svc_p:'Empezamos donde estás y crecemos contigo. Cada nivel está pensado para un momento distinto de tu negocio.',
+  n1lvl:'Nivel 1',n1h:'Presencia digital premium',n1tag:'Ideal para negocios con presencia digital débil.',n1i1:'Web premium optimizada',n1i2:'Experiencia móvil impecable',n1i3:'Google Business profesional',n1i4:'SEO local',n1i5:'Fotografía y contenido visual',n1g:'Que existas, y bien, en digital.',
+  n2badge:'Más solicitado',n2lvl:'Nivel 2',n2h:'Reserva directa',n2tag:'Para dejar de depender de los intermediarios.',n2i1:'Auditoría completa',n2i2:'Funnel de reservas',n2i3:'Optimización de conversión',n2i4:'Landing pages',n2i5:'Google Business avanzado',n2i6:'SEO turístico',n2g:'Más reservas, sin comisiones.',
+  n3lvl:'Nivel 3',n3h:'Growth partner',n3tag:'Para crecer mes a mes con un equipo detrás.',n3i1:'Seguimiento mensual',n3i2:'SEO continuo',n3i3:'IA y automatizaciones aplicadas',n3i4:'Gestión de Google Business',n3i5:'Contenido y reporting',n3g:'Crecimiento continuo y medible.',
+  svc_foot:'Proyectos a medida según el tamaño y los objetivos de tu negocio. Lo definimos juntos tras la auditoría.',
+  case_eye:'Casos reales',case_h:'Negocios de la zona, <em>resultados reales</em>',
+  cs1k:'Apartaments El Bergantí · Roses',cs1h:'15 apartamentos hacia la reserva directa',cs1dt1:'Situación',cs1dd1:'Complejo de 15 apartamentos con supermercado integrado, sin web propia que captara reserva directa.',cs1dt2:'Acciones',cs1dd2:'Web propia en 6 idiomas, orientada a conversión, con datos reales, prueba de confianza y experiencia móvil optimizada.',cs1dt3:'Resultado',cs1dd3:'Canal de reserva directa propio, sin depender de portales, listo para captar al viajero internacional.',
+  cs2k:'La Gelateria de Roses',cs2h:'Marca y conversión local',cs2dd:'Identidad premium, web multiidioma y captación directa por WhatsApp para un negocio de temporada con mucho turista.',
+  cs3k:'Go Detailing · Alt Empordà',cs3h:'Posicionamiento premium',cs3dd:'Landing de alto nivel con estética de lujo para diferenciar un servicio móvil en un mercado saturado.',
+  fo_eye:'Quiénes somos',fo_h:'Entendemos el turismo <em>por dentro</em>',fo_lead:'No vengo del marketing. Vengo de la hostelería.',fo_p1:'He pasado 14 años trabajando dentro de hoteles —10 en el Hotel Vistabella y 4 en el Hotel Terraza— y llevo 10 años dirigiendo mi propio negocio: tres heladerías abiertas y en funcionamiento.',fo_p2:'Sé lo que es la temporada alta, llenar habitaciones, atender al cliente a cualquier hora y, sobre todo, lo que duele regalar margen a los intermediarios. Por eso FLAMA no vende webs bonitas: construye sistemas para que captes cliente directo.',fo_s1:'años dentro de hoteles',fo_s2:'años dirigiendo negocio propio',fo_s3:'locales abiertos y en marcha',
+  au_eye:'Auditoría gratuita',au_h:'Veamos qué <em>estás dejando escapar</em>',au_lead:'Revisamos tu presencia digital y te decimos, sin compromiso, dónde estás perdiendo reservas directas y cómo recuperarlas.',au_p1:'Análisis de tu web y experiencia de reserva',au_p2:'Revisión de Google Business y SEO local',au_p3:'Estimación de tu dependencia de OTAs',au_p4:'Plan de acción concreto y priorizado',
+  f_l1:'Tipo de negocio',f_o0:'Selecciona…',f_o1:'Hotel boutique / independiente',f_o2:'Apartamentos turísticos / aparthotel',f_o3:'Villa vacacional',f_o4:'Beach club',f_o5:'Charter náutico / excursiones',f_o6:'Restaurante premium',f_o7:'Otro hospitality',
+  f_l2:'Web actual (si tienes)',f_l3:'¿Tienes Google Business?',f_gb0:'Selecciona…',f_gb1:'Sí, optimizado',f_gb2:'Sí, sin optimizar',f_gb3:'No / no lo sé',f_l4:'% reservas directas',f_dir0:'Selecciona…',f_l5:'Objetivo principal',f_g0:'Selecciona…',f_g1:'Reducir comisiones de Booking/OTAs',f_g2:'Aumentar reservas directas',f_g3:'Mejorar mi web / conversión',f_g4:'Mejorar posicionamiento (SEO)',f_g5:'Empezar de cero en digital',f_l6:'Email',f_l7:'Teléfono',f_submit:'Solicitar auditoría',f_note:'Sin compromiso. Te respondemos en menos de 48h.',f_err:'Añade un email válido',f_ok:'¡Recibido! Te contactamos pronto ✓',
+  faq_eye:'Preguntas frecuentes',faq_h:'Lo que <em>querrás saber</em>',
+  q1:'¿Trabajáis con hoteles pequeños?',a1:'Sí. De hecho, los negocios independientes y pequeños son los que más pierden con las comisiones y los que más ganan recuperando reserva directa. No necesitas ser una gran cadena para trabajar con nosotros.',q2:'¿Solo trabajáis en la Costa Brava?',a2:'Conocemos la Costa Brava y el Empordà como nadie, pero trabajamos con negocios de hospitality de cualquier zona del Mediterráneo. El sistema es el mismo: menos intermediarios, más cliente directo.',q3:'¿Necesito cambiar mi motor de reservas?',a3:'No necesariamente. Trabajamos sobre lo que ya tienes siempre que sea viable. Si tu motor actual frena las reservas, te lo decimos con datos y vemos alternativas, pero nunca te obligamos a cambiar por cambiar.',q4:'¿Cuánto tarda un proyecto?',a4:'Depende del nivel. Una presencia digital premium suele estar lista en pocas semanas; un sistema completo de reserva directa lleva algo más. Tras la auditoría te damos plazos concretos.',q5:'¿Trabajáis con apartamentos turísticos?',a5:'Sí, es uno de nuestros casos estrella. Los apartamentos y aparthoteles dependen muchísimo de los portales, y ahí es donde más impacto tiene recuperar canal directo.',q6:'¿Y con charter náutico o excursiones?',a6:'También. Cualquier negocio que viva de captar clientes y reservas —náutico, beach clubs, experiencias— encaja en lo que hacemos. La lógica de la reserva directa es la misma.',
+  fin_eye:'Da el paso',fin_h:'Tu negocio ya tiene clientes. Ahora necesita <em>más clientes directos.</em>',fin_p:'Empieza por una auditoría gratuita y descubre cuánto puedes recuperar dejando de depender de los intermediarios.',fin_cta:'Solicitar auditoría <span class="arr">→</span>',
+  ft_tag:'Partner de crecimiento digital para negocios de hospitality en la Costa Brava y el Mediterráneo.',ft_c1:'Navegación',ft_l1:'El coste',ft_l2:'Servicios',ft_l3:'Casos reales',ft_l4:'Quiénes somos',ft_c2:'Contacto',ft_l5:'Solicitar auditoría',ft_made:'Hecho desde la Costa Brava, por alguien que ha estado en tu lado del mostrador.'
+ },
+ en:{
+  nav1:'The cost',nav2:'Services',nav3:'Cases',nav4:'About us',navcta:'Request audit',
+  hero_eye:'Digital growth partner · Costa Brava hospitality',hero_h:'More direct bookings.<br><em>Less dependence on Booking.</em>',hero_sub:'We help hotels, holiday apartments, beach clubs and hospitality businesses grow their digital presence, improve conversion and win more direct guests.',hero_cta1:'Request audit <span class="arr">→</span>',hero_cta2:'See real cases',hero_trust1:'Costa Brava · Empordà',hero_trust2:'14 years in hotels',hero_trust3:'Real business, not theory',
+  cost_eye:'The problem',cost_h:'What does <em>depending on others</em> cost you?',cost_p:'Every booking through an OTA takes a 15–20% commission. Multiply that across a full season and you will see how much money you give away each year.',
+  calc_h:'Calculate what you lose',calc_sub:'Adjust the values to your business. Rough estimate of annual commissions.',calc_l1:'Rooms / units ',calc_l2:'Average nightly price ',calc_l3:'Average occupancy ',calc_l4:'Bookings via OTA ',calc_rlbl:'Commissions given away per year',calc_rnote:'Estimate at a 17% average commission. Recovering even part of it changes your bottom line.',
+  cl1b:'OTA commissions',cl1t:'Booking, Expedia and the rest keep a margin that comes straight out of your pocket.',cl2b:'A website that doesn’t convert',cl2t:'Visits that never become bookings because the site is slow, confusing or untrustworthy.',cl3b:'Neglected Google Business',cl3t:'The listing that decides whether they pick you or scroll past, left unmanaged.',cl4b:'No local SEO',cl4t:'You don’t show up when guests search where to stay in your area.',cl5b:'Poor mobile experience',cl5t:'8 in 10 travellers book on mobile. Fail there and you lose them.',
+  sol_eye:'The solution',sol_h:'We don’t sell websites.<br><em>We build acquisition systems.</em>',sol_p:'We connect every piece so guests find you, trust you and book directly with you. No middlemen between you and your guest.',
+  fl1h:'Google',fl1p:'Found when they search where to stay.',fl2h:'Website',fl2p:'An experience that builds trust and converts.',fl3h:'Direct booking',fl3p:'No commissions. The margin stays with you.',fl4h:'Guest',fl4p:'A direct relationship you can build loyalty on.',
+  svc_eye:'Services',svc_h:'Three levels, <em>one goal</em>',svc_p:'We start where you are and grow with you. Each level fits a different stage of your business.',
+  n1lvl:'Level 1',n1h:'Premium digital presence',n1tag:'Ideal for businesses with a weak digital presence.',n1i1:'Optimised premium website',n1i2:'Flawless mobile experience',n1i3:'Professional Google Business',n1i4:'Local SEO',n1i5:'Photography & visual content',n1g:'To exist, and exist well, online.',
+  n2badge:'Most requested',n2lvl:'Level 2',n2h:'Direct booking',n2tag:'To stop depending on intermediaries.',n2i1:'Full audit',n2i2:'Booking funnel',n2i3:'Conversion optimisation',n2i4:'Landing pages',n2i5:'Advanced Google Business',n2i6:'Tourism SEO',n2g:'More bookings, no commissions.',
+  n3lvl:'Level 3',n3h:'Growth partner',n3tag:'To grow month after month with a team behind you.',n3i1:'Monthly tracking',n3i2:'Continuous SEO',n3i3:'Applied AI & automation',n3i4:'Google Business management',n3i5:'Content & reporting',n3g:'Continuous, measurable growth.',
+  svc_foot:'Tailored projects based on the size and goals of your business. We define it together after the audit.',
+  case_eye:'Real cases',case_h:'Local businesses, <em>real results</em>',
+  cs1k:'Apartaments El Bergantí · Roses',cs1h:'15 apartments toward direct booking',cs1dt1:'Situation',cs1dd1:'A 15-apartment complex with an integrated supermarket, with no own website to capture direct bookings.',cs1dt2:'Actions',cs1dd2:'Own website in 6 languages, conversion-focused, with real data, trust signals and an optimised mobile experience.',cs1dt3:'Result',cs1dd3:'An owned direct-booking channel, free of portals, ready to win the international traveller.',
+  cs2k:'La Gelateria de Roses',cs2h:'Brand & local conversion',cs2dd:'Premium identity, multilingual site and direct WhatsApp capture for a seasonal, tourist-heavy business.',
+  cs3k:'Go Detailing · Alt Empordà',cs3h:'Premium positioning',cs3dd:'A high-end landing with a luxury aesthetic to differentiate a mobile service in a saturated market.',
+  fo_eye:'About us',fo_h:'We understand tourism <em>from the inside</em>',fo_lead:'I don’t come from marketing. I come from hospitality.',fo_p1:'I spent 14 years working inside hotels —10 at Hotel Vistabella and 4 at Hotel Terraza— and I’ve spent 10 years running my own business: three ice-cream shops, open and operating.',fo_p2:'I know what high season is, what filling rooms means, serving guests at any hour and, above all, how much it hurts to give margin away to intermediaries. That’s why FLAMA doesn’t sell pretty websites: it builds systems to win you direct guests.',fo_s1:'years inside hotels',fo_s2:'years running my own business',fo_s3:'shops open and running',
+  au_eye:'Free audit',au_h:'Let’s see what <em>you’re letting slip away</em>',au_lead:'We review your digital presence and tell you, with no commitment, where you’re losing direct bookings and how to win them back.',au_p1:'Analysis of your site and booking experience',au_p2:'Google Business & local SEO review',au_p3:'Estimate of your OTA dependence',au_p4:'A concrete, prioritised action plan',
+  f_l1:'Type of business',f_o0:'Select…',f_o1:'Boutique / independent hotel',f_o2:'Holiday apartments / aparthotel',f_o3:'Holiday villa',f_o4:'Beach club',f_o5:'Nautical charter / excursions',f_o6:'Premium restaurant',f_o7:'Other hospitality',
+  f_l2:'Current website (if any)',f_l3:'Do you have Google Business?',f_gb0:'Select…',f_gb1:'Yes, optimised',f_gb2:'Yes, not optimised',f_gb3:'No / not sure',f_l4:'% direct bookings',f_dir0:'Select…',f_l5:'Main goal',f_g0:'Select…',f_g1:'Reduce Booking/OTA commissions',f_g2:'Increase direct bookings',f_g3:'Improve my site / conversion',f_g4:'Improve ranking (SEO)',f_g5:'Start from scratch digitally',f_l6:'Email',f_l7:'Phone',f_submit:'Request audit',f_note:'No commitment. We reply within 48h.',f_err:'Add a valid email',f_ok:'Got it! We’ll be in touch soon ✓',
+  faq_eye:'FAQ',faq_h:'What <em>you’ll want to know</em>',
+  q1:'Do you work with small hotels?',a1:'Yes. In fact, independent and small businesses are the ones who lose most to commissions and gain most from recovering direct bookings. You don’t need to be a big chain to work with us.',q2:'Do you only work on the Costa Brava?',a2:'We know the Costa Brava and the Empordà like no one else, but we work with hospitality businesses anywhere in the Mediterranean. The system is the same: fewer middlemen, more direct guests.',q3:'Do I need to change my booking engine?',a3:'Not necessarily. We work with what you already have when it’s viable. If your current engine holds bookings back, we tell you with data and look at alternatives, but we never make you change for the sake of it.',q4:'How long does a project take?',a4:'It depends on the level. A premium digital presence is usually ready in a few weeks; a full direct-booking system takes a bit longer. We give you concrete timelines after the audit.',q5:'Do you work with holiday apartments?',a5:'Yes, it’s one of our flagship cases. Apartments and aparthotels rely heavily on portals, and that’s exactly where recovering a direct channel has the most impact.',q6:'What about nautical charter or excursions?',a6:'Those too. Any business that lives on winning customers and bookings —nautical, beach clubs, experiences— fits what we do. The logic of direct booking is the same.',
+  fin_eye:'Take the step',fin_h:'Your business already has customers. Now it needs <em>more direct ones.</em>',fin_p:'Start with a free audit and discover how much you can recover by no longer depending on intermediaries.',fin_cta:'Request audit <span class="arr">→</span>',
+  ft_tag:'Digital growth partner for hospitality businesses on the Costa Brava and across the Mediterranean.',ft_c1:'Navigation',ft_l1:'The cost',ft_l2:'Services',ft_l3:'Real cases',ft_l4:'About us',ft_c2:'Contact',ft_l5:'Request audit',ft_made:'Made on the Costa Brava, by someone who’s stood on your side of the counter.'
+ }
+};
+let curLang='es';
+function setLang(l){
+  curLang=l;
+  document.documentElement.lang=l;
+  document.querySelectorAll('[data-i]').forEach(el=>{const k=el.getAttribute('data-i');if(I18N[l][k]!==undefined)el.innerHTML=I18N[l][k]});
+  document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));
+}
+document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
+</script>
 </body>
 </html>
