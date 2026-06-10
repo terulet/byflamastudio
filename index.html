@@ -142,6 +142,45 @@
     /* --- FIX anclas: que los títulos no queden bajo la cabecera fija --- */
     section[id],#contacto,#calculadora,#metodo,#servicios,#casos{scroll-margin-top:90px}
 
+    /* --- FIX cabecera fija: fondo opaco al hacer scroll para que no se transparente sobre el formulario --- */
+    .site-header{
+      background:rgba(16,16,19,.92) !important;
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(244,236,221,.08);
+    }
+
+    /* --- Firma del fundador y stat Michelin --- */
+    .founder-sign{font-style:italic;opacity:.78;margin-top:.6rem !important;font-size:.95rem}
+    .authority-stats strong{font-feature-settings:"tnum"}
+    .authority-stats div:nth-child(2) strong{color:#d9a44a;font-size:2.4em;line-height:1}
+
+    /* --- Foto del fundador: rectangular vertical en lugar de círculo --- */
+    .founder-photo{
+      display:block !important;
+      width:100% !important;
+      max-width:420px;
+      aspect-ratio:4/5;
+      min-height:auto !important;
+      border-radius:18px !important;
+      overflow:hidden;
+      background:#1a1a1d;
+      padding:0 !important;
+      position:relative;
+      color:transparent;
+      font-size:0 !important;
+    }
+    .founder-photo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center 22%;
+      display:block;
+    }
+    @media (max-width:768px){
+      .founder-photo{max-width:100%;aspect-ratio:4/5}
+    }
+
     @media (prefers-reduced-motion:reduce){
       .fcro-float,.fcro-sticky,.fcro-chip,.fcro-calc-cta{transition:none}
     }
@@ -602,7 +641,9 @@
     <section class="section-pad authority-section" id="quienes-somos">
       <div class="container authority-grid">
         <div class="founder-card reveal">
-          <div class="founder-photo" aria-label="Eloi, FLAMA Studio">Eloi</div>
+          <div class="founder-photo">
+            <img src="founder.jpg" alt="Eloi, fundador de FLAMA Studio, en una recepción de hotel sosteniendo el portátil con la web de FLAMA" loading="lazy" />
+          </div>
           <div>
             <p class="eyebrow">Quiénes somos</p>
             <h2>No venimos solo del diseño. Venimos del negocio real.</h2>
@@ -610,13 +651,18 @@
         </div>
 
         <div class="authority-copy reveal delay-1">
-          <p>Durante años hemos trabajado dentro del sector turístico, hospitality y comercio local. Sabemos lo que significa depender de temporada, llenar en verano, cuidar el margen, responder reseñas, trabajar con clientes internacionales y convertir visibilidad en ventas reales.</p>
-          <p>Diseño premium, sí. Pero siempre al servicio de la reserva, la confianza y el margen.</p>
+          <p><strong>Soy Eloi. Tengo 42 años y llevo desde los 16 trabajando en turismo, sin salir del sector ni un solo año.</strong></p>
+          <p>Empecé en el Camping Salatà de Roses, acompañando a familias a sus parcelas. Pasé al Hotel Terraza como botones y camarero de eventos y bodas. Y en el Hotel Vistabella hice toda la carrera, de botones hasta trabajar codo a codo con los propietarios, supervisando la operación del día a día.</p>
+          <p>Allí fui la persona de confianza de los clientes premium internacionales que llegaban a Roses: les acompañaba desde el aeropuerto hasta su habitación, les llevaba a los restaurantes más exclusivos de Catalunya — El Bulli incluido — y aprendí desde dentro qué hace que un cliente vuelva al año siguiente y qué le empuja a buscar otro hotel.</p>
+          <p>Durante esa etapa el restaurante del hotel, <strong>Els Brancs</strong>, consiguió su primera estrella Michelin. No la dieron por la web. La dieron por hacer las cosas bien, con criterio, en cada detalle. Trabajar al lado de los propietarios mientras eso pasaba me enseñó lo que es la excelencia operativa real. Es exactamente lo que intento aportar ahora a cada proyecto de FLAMA.</p>
+          <p>En paralelo monté mi propio negocio: <strong>La Gelateria de Roses</strong>. Hoy fabricamos helado propio, somos un equipo de 8 personas y hay dos nuevas aperturas en marcha. Pasé de empleado de confianza a propietario sin moverme del sector.</p>
+          <p>FLAMA es la consecuencia natural: ayudo a alojamientos de la Costa Brava a captar reserva directa con los mismos criterios con los que yo gestionaría mi propio hotel.</p>
+          <p class="founder-sign">— Eloi, fundador de FLAMA Studio</p>
 
           <div class="authority-stats">
-            <div><strong>14</strong><span>años dentro de hoteles</span></div>
-            <div><strong>10</strong><span>años dirigiendo negocio propio</span></div>
-            <div><strong>3</strong><span>locales abiertos y en marcha</span></div>
+            <div><strong>26</strong><span>años en turismo</span></div>
+            <div><strong>★</strong><span>Michelin · Els Brancs (Vistabella)</span></div>
+            <div><strong>8</strong><span>personas en mi equipo</span></div>
           </div>
         </div>
       </div>
