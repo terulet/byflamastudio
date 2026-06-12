@@ -1,5 +1,6 @@
 (function () {
-  const formatter = new Intl.NumberFormat('es-ES', {
+  const isCa = document.documentElement.lang === 'ca';
+  const formatter = new Intl.NumberFormat(isCa ? 'ca-ES' : 'es-ES', {
     style: 'currency',
     currency: 'EUR',
     maximumFractionDigits: 0
@@ -59,7 +60,9 @@
     const escenario20 = facturacionOTA * 0.20 * comisionOTA;
 
     els.unitsValue.textContent = unidades.toString();
-    els.monthsValue.textContent = `${mesesAbierto} ${mesesAbierto === 1 ? 'mes' : 'meses'} · ${nochesAbiertas} noches`;
+    els.monthsValue.textContent = isCa
+      ? `${mesesAbierto} ${mesesAbierto === 1 ? 'mes' : 'mesos'} · ${nochesAbiertas} nits`
+      : `${mesesAbierto} ${mesesAbierto === 1 ? 'mes' : 'meses'} · ${nochesAbiertas} noches`;
     els.adrValue.textContent = `${precioMedio} €`;
     els.occupancyValue.textContent = `${Math.round(ocupacion * 100)}%`;
     els.otaValue.textContent = `${Math.round(porcentajeOTA * 100)}%`;
@@ -67,7 +70,9 @@
     els.recoveryValue.textContent = `${Math.round(objetivoRecuperacion * 100)}%`;
 
     els.mainRecovery.textContent = formatter.format(margenRecuperable);
-    els.mainRecoveryText.textContent = `Moviendo un ${Math.round(objetivoRecuperacion * 100)}% de las reservas OTA hacia canal directo.`;
+    els.mainRecoveryText.textContent = isCa
+      ? `Movent un ${Math.round(objetivoRecuperacion * 100)}% de les reserves OTA cap al canal directe.`
+      : `Moviendo un ${Math.round(objetivoRecuperacion * 100)}% de las reservas OTA hacia canal directo.`;
     els.seasonRevenue.textContent = formatter.format(facturacionTemporada);
     els.otaRevenue.textContent = formatter.format(facturacionOTA);
     els.intermediationCost.textContent = formatter.format(costeIntermediacion);
