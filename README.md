@@ -29,7 +29,8 @@ assets/
 
 1. **Datos legales** (resaltados en amarillo dentro de la web, en "Aviso legal" y
    "Política de privacidad"): faltan tu **nombre y apellidos** y tu **NIF/DNI**.
-   Búscalos en `index.html` por `fcro-pendiente` y sustituye el texto amarillo.
+   Búscalos en `index.html` y `ca.html` por `— completar` y sustituye los
+   placeholders `[NOMBRE Y APELLIDOS — completar]` y `[NIF — completar]`.
 2. **Imagen OG** (`assets/og-flama.jpg`): ahora es un mockup de tu web. Si quieres,
    reemplázala por una imagen diseñada de 1200×630 px con tu logo y tu claim.
 3. **Formulario**: la `access_key` de Web3Forms ya está puesta. Haz **un envío de
@@ -40,7 +41,7 @@ assets/
 ## Cambios ya aplicados en esta versión
 
 - Consolidada en una sola carpeta (antes había versiones duplicadas y enlaces rotos).
-- Email unificado a `terix@byflamastudio.com`.
+- Email unificado a `brief@byflamastudio.com`.
 - Imagen de WhatsApp/redes (OG) creada y enlazada.
 - Favicon, robots.txt, sitemap.xml y CNAME añadidos.
 - GTM a medias eliminado (ya no da error ni carga cookies).
