@@ -1015,15 +1015,12 @@
   <script>
   /* Configuración del contador (clara y fácil de ajustar).
      IMPORTANTE: es una SIMULACIÓN orientativa basada en un escenario hotelero
-     medio, no un dato real del visitante. Cambia solo estos valores para
-     recalibrar el ritmo y el tope. */
+     medio, no un dato real del visitante. Cambia solo estos valores. */
   const OTA_COUNTER_CONFIG = {
-    yearlyEstimatedLoss: 120000,            // € de margen/comisión anual estimado en fuga (escenario medio)
-    secondsPerYear: 365 * 24 * 60 * 60,     // referencia temporal anual
-    daysPerYear: 365,                        // el tope diario se calcula solo: yearlyEstimatedLoss / daysPerYear
-    secondsToReachMax: 24,                    // ritmo: segundos en llegar al tope diario
-    holdMs: 2200,                             // pausa de "respiración" al alcanzar el tope antes de reiniciar
-    easing: true                              // frenado suave al acercarse al tope (más creíble, menos casino)
+    yearlyEstimatedLoss: 120000,   // € de margen/comisión anual estimado en fuga (escenario medio)
+    daysPerYear: 365,              // el tope = margen diario estimado: yearlyEstimatedLoss / daysPerYear
+    secondsToReachMax: 24,         // duración de la subida hasta el tope (segundos)
+    easing: true                   // ease-out suave (sin parpadeo, sin efecto casino)
   };
 
   (function(){
@@ -1031,55 +1028,44 @@
     if(!el) return;
 
     var locale = (document.documentElement.lang === 'ca') ? 'ca-ES' : 'es-ES';
-    var fmt = new Intl.NumberFormat(locale, {style:'currency', currency:'EUR', minimumFractionDigits:2, maximumFractionDigits:2});
+    // Euros enteros: sube limpio, sin céntimos parpadeando a 60 fps
+    var fmt = new Intl.NumberFormat(locale, {style:'currency', currency:'EUR', maximumFractionDigits:0});
 
-    // Tope visual = margen diario estimado, derivado de la cifra anual (no hardcodeado)
+    // Tope = margen diario estimado, derivado de la cifra anual (no hardcodeado)
     var max = OTA_COUNTER_CONFIG.yearlyEstimatedLoss / OTA_COUNTER_CONFIG.daysPerYear;
-    var baseRate = max / OTA_COUNTER_CONFIG.secondsToReachMax; // €/seg de ritmo visible
-    var value = 0, last = null, rafId = null, holding = false;
+    var durationMs = OTA_COUNTER_CONFIG.secondsToReachMax * 1000;
 
-    function render(){ el.textContent = fmt.format(value); }
+    var elapsed = 0, last = null, rafId = null, finished = false;
 
-    function step(now){
+    function easeOutCubic(t){ return 1 - Math.pow(1 - t, 3); }
+    function render(v){ el.textContent = fmt.format(v); }
+
+    function frame(now){
       if(last === null) last = now;
-      var dt = (now - last) / 1000; last = now;
-      if(dt > 0.25) dt = 0.25; // evita saltos al volver de segundo plano
+      var dt = now - last; last = now;
+      if(dt > 100) dt = 100;            // al volver de segundo plano, no saltar
+      elapsed += dt;
 
-      var factor = 1;
-      if(OTA_COUNTER_CONFIG.easing){
-        // cuanto más cerca del tope, más lento sube (curva de frenado)
-        factor = Math.max(0.10, (max - value) / max);
+      var t = elapsed / durationMs;
+      if(t >= 1){                        // llega al tope y SE DETIENE (no reinicia, no crece más)
+        render(max); finished = true; rafId = null; return;
       }
-      value += baseRate * dt * factor;
-
-      if(value >= max){
-        value = max; render();
-        // respira y reinicia suavemente: nunca crece hasta cifras absurdas
-        holding = true; rafId = null;
-        setTimeout(function(){
-          value = 0; last = null; holding = false;
-          if(document.visibilityState === 'visible') rafId = requestAnimationFrame(step);
-        }, OTA_COUNTER_CONFIG.holdMs);
-        return;
-      }
-      render();
-      rafId = requestAnimationFrame(step);
+      render(max * (OTA_COUNTER_CONFIG.easing ? easeOutCubic(t) : t));
+      rafId = requestAnimationFrame(frame);
     }
 
-    function start(){ if(rafId === null && !holding){ last = null; rafId = requestAnimationFrame(step); } }
+    function start(){ if(rafId === null && !finished){ last = null; rafId = requestAnimationFrame(frame); } }
     function stop(){ if(rafId !== null){ cancelAnimationFrame(rafId); rafId = null; } }
 
-    // Pausa cuando la pestaña no está visible; reanuda sin saltos exagerados
+    // Pausa cuando la pestaña no es visible; reanuda donde se quedó, sin saltos
     document.addEventListener('visibilitychange', function(){
       if(document.visibilityState === 'hidden') stop(); else start();
     });
 
-    render();
     if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-      // Sin animación: muestra una cifra estática orientativa
-      value = Math.round(max * 0.62); render();
+      render(max);                       // sin animación: muestra el tope estático
     } else {
-      start();
+      render(0); start();
     }
   })();
   </script>
