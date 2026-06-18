@@ -1021,8 +1021,8 @@
     yearlyEstimatedLoss: 120000,            // € de margen/comisión anual estimado en fuga (escenario medio)
     secondsPerYear: 365 * 24 * 60 * 60,     // referencia temporal anual
     daysPerYear: 365,                        // el tope diario se calcula solo: yearlyEstimatedLoss / daysPerYear
-    secondsToReachMax: 38,                    // ritmo: segundos en llegar al tope diario
-    holdMs: 2800,                             // pausa de "respiración" al alcanzar el tope antes de reiniciar
+    secondsToReachMax: 24,                    // ritmo: segundos en llegar al tope diario
+    holdMs: 2200,                             // pausa de "respiración" al alcanzar el tope antes de reiniciar
     easing: true                              // frenado suave al acercarse al tope (más creíble, menos casino)
   };
 
