@@ -51,7 +51,6 @@
       --fcro-cream:#f4ecdd;
       --fcro-amber:#d9a44a;
       --fcro-amber-dark:#b9852f;
-      --fcro-wa:#1fab55;
       --fcro-line:rgba(244,236,221,.16);
     }
 
@@ -90,17 +89,6 @@
     .fcro-leadbox.sent .fcro-lead-form{display:none}
     .fcro-leadbox.sent .fcro-lead-ok{display:block}
 
-    /* --- Enlaces WhatsApp en servicios --- */
-    .fcro-wa-link{display:inline-flex;align-items:center;gap:.45rem;margin-top:.55rem;font:600 .9rem 'Inter',sans-serif;color:var(--fcro-wa);text-decoration:none}
-    .fcro-wa-link:hover{text-decoration:underline}
-    .fcro-wa-link svg{flex:none}
-
-    /* --- Botón flotante WhatsApp --- */
-    .fcro-float{position:fixed;right:18px;bottom:18px;z-index:90;width:58px;height:58px;border-radius:50%;background:var(--fcro-wa);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.35);transition:transform .2s ease}
-    .fcro-float:hover{transform:scale(1.07)}
-    .fcro-float svg{width:30px;height:30px}
-    @media (max-width:768px){.fcro-float{bottom:78px;right:14px;width:54px;height:54px}}
-
     /* --- Barra fija inferior (solo móvil) --- */
     .fcro-sticky{display:none}
     @media (max-width:768px){
@@ -108,7 +96,6 @@
       .fcro-sticky.hidden{transform:translateY(110%)}
       .fcro-sticky a{flex:1;text-align:center;padding:.85rem .5rem;border-radius:10px;font:700 .92rem 'Inter',sans-serif;text-decoration:none}
       .fcro-sticky .fcro-sticky-main{background:var(--fcro-amber);color:var(--fcro-ink)}
-      .fcro-sticky .fcro-sticky-wa{background:var(--fcro-wa);color:#fff;flex:0 0 auto;display:flex;align-items:center;justify-content:center;padding:.85rem .95rem}
       body{padding-bottom:64px}
     }
 
@@ -164,6 +151,44 @@
     @media (max-width:1080px){.exp-grid{grid-template-columns:1fr 1fr}}
     @media (max-width:760px){.exp-grid{grid-template-columns:1fr}.exp-card{padding:28px 24px}}
 
+    /* --- HERO "El margen que se escapa": layout de 3 bloques + contador --- */
+    .hero-grid--counter{
+      grid-template-columns:minmax(0,1.05fr) minmax(330px,.95fr);
+      grid-template-areas:"head counter" "body counter";
+      align-items:start;
+    }
+    .hero-grid--counter .hero-head{grid-area:head;align-self:start}
+    .hero-grid--counter .hero-body{grid-area:body;align-self:start;margin-top:6px}
+    .hero-grid--counter .ota-counter-card{grid-area:counter;align-self:center}
+    .hero-body .hero-lead{margin-top:0}
+    .hero-microcopy{margin:26px 0 0;color:var(--muted);font-size:.85rem;line-height:1.6;max-width:560px}
+
+    /* --- Tarjeta del contador (estética fuego/dorado cálido FLAMA) --- */
+    .ota-counter-card{
+      padding:42px 34px;text-align:center;display:flex;flex-direction:column;justify-content:center;
+    }
+    .ota-counter-card:after{
+      content:"";position:absolute;left:50%;top:48%;width:78%;height:60%;transform:translate(-50%,-50%);
+      background:radial-gradient(ellipse at center,rgba(217,164,74,.24),rgba(217,164,74,.06) 55%,transparent 72%);
+      filter:blur(26px);z-index:0;pointer-events:none;
+    }
+    .ota-counter-card>*{position:relative;z-index:1}
+    .ota-counter-label{margin:4px auto 0;max-width:340px;color:var(--muted);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;line-height:1.55}
+    .ota-counter{
+      font-family:"Playfair Display",serif;font-weight:700;line-height:1.04;margin:.55rem 0;
+      font-size:clamp(2.9rem,7.4vw,4.9rem);font-variant-numeric:tabular-nums;
+      color:var(--fcro-amber);
+      text-shadow:0 0 38px rgba(217,164,74,.30);
+      overflow-wrap:anywhere;
+    }
+    .ota-counter-note{margin:.1rem auto 0;max-width:360px;color:var(--muted);font-size:.82rem;line-height:1.55}
+    .ota-counter-note a{color:var(--fcro-amber);text-decoration:underline;text-underline-offset:2px}
+    @media (max-width:1080px){
+      .hero-grid--counter{grid-template-columns:1fr;grid-template-areas:"head" "counter" "body"}
+      .hero-grid--counter .ota-counter-card{align-self:stretch;margin:6px 0}
+      .hero-grid--counter .hero-body{margin-top:0}
+    }
+
     /* --- FIX iPhone: evitar zoom automático al tocar campos del formulario --- */
     @media (max-width:768px){
       input[type=text],input[type=email],input[type=tel],input[type=url],
@@ -182,7 +207,7 @@
     }
 
     @media (prefers-reduced-motion:reduce){
-      .fcro-float,.fcro-sticky,.fcro-chip,.fcro-calc-cta{transition:none}
+      .fcro-sticky,.fcro-chip,.fcro-calc-cta{transition:none}
     }
   </style>
 
@@ -245,53 +270,28 @@
       <div class="ambient ambient-one"></div>
       <div class="ambient ambient-two"></div>
 
-      <div class="container hero-grid">
-        <div class="hero-copy reveal">
-          <p class="eyebrow">Partner de crecimiento digital · Hospitality Costa Brava</p>
-          <h1>Más reservas directas.<br><span>Menos dependencia de Booking.</span></h1>
-          <p class="hero-lead">Ayudamos a hoteles, apartamentos turísticos y negocios hospitality de la Costa Brava a transformar su presencia digital en reservas directas, confianza y margen.</p>
-          <p class="hero-sub">No vendemos webs bonitas. Creamos sistemas digitales pensados para que más clientes reserven directamente contigo.</p>
-
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#calculadora">Calcular margen recuperable</a>
-            <a class="btn btn-secondary" href="#contacto">Solicitar auditoría</a>
-          </div>
-
-          <div class="trust-row" aria-label="Credenciales FLAMA Studio">
-            <span>Costa Brava · Empordà</span>
-            <span>26 años en turismo</span>
-            <span>Negocio real, no teoría</span>
-          </div>
+      <div class="container hero-grid hero-grid--counter">
+        <div class="hero-head hero-copy reveal">
+          <p class="eyebrow">El margen que se escapa</p>
+          <h1>No tienes un problema de ocupación.<br><span>Tienes un problema de margen que se escapa.</span></h1>
         </div>
 
-        <div class="hero-panel reveal delay-1" aria-label="Sistema de reserva directa">
+        <aside class="hero-panel ota-counter-card reveal delay-1" aria-label="Simulación: margen que podría escaparse por dependencia de intermediarios">
           <div class="panel-top">
             <span class="dot"></span><span class="dot"></span><span class="dot"></span>
           </div>
-          <div class="booking-flow">
-            <div class="flow-card active">
-              <span>01</span>
-              <strong>Google</strong>
-              <small>Te encuentran cuando buscan dónde dormir.</small>
-            </div>
-            <div class="flow-arrow">→</div>
-            <div class="flow-card">
-              <span>02</span>
-              <strong>Web</strong>
-              <small>Confianza, móvil rápido y ventaja directa.</small>
-            </div>
-            <div class="flow-arrow">→</div>
-            <div class="flow-card">
-              <span>03</span>
-              <strong>Reserva directa</strong>
-              <small>Más margen y relación propia con el huésped.</small>
-            </div>
+          <p class="ota-counter-label">Margen estimado que podría escaparse mientras lees esto</p>
+          <div class="ota-counter" id="otaCounter">0 €</div>
+          <p class="ota-counter-note">Simulación basada en un escenario hotelero medio. <a href="#calculadora" data-gtm="cta_click" data-gtm-label="hero_counter_calc">Calcula tu caso real en menos de un minuto.</a></p>
+        </aside>
+
+        <div class="hero-body reveal delay-1">
+          <p class="hero-lead">Las OTAs pueden llenar habitaciones, pero también pueden quedarse con una parte silenciosa de tu rentabilidad. FLAMA ayuda a hoteles y negocios turísticos a revisar su canal directo, mejorar la confianza digital y recuperar más control sobre cada reserva.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#calculadora" data-gtm="cta_click" data-gtm-label="hero_calc">Calcula tu margen perdido →</a>
+            <a class="btn btn-secondary" href="#contacto" data-gtm="cta_click" data-gtm-label="hero_review">Solicitar revisión privada</a>
           </div>
-          <div class="hero-metric">
-            <p>Objetivo realista</p>
-            <strong>mover 10–20%</strong>
-            <span>de reservas OTA hacia canal directo</span>
-          </div>
+          <p class="hero-microcopy">Criterio real de hospitality, turismo y negocios de temporada en la Costa Brava. Sin plantillas genéricas. Sin promesas vacías.</p>
         </div>
       </div>
     </section>
@@ -1008,6 +1008,78 @@
         u.dispatchEvent(new Event('change', {bubbles: true}));
       }
     });
+  })();
+  </script>
+
+  <!-- ===== Contador del hero · simulación visual del margen en fuga ===== -->
+  <script>
+  /* Configuración del contador (clara y fácil de ajustar).
+     IMPORTANTE: es una SIMULACIÓN orientativa basada en un escenario hotelero
+     medio, no un dato real del visitante. Cambia solo estos valores para
+     recalibrar el ritmo y el tope. */
+  const OTA_COUNTER_CONFIG = {
+    yearlyEstimatedLoss: 172000,            // € de margen/comisión anual estimado en fuga (escenario medio)
+    secondsPerYear: 365 * 24 * 60 * 60,     // referencia temporal anual
+    maxDisplayValue: 471,                    // tope visual elegante ≈ un día de ese margen (172000 / 365)
+    secondsToReachMax: 38,                    // ritmo: segundos en llegar al tope "mientras lees esto"
+    holdMs: 2800,                             // pausa de "respiración" al alcanzar el tope antes de reiniciar
+    easing: true                              // frenado suave al acercarse al tope (más creíble, menos casino)
+  };
+
+  (function(){
+    var el = document.getElementById('otaCounter');
+    if(!el) return;
+
+    var locale = (document.documentElement.lang === 'ca') ? 'ca-ES' : 'es-ES';
+    var fmt = new Intl.NumberFormat(locale, {style:'currency', currency:'EUR', minimumFractionDigits:2, maximumFractionDigits:2});
+
+    var max = OTA_COUNTER_CONFIG.maxDisplayValue;
+    var baseRate = max / OTA_COUNTER_CONFIG.secondsToReachMax; // €/seg de ritmo visible
+    var value = 0, last = null, rafId = null, holding = false;
+
+    function render(){ el.textContent = fmt.format(value); }
+
+    function step(now){
+      if(last === null) last = now;
+      var dt = (now - last) / 1000; last = now;
+      if(dt > 0.25) dt = 0.25; // evita saltos al volver de segundo plano
+
+      var factor = 1;
+      if(OTA_COUNTER_CONFIG.easing){
+        // cuanto más cerca del tope, más lento sube (curva de frenado)
+        factor = Math.max(0.10, (max - value) / max);
+      }
+      value += baseRate * dt * factor;
+
+      if(value >= max){
+        value = max; render();
+        // respira y reinicia suavemente: nunca crece hasta cifras absurdas
+        holding = true; rafId = null;
+        setTimeout(function(){
+          value = 0; last = null; holding = false;
+          if(document.visibilityState === 'visible') rafId = requestAnimationFrame(step);
+        }, OTA_COUNTER_CONFIG.holdMs);
+        return;
+      }
+      render();
+      rafId = requestAnimationFrame(step);
+    }
+
+    function start(){ if(rafId === null && !holding){ last = null; rafId = requestAnimationFrame(step); } }
+    function stop(){ if(rafId !== null){ cancelAnimationFrame(rafId); rafId = null; } }
+
+    // Pausa cuando la pestaña no está visible; reanuda sin saltos exagerados
+    document.addEventListener('visibilitychange', function(){
+      if(document.visibilityState === 'hidden') stop(); else start();
+    });
+
+    render();
+    if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      // Sin animación: muestra una cifra estática orientativa
+      value = Math.round(max * 0.62); render();
+    } else {
+      start();
+    }
   })();
   </script>
 
