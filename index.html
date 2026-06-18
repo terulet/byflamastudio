@@ -280,9 +280,9 @@
           <div class="panel-top">
             <span class="dot"></span><span class="dot"></span><span class="dot"></span>
           </div>
-          <p class="ota-counter-label">Margen estimado que podría escaparse mientras lees esto</p>
+          <p class="ota-counter-label">Margen diario estimado que podría escaparse por intermediarios</p>
           <div class="ota-counter" id="otaCounter">0 €</div>
-          <p class="ota-counter-note">Simulación basada en un escenario hotelero medio. <a href="#calculadora" data-gtm="cta_click" data-gtm-label="hero_counter_calc">Calcula tu caso real en menos de un minuto.</a></p>
+          <p class="ota-counter-note">Simulación ilustrativa basada en un escenario hotelero medio. <a href="#calculadora" data-gtm="cta_click" data-gtm-label="hero_counter_calc">Calcula tu caso real en menos de un minuto.</a></p>
         </aside>
 
         <div class="hero-body reveal delay-1">
@@ -1018,10 +1018,10 @@
      medio, no un dato real del visitante. Cambia solo estos valores para
      recalibrar el ritmo y el tope. */
   const OTA_COUNTER_CONFIG = {
-    yearlyEstimatedLoss: 172000,            // € de margen/comisión anual estimado en fuga (escenario medio)
+    yearlyEstimatedLoss: 120000,            // € de margen/comisión anual estimado en fuga (escenario medio)
     secondsPerYear: 365 * 24 * 60 * 60,     // referencia temporal anual
-    maxDisplayValue: 471,                    // tope visual elegante ≈ un día de ese margen (172000 / 365)
-    secondsToReachMax: 38,                    // ritmo: segundos en llegar al tope "mientras lees esto"
+    daysPerYear: 365,                        // el tope diario se calcula solo: yearlyEstimatedLoss / daysPerYear
+    secondsToReachMax: 38,                    // ritmo: segundos en llegar al tope diario
     holdMs: 2800,                             // pausa de "respiración" al alcanzar el tope antes de reiniciar
     easing: true                              // frenado suave al acercarse al tope (más creíble, menos casino)
   };
@@ -1033,7 +1033,8 @@
     var locale = (document.documentElement.lang === 'ca') ? 'ca-ES' : 'es-ES';
     var fmt = new Intl.NumberFormat(locale, {style:'currency', currency:'EUR', minimumFractionDigits:2, maximumFractionDigits:2});
 
-    var max = OTA_COUNTER_CONFIG.maxDisplayValue;
+    // Tope visual = margen diario estimado, derivado de la cifra anual (no hardcodeado)
+    var max = OTA_COUNTER_CONFIG.yearlyEstimatedLoss / OTA_COUNTER_CONFIG.daysPerYear;
     var baseRate = max / OTA_COUNTER_CONFIG.secondsToReachMax; // €/seg de ritmo visible
     var value = 0, last = null, rafId = null, holding = false;
 
