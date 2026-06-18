@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>FLAMA · Hero data-viz (módulo de revisión)</title>
+
+<!--
+  ============================================================================
+  MÓDULO AISLADO · Hero animado "Margen que se escapa → Margen que recuperas"
+  ----------------------------------------------------------------------------
+  · HTML/CSS/JS puro, sin librerías externas.
+  · Autoplay 1 vez: problema breve → transición → SOLUCIÓN estable (reposo).
+  · No hace loop. El estado de reposo es siempre la solución (turquesa).
+  · prefers-reduced-motion: versión estática premium (muestra la solución).
+  · Pensado para revisar ANTES de integrarlo en index.html / ca.html.
+
+  PENDIENTE DE CONFIRMAR ANTES DE INTEGRAR:
+  (4) FUENTE DISPLAY. Aquí uso un fallback serif elegante del sistema para no
+      forzar nada. La web real parece usar "Playfair Display" (display) + "Inter"
+      (texto). Cuando lo confirmes, cambio --fhv-display a la fuente real.
+      No cargo Playfair desde aquí para no introducir dependencias en el módulo.
+  ============================================================================
+-->
+
+<style>
+  :root{
+    --fhv-ink:#0e0f12;            /* fondo dark luxury */
+    --fhv-text:#f3ece0;
+    --fhv-muted:#9aa0a6;
+    --fhv-line:rgba(244,236,221,.12);
+
+    --fhv-smoke:#737a82;          /* problema · gris humo / grafito apagado */
+    --fhv-smoke-dim:#4a4f55;
+
+    --fhv-turq:#00A3A3;           /* solución · turquesa FLAMA */
+    --fhv-turq-soft:rgba(0,163,163,.16);
+
+    --fhv-gold:#C9A84C;           /* solo detalle sutil (hairline / punto) */
+
+    /* (4) Fallback elegante. Sustituir por la fuente display real al integrar. */
+    --fhv-display:Georgia,"Times New Roman",Cambria,serif;
+    --fhv-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0;background:var(--fhv-ink);color:var(--fhv-text);
+    font-family:var(--fhv-sans);
+    min-height:100vh;display:grid;place-items:center;padding:28px 16px;
+  }
+
+  /* ---- Tarjeta contenedora (data-viz de lujo) ---- */
+  .fhv-card{
+    position:relative;width:100%;max-width:560px;
+    border:1px solid var(--fhv-line);border-radius:22px;
+    background:
+      radial-gradient(120% 90% at 80% -10%, rgba(0,163,163,.07), transparent 60%),
+      linear-gradient(150deg, rgba(39,33,27,.30), rgba(14,15,18,.72));
+    padding:26px 24px 22px;
+    box-shadow:0 30px 80px rgba(0,0,0,.45);
+    overflow:hidden;
+  }
+  /* Hairline dorado superior muy sutil (único protagonismo del oro) */
+  .fhv-card:before{
+    content:"";position:absolute;left:24px;right:24px;top:0;height:1px;
+    background:linear-gradient(90deg,transparent,rgba(201,168,76,.55),transparent);
+    opacity:.7;
+  }
+
+  /* ---- Etiqueta de fase (crossfade problema/solución) ---- */
+  .fhv-phase{display:flex;align-items:center;gap:.6rem;margin-bottom:18px}
+  .fhv-dot{
+    width:8px;height:8px;border-radius:50%;flex:none;
+    background:var(--fhv-smoke);box-shadow:0 0 0 4px rgba(115,122,130,.12);
+    transition:background .6s ease, box-shadow .6s ease;
+  }
+  .is-solution .fhv-dot{background:var(--fhv-turq);box-shadow:0 0 0 4px rgba(0,163,163,.16)}
+
+  .fhv-phase-label{position:relative;display:inline-block;line-height:1.1}
+  .fhv-phase-label .ph{
+    font:800 .72rem/1.1 var(--fhv-sans);
+    letter-spacing:.18em;text-transform:uppercase;white-space:nowrap;
+    transition:opacity .55s ease;
+  }
+  .ph-problem{color:var(--fhv-muted)}
+  .ph-solution{position:absolute;left:0;top:0;opacity:0;color:var(--fhv-turq)}
+  .is-solution .ph-problem{opacity:0}
+  .is-solution .ph-solution{opacity:1}
+
+  /* ---- Escenario SVG ---- */
+  .fhv-stage{width:100%}
+  .fhv-stage svg{display:block;width:100%;height:auto}
+
+  .node-label{font:700 19px var(--fhv-sans);letter-spacing:.01em}
+  .node-title{font:700 20px var(--fhv-sans)}
+  .pill-label{font:800 15px var(--fhv-sans);letter-spacing:.06em;text-transform:uppercase}
+
+  /* Demanda (origen, neutro) */
+  .demand rect{fill:rgba(255,255,255,.035);stroke:var(--fhv-line);stroke-width:1.5}
+  .demand text{fill:#cfd4d9}
+
+  /* Conexiones Demanda → OTA → hotel (problema, grafito) */
+  .ota-link{fill:none;stroke:var(--fhv-smoke);stroke-width:2.5;opacity:.8;
+            transition:opacity .6s ease}
+  .is-solution .ota-link{opacity:.16}
+
+  /* Nodos OTA genéricos */
+  .ota-chip rect{fill:rgba(255,255,255,.03);stroke:var(--fhv-smoke);stroke-width:1.5}
+  .ota-chip text{fill:#c7ccd1}
+  .ota-chip{transition:opacity .6s ease}
+  .is-solution .ota-chip{opacity:.38}
+
+  /* Fuga de margen (problema): se desvanece en solución */
+  .leak{fill:none;stroke:var(--fhv-smoke);stroke-width:2;stroke-dasharray:2 7;
+        stroke-linecap:round;opacity:.55;transition:opacity .5s ease}
+  .is-solution .leak{opacity:0}
+
+  /* Canal directo (solución): se dibuja en turquesa */
+  .direct-link{fill:none;stroke:var(--fhv-turq);stroke-width:3.2;stroke-linecap:round;
+               stroke-dasharray:640;stroke-dashoffset:640;opacity:0;
+               transition:stroke-dashoffset 1.15s cubic-bezier(.22,.61,.36,1) .1s, opacity .5s ease}
+  .is-solution .direct-link{stroke-dashoffset:0;opacity:1}
+
+  /* Hotel: se ilumina turquesa en reposo */
+  .hotel-glow{opacity:0;transition:opacity .8s ease}
+  .is-solution .hotel-glow{opacity:.5}
+  .hotel rect.box{fill:rgba(255,255,255,.03);stroke:var(--fhv-smoke);stroke-width:2;
+                  transition:stroke .7s ease, fill .7s ease}
+  .is-solution .hotel rect.box{stroke:var(--fhv-turq);fill:var(--fhv-turq-soft)}
+  .hotel .glyph{fill:#c7ccd1;transition:fill .7s ease}
+  .is-solution .hotel .glyph{fill:var(--fhv-turq)}
+  .hotel .h-title{fill:#cfd4d9;transition:fill .7s ease}
+  .is-solution .hotel .h-title{fill:#eafafa}
+  /* hairline dorado bajo el hotel, solo en solución (detalle premium) */
+  .hotel .h-accent{stroke:var(--fhv-gold);stroke-width:1.4;opacity:0;transition:opacity .7s ease .2s}
+  .is-solution .hotel .h-accent{opacity:.8}
+
+  /* Pill "Canal directo" sobre el arco (solución) */
+  .canal-pill{opacity:0;transition:opacity .6s ease .25s}
+  .is-solution .canal-pill{opacity:1}
+  .canal-pill rect{fill:var(--fhv-turq-soft);stroke:var(--fhv-turq);stroke-width:1.2}
+  .canal-pill text{fill:#d7f6f6}
+
+  /* Pill resultado (sin "0%": "Más margen directo") */
+  .out-pill{opacity:0;transition:opacity .6s ease .4s}
+  .is-solution .out-pill{opacity:1}
+  .out-pill rect{fill:transparent;stroke:var(--fhv-turq);stroke-width:1.4}
+  .out-pill text{fill:#bfeaea}
+
+  /* ---- Texto inferior ---- */
+  .fhv-note{
+    margin:18px 2px 0;color:var(--fhv-muted);
+    font:500 .9rem/1.55 var(--fhv-sans);max-width:480px;
+  }
+
+  /* ---- Control SOLO para la revisión (no forma parte de la integración) ---- */
+  .fhv-replay{
+    margin-top:16px;display:inline-flex;align-items:center;gap:.4rem;
+    background:transparent;border:1px solid var(--fhv-line);color:var(--fhv-muted);
+    font:700 .72rem/1 var(--fhv-sans);letter-spacing:.12em;text-transform:uppercase;
+    padding:.6rem .9rem;border-radius:999px;cursor:pointer;transition:border-color .2s,color .2s
+  }
+  .fhv-replay:hover{border-color:var(--fhv-turq);color:var(--fhv-turq)}
+
+  @media (max-width:420px){
+    .fhv-card{padding:22px 18px 18px;border-radius:18px}
+    .fhv-note{font-size:.86rem}
+  }
+
+  /* Accesibilidad: versión estática premium (reposo = solución) */
+  @media (prefers-reduced-motion:reduce){
+    .fhv-card *{transition:none !important;animation:none !important}
+  }
+</style>
+</head>
+<body>
+
+  <section class="fhv-card" id="fhvRoot" aria-label="Cómo FLAMA reconduce la demanda hacia el canal directo">
+    <div class="fhv-phase">
+      <span class="fhv-dot" aria-hidden="true"></span>
+      <span class="fhv-phase-label">
+        <span class="ph ph-problem">Margen que se escapa</span>
+        <span class="ph ph-solution" aria-hidden="true">Margen que recuperas</span>
+      </span>
+    </div>
+
+    <div class="fhv-stage">
+      <!-- viewBox fijo; escala perfecta en cualquier ancho (iPhone incluido) -->
+      <svg viewBox="0 0 640 360" preserveAspectRatio="xMidYMid meet" role="img"
+           aria-label="Diagrama: la demanda deja de depender de intermediarios OTA y se reconduce hacia el canal directo del hotel.">
+        <defs>
+          <filter id="turqGlow" x="-40%" y="-40%" width="180%" height="180%">
+            <feGaussianBlur stdDeviation="6" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <radialGradient id="hotelGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#00A3A3" stop-opacity="0.55"/>
+            <stop offset="100%" stop-color="#00A3A3" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+
+        <!-- Conexiones problema: Demanda → OTA -->
+        <path class="ota-link" d="M140,180 C190,180 205,73 250,73"/>
+        <path class="ota-link" d="M140,180 L250,180"/>
+        <path class="ota-link" d="M140,180 C190,180 205,287 250,287"/>
+
+        <!-- Conexiones problema: OTA → hotel -->
+        <path class="ota-link" d="M400,73 C445,73 452,180 470,180"/>
+        <path class="ota-link" d="M400,180 L470,180"/>
+        <path class="ota-link" d="M400,287 C445,287 452,180 470,180"/>
+
+        <!-- Fuga de margen (problema) -->
+        <path class="leak" d="M430,196 C436,250 474,300 520,332"/>
+        <path class="leak" d="M430,196 C420,256 398,300 360,330"/>
+
+        <!-- Canal directo (solución): arco turquesa por encima de las OTA -->
+        <path class="direct-link" d="M140,176 C300,84 372,84 470,160"/>
+
+        <!-- Pill "Canal directo" sobre el arco -->
+        <g class="canal-pill">
+          <rect x="232" y="52" width="150" height="34" rx="17"/>
+          <text x="307" y="74" text-anchor="middle" class="pill-label">Canal directo</text>
+        </g>
+
+        <!-- Nodo Demanda -->
+        <g class="demand">
+          <rect x="20" y="150" width="120" height="60" rx="14"/>
+          <text x="80" y="186" text-anchor="middle" class="node-label">Demanda</text>
+        </g>
+
+        <!-- Nodos OTA genéricos (sin marcas reales) -->
+        <g class="ota-chip">
+          <rect x="250" y="46" width="150" height="54" rx="12"/>
+          <text x="325" y="79" text-anchor="middle" class="node-label">OTA · 18%</text>
+        </g>
+        <g class="ota-chip">
+          <rect x="250" y="153" width="150" height="54" rx="12"/>
+          <text x="325" y="186" text-anchor="middle" class="node-label">OTA · 22%</text>
+        </g>
+        <g class="ota-chip">
+          <rect x="250" y="260" width="150" height="54" rx="12"/>
+          <text x="325" y="293" text-anchor="middle" class="node-label">OTA · 25%</text>
+        </g>
+
+        <!-- Hotel -->
+        <g class="hotel">
+          <ellipse class="hotel-glow" cx="545" cy="180" rx="120" ry="100" fill="url(#hotelGlow)"/>
+          <rect class="box" x="470" y="120" width="150" height="120" rx="18"/>
+          <!-- glifo edificio abstracto -->
+          <g class="glyph" transform="translate(516,150)">
+            <rect x="0" y="14" width="14" height="40" rx="2"/>
+            <rect x="18" y="0" width="16" height="54" rx="2"/>
+            <rect x="38" y="20" width="12" height="34" rx="2"/>
+          </g>
+          <text x="545" y="226" text-anchor="middle" class="h-title node-title">Tu hotel</text>
+          <line class="h-accent" x1="500" y1="236" x2="590" y2="236"/>
+        </g>
+
+        <!-- Pill resultado (sin "0%") -->
+        <g class="out-pill">
+          <rect x="452" y="286" width="178" height="40" rx="20"/>
+          <text x="541" y="311" text-anchor="middle" class="pill-label">Más margen directo</text>
+        </g>
+      </svg>
+    </div>
+
+    <p class="fhv-note">FLAMA ayuda a reconducir demanda propia hacia el canal directo, reduciendo dependencia de intermediarios.</p>
+
+    <!-- Botón SOLO de revisión (se quita al integrar en la home) -->
+    <button type="button" class="fhv-replay" id="fhvReplay">Repetir animación</button>
+  </section>
+
+<script>
+/* ===== Línea de tiempo del hero · una sola pasada, reposo en la solución ===== */
+(function(){
+  var root = document.getElementById('fhvRoot');
+  if(!root) return;
+
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var timer = null;
+
+  function play(){
+    clearTimeout(timer);
+    root.classList.remove('is-solution');
+    if(reduce){
+      // Versión estática premium: directamente en la solución, sin animar
+      root.classList.add('is-solution');
+      return;
+    }
+    // Problema breve → transición elegante → solución estable (sin loop)
+    // forzamos reflow para reiniciar transiciones al repetir
+    void root.offsetWidth;
+    timer = setTimeout(function(){ root.classList.add('is-solution'); }, 1700);
+  }
+
+  play();
+
+  // Control solo para revisar la animación; no se integra en la home.
+  var btn = document.getElementById('fhvReplay');
+  if(btn) btn.addEventListener('click', play);
+})();
+</script>
+</body>
+</html>
