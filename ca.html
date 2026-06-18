@@ -51,7 +51,6 @@
       --fcro-cream:#f4ecdd;
       --fcro-amber:#d9a44a;
       --fcro-amber-dark:#b9852f;
-      --fcro-wa:#1fab55;
       --fcro-line:rgba(244,236,221,.16);
     }
 
@@ -90,17 +89,6 @@
     .fcro-leadbox.sent .fcro-lead-form{display:none}
     .fcro-leadbox.sent .fcro-lead-ok{display:block}
 
-    /* --- Enlaces WhatsApp en servicios --- */
-    .fcro-wa-link{display:inline-flex;align-items:center;gap:.45rem;margin-top:.55rem;font:600 .9rem 'Inter',sans-serif;color:var(--fcro-wa);text-decoration:none}
-    .fcro-wa-link:hover{text-decoration:underline}
-    .fcro-wa-link svg{flex:none}
-
-    /* --- Botón flotante WhatsApp --- */
-    .fcro-float{position:fixed;right:18px;bottom:18px;z-index:90;width:58px;height:58px;border-radius:50%;background:var(--fcro-wa);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.35);transition:transform .2s ease}
-    .fcro-float:hover{transform:scale(1.07)}
-    .fcro-float svg{width:30px;height:30px}
-    @media (max-width:768px){.fcro-float{bottom:78px;right:14px;width:54px;height:54px}}
-
     /* --- Barra fija inferior (solo móvil) --- */
     .fcro-sticky{display:none}
     @media (max-width:768px){
@@ -108,7 +96,6 @@
       .fcro-sticky.hidden{transform:translateY(110%)}
       .fcro-sticky a{flex:1;text-align:center;padding:.85rem .5rem;border-radius:10px;font:700 .92rem 'Inter',sans-serif;text-decoration:none}
       .fcro-sticky .fcro-sticky-main{background:var(--fcro-amber);color:var(--fcro-ink)}
-      .fcro-sticky .fcro-sticky-wa{background:var(--fcro-wa);color:#fff;flex:0 0 auto;display:flex;align-items:center;justify-content:center;padding:.85rem .95rem}
       body{padding-bottom:64px}
     }
 
@@ -134,9 +121,6 @@
     .fcro-legal-links button{border:0;background:none;padding:0;color:inherit;opacity:.75;font:inherit;font-size:.85rem;cursor:pointer;text-decoration:underline}
     .fcro-legal-links button:hover{opacity:1}
 
-    /* --- Marca "PENDIENTE de completar" en los textos legales (quítala al rellenar) --- */
-    .fcro-pendiente{background:#ffe680;color:#5a4500;padding:.05em .3em;border-radius:4px;font-weight:700}
-
     /* --- FIX escritorio: titular del hero desproporcionado --- */
     .hero-copy h1{
       font-size:clamp(2.5rem, 3.8vw, 3.9rem) !important;
@@ -146,6 +130,63 @@
     .hero-copy{min-width:0}
     @media (min-width:1100px){
       .hero-grid{align-items:center}
+    }
+
+    /* --- FIX: separar el hero de la cabecera fija para que el H1 no quede tapado --- */
+    .hero{align-items:start}
+    .hero.section-pad{padding-top:150px}
+    @media (max-width:1080px){.hero.section-pad{padding-top:124px}}
+    @media (max-width:760px){.hero.section-pad{padding-top:108px}}
+
+    /* --- Sección Experiencia (relato de estudio, sin portfolio) --- */
+    .exp-text{max-width:840px;margin:0 auto}
+    .exp-text p{color:var(--muted);font-size:1.06rem;line-height:1.8;margin:0 0 1.25rem}
+    .exp-text .exp-lead{color:var(--text);font-family:"Playfair Display",serif;font-size:clamp(1.35rem,2.5vw,1.75rem);line-height:1.4;margin-bottom:1.5rem}
+    .exp-text .exp-accent{color:var(--gold);font-weight:700;font-size:1.14rem}
+    .exp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:64px}
+    .exp-card{border:1px solid var(--line);border-radius:26px;background:linear-gradient(145deg,rgba(45,36,27,.5),rgba(20,17,15,.55));padding:36px 30px;display:flex;flex-direction:column;gap:14px}
+    .exp-card .exp-num{font-family:"Playfair Display",serif;color:var(--gold);font-size:2.1rem;line-height:1}
+    .exp-card h3{margin:0;color:var(--text);font-size:1.32rem;line-height:1.25}
+    .exp-card p{margin:0;color:var(--muted);font-size:.98rem;line-height:1.68}
+    @media (max-width:1080px){.exp-grid{grid-template-columns:1fr 1fr}}
+    @media (max-width:760px){.exp-grid{grid-template-columns:1fr}.exp-card{padding:28px 24px}}
+
+    /* --- HERO "El margen que se escapa": layout de 3 bloques + contador --- */
+    .hero-grid--counter{
+      grid-template-columns:minmax(0,1.05fr) minmax(330px,.95fr);
+      grid-template-areas:"head counter" "body counter";
+      align-items:start;
+    }
+    .hero-grid--counter .hero-head{grid-area:head;align-self:start}
+    .hero-grid--counter .hero-body{grid-area:body;align-self:start;margin-top:6px}
+    .hero-grid--counter .ota-counter-card{grid-area:counter;align-self:center}
+    .hero-body .hero-lead{margin-top:0}
+    .hero-microcopy{margin:26px 0 0;color:var(--muted);font-size:.85rem;line-height:1.6;max-width:560px}
+
+    /* --- Tarjeta del contador (estética fuego/dorado cálido FLAMA) --- */
+    .ota-counter-card{
+      padding:42px 34px;text-align:center;display:flex;flex-direction:column;justify-content:center;
+    }
+    .ota-counter-card:after{
+      content:"";position:absolute;left:50%;top:48%;width:78%;height:60%;transform:translate(-50%,-50%);
+      background:radial-gradient(ellipse at center,rgba(217,164,74,.24),rgba(217,164,74,.06) 55%,transparent 72%);
+      filter:blur(26px);z-index:0;pointer-events:none;
+    }
+    .ota-counter-card>*{position:relative;z-index:1}
+    .ota-counter-label{margin:4px auto 0;max-width:340px;color:var(--muted);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;line-height:1.55}
+    .ota-counter{
+      font-family:"Playfair Display",serif;font-weight:700;line-height:1.04;margin:.55rem 0;
+      font-size:clamp(2.9rem,7.4vw,4.9rem);font-variant-numeric:tabular-nums;
+      color:var(--fcro-amber);
+      text-shadow:0 0 38px rgba(217,164,74,.30);
+      overflow-wrap:anywhere;
+    }
+    .ota-counter-note{margin:.1rem auto 0;max-width:360px;color:var(--muted);font-size:.82rem;line-height:1.55}
+    .ota-counter-note a{color:var(--fcro-amber);text-decoration:underline;text-underline-offset:2px}
+    @media (max-width:1080px){
+      .hero-grid--counter{grid-template-columns:1fr;grid-template-areas:"head" "counter" "body"}
+      .hero-grid--counter .ota-counter-card{align-self:stretch;margin:6px 0}
+      .hero-grid--counter .hero-body{margin-top:0}
     }
 
     /* --- FIX iPhone: evitar zoom automático al tocar campos del formulario --- */
@@ -165,42 +206,8 @@
       border-bottom:1px solid rgba(244,236,221,.08);
     }
 
-    /* --- Firma del fundador y stat Michelin --- */
-    .founder-sign{font-style:italic;opacity:.78;margin-top:.6rem !important;font-size:.95rem}
-    .authority-stats strong{font-feature-settings:"tnum"}
-    .authority-stats div:nth-child(2) strong{color:#d9a44a;font-size:2.4em;line-height:1}
-
-    /* --- Foto del fundador: rectangular vertical en lugar de círculo --- */
-    .founder-photo{
-      display:block !important;
-      width:100% !important;
-      max-width:420px;
-      aspect-ratio:4/5;
-      min-height:auto !important;
-      border-radius:18px !important;
-      overflow:hidden;
-      background:radial-gradient(circle at 50% 30%,rgba(228,207,170,.20),transparent 48%),linear-gradient(145deg,#2b241e,#120f0d);
-      padding:0 !important;
-      position:relative;
-      color:transparent;
-      font-size:0 !important;
-    }
-    .founder-photo:before{
-      content:"";position:absolute;inset:18px;border:1px solid rgba(228,207,170,.22);border-radius:14px;pointer-events:none;
-    }
-    .founder-photo img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      object-position:center 22%;
-      display:block;
-    }
-    @media (max-width:768px){
-      .founder-photo{max-width:100%;aspect-ratio:4/5}
-    }
-
     @media (prefers-reduced-motion:reduce){
-      .fcro-float,.fcro-sticky,.fcro-chip,.fcro-calc-cta{transition:none}
+      .fcro-sticky,.fcro-chip,.fcro-calc-cta{transition:none}
     }
   </style>
 
@@ -210,7 +217,7 @@
     "@type": "ProfessionalService",
     "name": "FLAMA Studio",
     "url": "https://byflamastudio.com/",
-    "email": "terix@byflamastudio.com",
+    "email": "brief@byflamastudio.com",
     "description": "Partner de creixement digital per a hotels, apartaments turístics i negocis hospitality de la Costa Brava que volen augmentar les reserves directes i reduir la dependència de les OTA.",
     "areaServed": ["Costa Brava", "Roses", "Girona", "Empordà", "Mediterrani"],
     "serviceType": ["Reserva directa hotelera", "Disseny web per a hotels", "SEO local", "Google Business", "Màrqueting digital hospitality"],
@@ -263,53 +270,28 @@
       <div class="ambient ambient-one"></div>
       <div class="ambient ambient-two"></div>
 
-      <div class="container hero-grid">
-        <div class="hero-copy reveal">
-          <p class="eyebrow">Partner de creixement digital · Hospitality Costa Brava</p>
-          <h1>Més reserves directes.<br><span>Menys dependència de Booking.</span></h1>
-          <p class="hero-lead">Ajudem hotels, apartaments turístics i negocis hospitality de la Costa Brava a transformar la seva presència digital en reserves directes, confiança i marge.</p>
-          <p class="hero-sub">No venem webs boniques. Creem sistemes digitals pensats perquè més clients reservin directament amb tu.</p>
-
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#calculadora">Calcular el marge recuperable</a>
-            <a class="btn btn-secondary" href="#contacto">Sol·licitar auditoria</a>
-          </div>
-
-          <div class="trust-row" aria-label="Credencials FLAMA Studio">
-            <span>Costa Brava · Empordà</span>
-            <span>26 anys en turisme</span>
-            <span>Negoci real, no teoria</span>
-          </div>
+      <div class="container hero-grid hero-grid--counter">
+        <div class="hero-head hero-copy reveal">
+          <p class="eyebrow">El marge que s'escapa</p>
+          <h1>No tens un problema d'ocupació.<br><span>Tens un problema de marge que s'escapa.</span></h1>
         </div>
 
-        <div class="hero-panel reveal delay-1" aria-label="Sistema de reserva directa">
+        <aside class="hero-panel ota-counter-card reveal delay-1" aria-label="Simulació: marge que podria escapar-se per dependència d'intermediaris">
           <div class="panel-top">
             <span class="dot"></span><span class="dot"></span><span class="dot"></span>
           </div>
-          <div class="booking-flow">
-            <div class="flow-card active">
-              <span>01</span>
-              <strong>Google</strong>
-              <small>Et troben quan busquen on dormir.</small>
-            </div>
-            <div class="flow-arrow">→</div>
-            <div class="flow-card">
-              <span>02</span>
-              <strong>Web</strong>
-              <small>Confiança, mòbil ràpid i avantatge directe.</small>
-            </div>
-            <div class="flow-arrow">→</div>
-            <div class="flow-card">
-              <span>03</span>
-              <strong>Reserva directa</strong>
-              <small>Més marge i relació pròpia amb l'hoste.</small>
-            </div>
+          <p class="ota-counter-label">Marge diari estimat que podria escapar-se per intermediaris</p>
+          <div class="ota-counter" id="otaCounter">0 €</div>
+          <p class="ota-counter-note">Simulació orientativa basada en un escenari hoteler mitjà. <a href="#calculadora" data-gtm="cta_click" data-gtm-label="hero_counter_calc">Calcula el teu cas real en menys d'un minut.</a></p>
+        </aside>
+
+        <div class="hero-body reveal delay-1">
+          <p class="hero-lead">Les OTA poden omplir habitacions, però també poden quedar-se una part silenciosa de la teva rendibilitat. FLAMA ajuda hotels i negocis turístics a revisar el seu canal directe, millorar la confiança digital i recuperar més control sobre cada reserva.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#calculadora" data-gtm="cta_click" data-gtm-label="hero_calc">Calcula el teu marge perdut →</a>
+            <a class="btn btn-secondary" href="#contacto" data-gtm="cta_click" data-gtm-label="hero_review">Sol·licitar revisió privada</a>
           </div>
-          <div class="hero-metric">
-            <p>Objectiu realista</p>
-            <strong>moure el 10–20%</strong>
-            <span>de reserves OTA cap al canal directe</span>
-          </div>
+          <p class="hero-microcopy">Criteri real d'hospitality, turisme i negocis de temporada a la Costa Brava. Sense plantilles genèriques. Sense promeses buides.</p>
         </div>
       </div>
     </section>
@@ -614,63 +596,37 @@
 
     <!-- EXPERIENCE -->
     <section class="section-pad cases-section" id="casos">
-      <div class="container section-head reveal">
+      <div class="container section-head narrow reveal">
         <p class="eyebrow">Experiència aplicada</p>
         <h2>Criteri real per a negocis que viuen de la confiança, la temporada i la conversió</h2>
       </div>
 
-      <div class="container cases-grid">
-        <article class="case-card main-case reveal">
-          <div class="case-visual visual-aloja" role="img" aria-label="Allotjaments turístics a la Costa Brava"></div>
-          <div class="case-content">
-            <p class="eyebrow">Allotjaments turístics</p>
-            <h3>Estructura de reserva directa i experiència mòbil</h3>
-            <p>Webs, estructura de reserva directa, missatges de confiança, avantatges davant els intermediaris, SEO local i experiència mòbil.</p>
-            <div class="case-points">
-              <span>Reserva directa</span>
-              <span>SEO local</span>
-              <span>Experiència mòbil</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="case-card reveal delay-1">
-          <div class="case-visual visual-premium" role="img" aria-label="Negocis premium locals"></div>
-          <div class="case-content">
-            <p class="eyebrow">Negocis premium locals</p>
-            <h3>Identitat, posicionament i claredat comercial</h3>
-            <p>Identitat visual, posicionament, contingut, percepció de marca i claredat comercial.</p>
-          </div>
-        </article>
-
-        <article class="case-card reveal delay-2">
-          <div class="case-visual visual-temporada" role="img" aria-label="Hospitality de temporada"></div>
-          <div class="case-content">
-            <p class="eyebrow">Hospitality de temporada</p>
-            <h3>Presència digital preparada per als mesos clau</h3>
-            <p>Presència digital preparada per captar millor durant els mesos clau, amb missatges clars, estètica acurada i focus en el marge real.</p>
-          </div>
-        </article>
+      <div class="container exp-text reveal delay-1">
+        <p class="exp-lead">FLAMA Studio neix des de dins del sector hospitality.</p>
+        <p>Abans de dissenyar webs, marques o sistemes digitals, hem viscut durant anys l'operativa real d'hotels, restaurants gastronòmics, negocis familiars i projectes turístics de temporada a la Costa Brava.</p>
+        <p>Hem treballat amb clients internacionals, recepció, reserves, equips, atenció diària, experiència premium, pressió de temporada, ressenyes, repetidors i decisions comercials on cada detall afecta directament el marge.</p>
+        <p class="exp-accent">Per això no mirem una web només com una peça estètica.</p>
+        <p>La mirem com una eina de confiança: què sent el client quan entra, què entén en els primers segons, quins dubtes apareixen, què el frena, què el fa reservar i quina part del valor es perd per dependre massa dels intermediaris.</p>
+        <p class="exp-accent">No venim a vendre disseny decoratiu.</p>
+        <p>Venim a ordenar percepció, confiança i conversió per a negocis que necessiten presentar-se millor, vendre millor i recuperar més control sobre el seu canal directe.</p>
       </div>
-    </section>
 
-    <!-- AUTHORITY -->
-    <section class="section-pad authority-section" id="quienes-somos">
-      <div class="container authority-grid">
-        <div class="founder-card reveal">
-          <div class="founder-photo" role="img" aria-label="Detall hospitality de la Costa Brava"></div>
-          <div>
-            <p class="eyebrow">Qui som</p>
-            <h2>Venim del hospitality real</h2>
-          </div>
-        </div>
-
-        <div class="authority-copy reveal delay-1">
-          <p>FLAMA Studio neix de més de dues dècades dins del turisme, l'atenció al client i la gestió de negocis de temporada a la Costa Brava.</p>
-          <p>Hem viscut el sector des de dins: recepció, operativa diària, tracte amb client internacional, coordinació d'equips, experiència premium, restauració gastronòmica, negocis familiars i temporades on cada reserva, cada ressenya i cada detall compten.</p>
-          <p>Per això no dissenyem des de fora. Dissenyem pensant en el que realment passa quan un client compara, dubta, reserva, arriba, pregunta, valora i decideix si torna.</p>
-          <p>La nostra feina uneix criteri visual, estratègia digital i experiència operativa per ajudar negocis hospitality a construir més confiança, més canal propi i una presència digital més rendible.</p>
-        </div>
+      <div class="container exp-grid">
+        <article class="exp-card reveal">
+          <span class="exp-num">01</span>
+          <h3>Hospitality premium</h3>
+          <p>Experiència en atenció al client internacional, reserva directa, percepció de valor i confiança abans de l'arribada.</p>
+        </article>
+        <article class="exp-card reveal delay-1">
+          <span class="exp-num">02</span>
+          <h3>Restauració i experiència gastronòmica</h3>
+          <p>Criteri visual, relat de marca, desig, reputació i presentació digital per a negocis on la percepció importa.</p>
+        </article>
+        <article class="exp-card reveal delay-2">
+          <span class="exp-num">03</span>
+          <h3>Negocis turístics de temporada</h3>
+          <p>Enfocament pràctic per a negocis que concentren gran part de la seva facturació en pocs mesos i necessiten convertir millor cada visita.</p>
+        </article>
       </div>
     </section>
 
@@ -870,7 +826,7 @@
         <h3>Contacte</h3>
         <a href="#contacto">Sol·licitar auditoria</a>
         <span>Roses · Empordà</span>
-        <a href="mailto:terix@byflamastudio.com">terix@byflamastudio.com</a>
+        <a href="mailto:brief@byflamastudio.com">brief@byflamastudio.com</a>
         <div class="fcro-legal-links">
           <button type="button" class="fcro-open-legal">Avís legal</button>
           <button type="button" class="fcro-open-privacy">Política de privacitat</button>
@@ -892,10 +848,9 @@
     <div class="fcro-dialog-inner">
       <button type="button" class="fcro-close" aria-label="Tanca">✕</button>
       <h2>Avís legal</h2>
-      <p><strong>Titular del lloc web:</strong> FLAMA Studio — <span class="fcro-pendiente">[NOM I COGNOMS — completar]</span>.</p>
-      <p><strong>NIF:</strong> <span class="fcro-pendiente">[NIF — completar]</span>.</p>
+      <p><strong>Titular del lloc web:</strong> FLAMA Studio.</p>
       <p><strong>Domicili:</strong> Roses (Girona), Espanya.</p>
-      <p><strong>Email de contacte:</strong> terix@byflamastudio.com.</p>
+      <p><strong>Email de contacte:</strong> brief@byflamastudio.com.</p>
       <h3>Objecte</h3>
       <p>Aquest lloc web té caràcter informatiu i comercial sobre els serveis de consultoria i creixement digital de FLAMA Studio per a negocis del sector hospitality.</p>
       <h3>Propietat intel·lectual</h3>
@@ -912,7 +867,7 @@
       <button type="button" class="fcro-close" aria-label="Tanca">✕</button>
       <h2>Política de privacitat</h2>
       <h3>Responsable del tractament</h3>
-      <p>FLAMA Studio — <span class="fcro-pendiente">[NOM I COGNOMS — completar]</span>, Roses (Girona). Email: terix@byflamastudio.com.</p>
+      <p>FLAMA Studio, Roses (Girona). Email: brief@byflamastudio.com.</p>
       <h3>Dades que recollim</h3>
       <p>Les que ens facilites voluntàriament a través dels formularis: nom, nom de l'allotjament, email i la informació que decideixis compartir sobre el teu negoci.</p>
       <h3>Finalitat</h3>
@@ -924,7 +879,7 @@
       <h3>Conservació</h3>
       <p>Conservem les teves dades mentre duri la relació comercial o fins que en sol·licitis la supressió.</p>
       <h3>Els teus drets</h3>
-      <p>Pots exercir els teus drets d'accés, rectificació, supressió, oposició, limitació i portabilitat escrivint a terix@byflamastudio.com. També pots reclamar davant l'Agència Espanyola de Protecció de Dades (aepd.es).</p>
+      <p>Pots exercir els teus drets d'accés, rectificació, supressió, oposició, limitació i portabilitat escrivint a brief@byflamastudio.com. També pots reclamar davant l'Agència Espanyola de Protecció de Dades (aepd.es).</p>
       <h3>Cookies i serveis externs</h3>
       <p>Aquesta web carrega tipografies de Google Fonts i processa els formularis mitjançant Web3Forms; tots dos serveis poden registrar la teva adreça IP en carregar els seus recursos. No fem servir cookies de publicitat ni de seguiment. Si en el futur activem analítica web (Google Tag Manager / Analytics), t'ho demanarem abans mitjançant un avís de cookies.</p>
     </div>
@@ -1010,7 +965,7 @@
         }).catch(function(){
           leadBtn.disabled = false;
           leadBtn.textContent = "Envia'm el desglossament del meu cas";
-          alert("No s'ha pogut enviar. Torna-ho a provar o escriu-nos a terix@byflamastudio.com.");
+          alert("No s'ha pogut enviar. Torna-ho a provar o escriu-nos a brief@byflamastudio.com.");
         });
       });
     }
@@ -1053,6 +1008,79 @@
         u.dispatchEvent(new Event('change', {bubbles: true}));
       }
     });
+  })();
+  </script>
+
+  <!-- ===== Contador del hero · simulación visual del margen en fuga ===== -->
+  <script>
+  /* Configuración del contador (clara y fácil de ajustar).
+     IMPORTANTE: es una SIMULACIÓN orientativa basada en un escenario hotelero
+     medio, no un dato real del visitante. Cambia solo estos valores para
+     recalibrar el ritmo y el tope. */
+  const OTA_COUNTER_CONFIG = {
+    yearlyEstimatedLoss: 120000,            // € de margen/comisión anual estimado en fuga (escenario medio)
+    secondsPerYear: 365 * 24 * 60 * 60,     // referencia temporal anual
+    daysPerYear: 365,                        // el tope diario se calcula solo: yearlyEstimatedLoss / daysPerYear
+    secondsToReachMax: 24,                    // ritmo: segundos en llegar al tope diario
+    holdMs: 2200,                             // pausa de "respiración" al alcanzar el tope antes de reiniciar
+    easing: true                              // frenado suave al acercarse al tope (más creíble, menos casino)
+  };
+
+  (function(){
+    var el = document.getElementById('otaCounter');
+    if(!el) return;
+
+    var locale = (document.documentElement.lang === 'ca') ? 'ca-ES' : 'es-ES';
+    var fmt = new Intl.NumberFormat(locale, {style:'currency', currency:'EUR', minimumFractionDigits:2, maximumFractionDigits:2});
+
+    // Tope visual = margen diario estimado, derivado de la cifra anual (no hardcodeado)
+    var max = OTA_COUNTER_CONFIG.yearlyEstimatedLoss / OTA_COUNTER_CONFIG.daysPerYear;
+    var baseRate = max / OTA_COUNTER_CONFIG.secondsToReachMax; // €/seg de ritmo visible
+    var value = 0, last = null, rafId = null, holding = false;
+
+    function render(){ el.textContent = fmt.format(value); }
+
+    function step(now){
+      if(last === null) last = now;
+      var dt = (now - last) / 1000; last = now;
+      if(dt > 0.25) dt = 0.25; // evita saltos al volver de segundo plano
+
+      var factor = 1;
+      if(OTA_COUNTER_CONFIG.easing){
+        // cuanto más cerca del tope, más lento sube (curva de frenado)
+        factor = Math.max(0.10, (max - value) / max);
+      }
+      value += baseRate * dt * factor;
+
+      if(value >= max){
+        value = max; render();
+        // respira y reinicia suavemente: nunca crece hasta cifras absurdas
+        holding = true; rafId = null;
+        setTimeout(function(){
+          value = 0; last = null; holding = false;
+          if(document.visibilityState === 'visible') rafId = requestAnimationFrame(step);
+        }, OTA_COUNTER_CONFIG.holdMs);
+        return;
+      }
+      render();
+      rafId = requestAnimationFrame(step);
+    }
+
+    function start(){ if(rafId === null && !holding){ last = null; rafId = requestAnimationFrame(step); } }
+    function stop(){ if(rafId !== null){ cancelAnimationFrame(rafId); rafId = null; } }
+
+    // Pausa cuando la pestaña no está visible; reanuda sin saltos exagerados
+    document.addEventListener('visibilitychange', function(){
+      if(document.visibilityState === 'hidden') stop(); else start();
+    });
+
+    render();
+    if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      // Sin animación: muestra una cifra estática orientativa
+      value = Math.round(max * 0.62); render();
+    } else {
+      start();
+    }
   })();
   </script>
 
