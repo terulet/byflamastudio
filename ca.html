@@ -179,11 +179,14 @@
       min-height:auto !important;
       border-radius:18px !important;
       overflow:hidden;
-      background:#1a1a1d;
+      background:radial-gradient(circle at 50% 30%,rgba(228,207,170,.20),transparent 48%),linear-gradient(145deg,#2b241e,#120f0d);
       padding:0 !important;
       position:relative;
       color:transparent;
       font-size:0 !important;
+    }
+    .founder-photo:before{
+      content:"";position:absolute;inset:18px;border:1px solid rgba(228,207,170,.22);border-radius:14px;pointer-events:none;
     }
     .founder-photo img{
       width:100%;
@@ -207,7 +210,6 @@
     "@type": "ProfessionalService",
     "name": "FLAMA Studio",
     "url": "https://byflamastudio.com/",
-    "telephone": "+34647319686",
     "email": "terix@byflamastudio.com",
     "description": "Partner de creixement digital per a hotels, apartaments turístics i negocis hospitality de la Costa Brava que volen augmentar les reserves directes i reduir la dependència de les OTA.",
     "areaServed": ["Costa Brava", "Roses", "Girona", "Empordà", "Mediterrani"],
@@ -249,7 +251,7 @@
         <a href="#calculadora">Calculadora</a>
         <a href="#metodo">Mètode</a>
         <a href="#servicios">Serveis</a>
-        <a href="#casos">Casos</a>
+        <a href="#casos">Experiència</a>
         <a href="#contacto" class="nav-cta">Sol·licitar auditoria</a>
       </nav>
     </div>
@@ -566,7 +568,6 @@
             <li>Pla d'acció 30 dies</li>
           </ul>
           <a href="#contacto" class="text-link">Sol·licitar auditoria →</a>
-          <a href="https://wa.me/34647319686?text=Hola%20Eloi%2C%20vull%20sol%C2%B7licitar%20l%27Auditoria%20de%20Reserva%20Directa%20per%20al%20meu%20allotjament." class="fcro-wa-link" target="_blank" rel="noopener" data-gtm="whatsapp_click" data-gtm-label="servicio_auditoria"><svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.7.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4 0-.5.1-.7l.4-.5c.1-.1.1-.3.2-.4 0-.2 0-.3-.1-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.7.3-.2.3-.9.9-.9 2.1s.9 2.5 1 2.6c.1.2 1.8 2.8 4.3 3.9.6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.5-.3z"/></svg> O escriu-nos per WhatsApp</a>
         </article>
 
         <article class="service-card featured reveal delay-1">
@@ -587,7 +588,6 @@
             <li>Estructura SEO local</li>
           </ul>
           <a href="#contacto" class="text-link">Vull millorar el meu canal directe →</a>
-          <a href="https://wa.me/34647319686?text=Hola%20Eloi%2C%20m%27interessa%20la%20Implementaci%C3%B3%2030%20Dies%20per%20millorar%20el%20meu%20canal%20directe." class="fcro-wa-link" target="_blank" rel="noopener" data-gtm="whatsapp_click" data-gtm-label="servicio_implementacion"><svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.7.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4 0-.5.1-.7l.4-.5c.1-.1.1-.3.2-.4 0-.2 0-.3-.1-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.7.3-.2.3-.9.9-.9 2.1s.9 2.5 1 2.6c.1.2 1.8 2.8 4.3 3.9.6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.5-.3z"/></svg> O escriu-nos per WhatsApp</a>
         </article>
 
         <article class="service-card reveal delay-2">
@@ -608,49 +608,47 @@
             <li>Reporting clar</li>
           </ul>
           <a href="#contacto" class="text-link">Parlar de la meva temporada →</a>
-          <a href="https://wa.me/34647319686?text=Hola%20Eloi%2C%20vull%20parlar%20de%20la%20meva%20temporada%20amb%20el%20pla%20Growth%20Partner." class="fcro-wa-link" target="_blank" rel="noopener" data-gtm="whatsapp_click" data-gtm-label="servicio_growth"><svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.7.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4 0-.5.1-.7l.4-.5c.1-.1.1-.3.2-.4 0-.2 0-.3-.1-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.7.3-.2.3-.9.9-.9 2.1s.9 2.5 1 2.6c.1.2 1.8 2.8 4.3 3.9.6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.5-.3z"/></svg> O escriu-nos per WhatsApp</a>
         </article>
       </div>
     </section>
 
-    <!-- CASES -->
+    <!-- EXPERIENCE -->
     <section class="section-pad cases-section" id="casos">
       <div class="container section-head reveal">
-        <p class="eyebrow">Casos reals</p>
-        <h2>Negocis de la zona construint presència pròpia</h2>
-        <p>Projectes reals orientats a visibilitat, confiança i captació directa. Sense inventar resultats: estructura, canal i base digital preparats per créixer.</p>
+        <p class="eyebrow">Experiència aplicada</p>
+        <h2>Criteri real per a negocis que viuen de la confiança, la temporada i la conversió</h2>
       </div>
 
       <div class="container cases-grid">
         <article class="case-card main-case reveal">
-          <div class="case-visual apartments" role="img" aria-label="Apartaments turístics a la Costa Brava"></div>
+          <div class="case-visual visual-aloja" role="img" aria-label="Allotjaments turístics a la Costa Brava"></div>
           <div class="case-content">
-            <p class="eyebrow">Apartaments El Bergantí · Canyelles Petites</p>
-            <h3>De dependre de portals a construir canal directe propi</h3>
-            <p>Projecte digital per a 15 apartaments turístics a Canyelles Petites, Roses. Nova web multiidioma, enfocament en reserva directa, confiança visual, ubicació, avantatges de l'allotjament i contacte sense intermediaris.</p>
+            <p class="eyebrow">Allotjaments turístics</p>
+            <h3>Estructura de reserva directa i experiència mòbil</h3>
+            <p>Webs, estructura de reserva directa, missatges de confiança, avantatges davant els intermediaris, SEO local i experiència mòbil.</p>
             <div class="case-points">
-              <span>Canal directe preparat</span>
-              <span>6 idiomes</span>
-              <span>Turisme internacional</span>
+              <span>Reserva directa</span>
+              <span>SEO local</span>
+              <span>Experiència mòbil</span>
             </div>
           </div>
         </article>
 
         <article class="case-card reveal delay-1">
-          <div class="case-visual gelateria" role="img" aria-label="Negoci local premium"></div>
+          <div class="case-visual visual-premium" role="img" aria-label="Negocis premium locals"></div>
           <div class="case-content">
-            <p class="eyebrow">La Gelateria de Roses</p>
-            <h3>Marca, Google, Instagram i conversió local</h3>
-            <p>Identitat premium, web multiidioma, contingut visual, Google Business i captació directa per a un negoci de temporada amb alt flux turístic.</p>
+            <p class="eyebrow">Negocis premium locals</p>
+            <h3>Identitat, posicionament i claredat comercial</h3>
+            <p>Identitat visual, posicionament, contingut, percepció de marca i claredat comercial.</p>
           </div>
         </article>
 
         <article class="case-card reveal delay-2">
-          <div class="case-visual detailing" role="img" aria-label="Servei premium local"></div>
+          <div class="case-visual visual-temporada" role="img" aria-label="Hospitality de temporada"></div>
           <div class="case-content">
-            <p class="eyebrow">Go Detailing · Alt Empordà</p>
-            <h3>Posicionament premium en mercat saturat</h3>
-            <p>Landing d'alt nivell amb estètica de luxe, confiança visual i missatge clar per diferenciar un servei mòbil premium.</p>
+            <p class="eyebrow">Hospitality de temporada</p>
+            <h3>Presència digital preparada per als mesos clau</h3>
+            <p>Presència digital preparada per captar millor durant els mesos clau, amb missatges clars, estètica acurada i focus en el marge real.</p>
           </div>
         </article>
       </div>
@@ -660,29 +658,18 @@
     <section class="section-pad authority-section" id="quienes-somos">
       <div class="container authority-grid">
         <div class="founder-card reveal">
-          <div class="founder-photo">
-            <img src="founder.jpg" alt="Eloi, fundador de FLAMA Studio, en una recepció d'hotel sostenint el portàtil amb la web de FLAMA" width="420" height="525" loading="lazy" decoding="async" />
-          </div>
+          <div class="founder-photo" role="img" aria-label="Detall hospitality de la Costa Brava"></div>
           <div>
             <p class="eyebrow">Qui som</p>
-            <h2>No venim només del disseny. Venim del negoci real.</h2>
+            <h2>Venim del hospitality real</h2>
           </div>
         </div>
 
         <div class="authority-copy reveal delay-1">
-          <p><strong>Soc l'Eloi. Tinc 42 anys i des dels 16 que treballo en turisme, sense sortir del sector ni un sol any.</strong></p>
-          <p>Vaig començar al Càmping Salatà de Roses, acompanyant famílies a les seves parcel·les. Vaig passar a l'Hotel Terraza com a grum i cambrer d'esdeveniments i casaments. I a l'Hotel Vistabella hi vaig fer tota la carrera, de grum fins a treballar colze a colze amb els propietaris, supervisant l'operació del dia a dia.</p>
-          <p>Allà vaig ser la persona de confiança dels clients premium internacionals que arribaven a Roses: els acompanyava des de l'aeroport fins a la seva habitació, els portava als restaurants més exclusius de Catalunya — El Bulli inclòs — i vaig aprendre des de dins què fa que un client torni l'any següent i què l'empeny a buscar un altre hotel.</p>
-          <p>Durant aquella etapa el restaurant de l'hotel, <strong>Els Brancs</strong>, va aconseguir la seva primera estrella Michelin. No la van donar per la web. La van donar per fer les coses bé, amb criteri, en cada detall. Treballar al costat dels propietaris mentre això passava em va ensenyar què és l'excel·lència operativa real. És exactament el que intento aportar ara a cada projecte de FLAMA.</p>
-          <p>En paral·lel vaig muntar el meu propi negoci: <strong>La Gelateria de Roses</strong>. Avui fabriquem gelat propi, som un equip de 8 persones i hi ha dues noves obertures en marxa. Vaig passar d'empleat de confiança a propietari sense moure'm del sector.</p>
-          <p>FLAMA és la conseqüència natural: ajudo allotjaments de la Costa Brava a captar reserva directa amb els mateixos criteris amb què jo gestionaria el meu propi hotel.</p>
-          <p class="founder-sign">— Eloi, fundador de FLAMA Studio</p>
-
-          <div class="authority-stats">
-            <div><strong>26</strong><span>anys en turisme</span></div>
-            <div><strong>★</strong><span>Michelin · Els Brancs (Vistabella)</span></div>
-            <div><strong>8</strong><span>persones al meu equip</span></div>
-          </div>
+          <p>FLAMA Studio neix de més de dues dècades dins del turisme, l'atenció al client i la gestió de negocis de temporada a la Costa Brava.</p>
+          <p>Hem viscut el sector des de dins: recepció, operativa diària, tracte amb client internacional, coordinació d'equips, experiència premium, restauració gastronòmica, negocis familiars i temporades on cada reserva, cada ressenya i cada detall compten.</p>
+          <p>Per això no dissenyem des de fora. Dissenyem pensant en el que realment passa quan un client compara, dubta, reserva, arriba, pregunta, valora i decideix si torna.</p>
+          <p>La nostra feina uneix criteri visual, estratègia digital i experiència operativa per ajudar negocis hospitality a construir més confiança, més canal propi i una presència digital més rendible.</p>
         </div>
       </div>
     </section>
@@ -739,12 +726,9 @@
             </label>
           </div>
 
-          <div class="form-row two">
+          <div class="form-row">
             <label>Email
               <input type="email" name="email" placeholder="tu@email.com" required />
-            </label>
-            <label>WhatsApp / Telèfon
-              <input type="tel" name="telefono" placeholder="+34 ..." />
             </label>
           </div>
 
@@ -880,12 +864,11 @@
         <a href="#calculadora">Calculadora</a>
         <a href="#metodo">Mètode</a>
         <a href="#servicios">Serveis</a>
-        <a href="#casos">Casos reals</a>
+        <a href="#casos">Experiència</a>
       </div>
       <div>
         <h3>Contacte</h3>
         <a href="#contacto">Sol·licitar auditoria</a>
-        <a href="https://wa.me/34647319686?text=Hola%20Eloi%2C%20vinc%20de%20la%20web%20de%20FLAMA%20Studio%20i%20vull%20informaci%C3%B3%20sobre%20l%27auditoria%20de%20reserva%20directa." target="_blank" rel="noopener" data-gtm="whatsapp_click" data-gtm-label="footer">WhatsApp: +34 647 319 686</a>
         <span>Roses · Empordà</span>
         <a href="mailto:terix@byflamastudio.com">terix@byflamastudio.com</a>
         <div class="fcro-legal-links">
@@ -896,25 +879,20 @@
     </div>
     <div class="container footer-bottom">
       <span>© 2026 FLAMA Studio</span>
-      <span>Fet des de la Costa Brava, per algú que ha estat a la teva banda del taulell.</span>
+      <span>Fet des de la Costa Brava.</span>
     </div>
   </footer>
 
-  <!-- ===== Captación FLAMA: WhatsApp flotante, barra móvil y legales ===== -->
-  <a href="https://wa.me/34647319686?text=Hola%20Eloi%2C%20vinc%20de%20la%20web%20de%20FLAMA%20Studio%20i%20vull%20informaci%C3%B3%20sobre%20l%27auditoria%20de%20reserva%20directa." class="fcro-float" target="_blank" rel="noopener" aria-label="Escriu-nos per WhatsApp" data-gtm="whatsapp_click" data-gtm-label="flotante">
-    <svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.7.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4 0-.5.1-.7l.4-.5c.1-.1.1-.3.2-.4 0-.2 0-.3-.1-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.7.3-.2.3-.9.9-.9 2.1s.9 2.5 1 2.6c.1.2 1.8 2.8 4.3 3.9.6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.5-.3z"/></svg>
-  </a>
-
+  <!-- ===== Captación FLAMA: barra móvil y legales ===== -->
   <div class="fcro-sticky" id="fcroSticky" aria-hidden="true">
-    <a href="#contacto" class="fcro-sticky-main" data-gtm="cta_click" data-gtm-label="sticky_auditoria">Auditoria gratuïta</a>
-    <a href="https://wa.me/34647319686?text=Hola%20Eloi%2C%20vinc%20de%20la%20web%20de%20FLAMA%20Studio%20i%20vull%20informaci%C3%B3%20sobre%20l%27auditoria%20de%20reserva%20directa." class="fcro-sticky-wa" target="_blank" rel="noopener" aria-label="WhatsApp" data-gtm="whatsapp_click" data-gtm-label="sticky"><svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.7.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4 0-.5.1-.7l.4-.5c.1-.1.1-.3.2-.4 0-.2 0-.3-.1-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.7.3-.2.3-.9.9-.9 2.1s.9 2.5 1 2.6c.1.2 1.8 2.8 4.3 3.9.6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.5-.3z"/></svg></a>
+    <a href="#contacto" class="fcro-sticky-main" data-gtm="cta_click" data-gtm-label="sticky_auditoria">Sol·licitar auditoria</a>
   </div>
 
   <dialog class="fcro-dialog" id="fcroLegal">
     <div class="fcro-dialog-inner">
       <button type="button" class="fcro-close" aria-label="Tanca">✕</button>
       <h2>Avís legal</h2>
-      <p><strong>Titular del lloc web:</strong> FLAMA Studio — Eloi <span class="fcro-pendiente">[COGNOMS — completar]</span>.</p>
+      <p><strong>Titular del lloc web:</strong> FLAMA Studio — <span class="fcro-pendiente">[NOM I COGNOMS — completar]</span>.</p>
       <p><strong>NIF:</strong> <span class="fcro-pendiente">[NIF — completar]</span>.</p>
       <p><strong>Domicili:</strong> Roses (Girona), Espanya.</p>
       <p><strong>Email de contacte:</strong> terix@byflamastudio.com.</p>
@@ -934,9 +912,9 @@
       <button type="button" class="fcro-close" aria-label="Tanca">✕</button>
       <h2>Política de privacitat</h2>
       <h3>Responsable del tractament</h3>
-      <p>FLAMA Studio — Eloi <span class="fcro-pendiente">[COGNOMS — completar]</span>, Roses (Girona). Email: terix@byflamastudio.com.</p>
+      <p>FLAMA Studio — <span class="fcro-pendiente">[NOM I COGNOMS — completar]</span>, Roses (Girona). Email: terix@byflamastudio.com.</p>
       <h3>Dades que recollim</h3>
-      <p>Les que ens facilites voluntàriament a través dels formularis: nom, nom de l'allotjament, email, telèfon i la informació que decideixis compartir sobre el teu negoci.</p>
+      <p>Les que ens facilites voluntàriament a través dels formularis: nom, nom de l'allotjament, email i la informació que decideixis compartir sobre el teu negoci.</p>
       <h3>Finalitat</h3>
       <p>Respondre la teva sol·licitud d'auditoria o informació, enviar-te el desglossament de la teva simulació si ho demanes, i mantenir la comunicació comercial relacionada amb la teva consulta.</p>
       <h3>Legitimació</h3>
@@ -1032,7 +1010,7 @@
         }).catch(function(){
           leadBtn.disabled = false;
           leadBtn.textContent = "Envia'm el desglossament del meu cas";
-          alert("No s'ha pogut enviar. Torna-ho a provar o escriu-nos per WhatsApp.");
+          alert("No s'ha pogut enviar. Torna-ho a provar o escriu-nos a terix@byflamastudio.com.");
         });
       });
     }
