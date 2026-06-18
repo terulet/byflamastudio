@@ -148,6 +148,25 @@
       .hero-grid{align-items:center}
     }
 
+    /* --- FIX: separar el hero de la cabecera fija para que el H1 no quede tapado --- */
+    .hero{align-items:start}
+    .hero.section-pad{padding-top:150px}
+    @media (max-width:1080px){.hero.section-pad{padding-top:124px}}
+    @media (max-width:760px){.hero.section-pad{padding-top:108px}}
+
+    /* --- Sección Experiencia (relato de estudio, sin portfolio) --- */
+    .exp-text{max-width:840px;margin:0 auto}
+    .exp-text p{color:var(--muted);font-size:1.06rem;line-height:1.8;margin:0 0 1.25rem}
+    .exp-text .exp-lead{color:var(--text);font-family:"Playfair Display",serif;font-size:clamp(1.35rem,2.5vw,1.75rem);line-height:1.4;margin-bottom:1.5rem}
+    .exp-text .exp-accent{color:var(--gold);font-weight:700;font-size:1.14rem}
+    .exp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:64px}
+    .exp-card{border:1px solid var(--line);border-radius:26px;background:linear-gradient(145deg,rgba(45,36,27,.5),rgba(20,17,15,.55));padding:36px 30px;display:flex;flex-direction:column;gap:14px}
+    .exp-card .exp-num{font-family:"Playfair Display",serif;color:var(--gold);font-size:2.1rem;line-height:1}
+    .exp-card h3{margin:0;color:var(--text);font-size:1.32rem;line-height:1.25}
+    .exp-card p{margin:0;color:var(--muted);font-size:.98rem;line-height:1.68}
+    @media (max-width:1080px){.exp-grid{grid-template-columns:1fr 1fr}}
+    @media (max-width:760px){.exp-grid{grid-template-columns:1fr}.exp-card{padding:28px 24px}}
+
     /* --- FIX iPhone: evitar zoom automático al tocar campos del formulario --- */
     @media (max-width:768px){
       input[type=text],input[type=email],input[type=tel],input[type=url],
@@ -210,7 +229,7 @@
     "@type": "ProfessionalService",
     "name": "FLAMA Studio",
     "url": "https://byflamastudio.com/",
-    "email": "terix@byflamastudio.com",
+    "email": "brief@byflamastudio.com",
     "description": "Partner de creixement digital per a hotels, apartaments turístics i negocis hospitality de la Costa Brava que volen augmentar les reserves directes i reduir la dependència de les OTA.",
     "areaServed": ["Costa Brava", "Roses", "Girona", "Empordà", "Mediterrani"],
     "serviceType": ["Reserva directa hotelera", "Disseny web per a hotels", "SEO local", "Google Business", "Màrqueting digital hospitality"],
@@ -614,42 +633,36 @@
 
     <!-- EXPERIENCE -->
     <section class="section-pad cases-section" id="casos">
-      <div class="container section-head reveal">
+      <div class="container section-head narrow reveal">
         <p class="eyebrow">Experiència aplicada</p>
         <h2>Criteri real per a negocis que viuen de la confiança, la temporada i la conversió</h2>
       </div>
 
-      <div class="container cases-grid">
-        <article class="case-card main-case reveal">
-          <div class="case-visual visual-aloja" role="img" aria-label="Allotjaments turístics a la Costa Brava"></div>
-          <div class="case-content">
-            <p class="eyebrow">Allotjaments turístics</p>
-            <h3>Estructura de reserva directa i experiència mòbil</h3>
-            <p>Webs, estructura de reserva directa, missatges de confiança, avantatges davant els intermediaris, SEO local i experiència mòbil.</p>
-            <div class="case-points">
-              <span>Reserva directa</span>
-              <span>SEO local</span>
-              <span>Experiència mòbil</span>
-            </div>
-          </div>
-        </article>
+      <div class="container exp-text reveal delay-1">
+        <p class="exp-lead">FLAMA Studio neix des de dins del sector hospitality.</p>
+        <p>Abans de dissenyar webs, marques o sistemes digitals, hem viscut durant anys l'operativa real d'hotels, restaurants gastronòmics, negocis familiars i projectes turístics de temporada a la Costa Brava.</p>
+        <p>Hem treballat amb clients internacionals, recepció, reserves, equips, atenció diària, experiència premium, pressió de temporada, ressenyes, repetidors i decisions comercials on cada detall afecta directament el marge.</p>
+        <p class="exp-accent">Per això no mirem una web només com una peça estètica.</p>
+        <p>La mirem com una eina de confiança: què sent el client quan entra, què entén en els primers segons, quins dubtes apareixen, què el frena, què el fa reservar i quina part del valor es perd per dependre massa dels intermediaris.</p>
+        <p class="exp-accent">No venim a vendre disseny decoratiu.</p>
+        <p>Venim a ordenar percepció, confiança i conversió per a negocis que necessiten presentar-se millor, vendre millor i recuperar més control sobre el seu canal directe.</p>
+      </div>
 
-        <article class="case-card reveal delay-1">
-          <div class="case-visual visual-premium" role="img" aria-label="Negocis premium locals"></div>
-          <div class="case-content">
-            <p class="eyebrow">Negocis premium locals</p>
-            <h3>Identitat, posicionament i claredat comercial</h3>
-            <p>Identitat visual, posicionament, contingut, percepció de marca i claredat comercial.</p>
-          </div>
+      <div class="container exp-grid">
+        <article class="exp-card reveal">
+          <span class="exp-num">01</span>
+          <h3>Hospitality premium</h3>
+          <p>Experiència en atenció al client internacional, reserva directa, percepció de valor i confiança abans de l'arribada.</p>
         </article>
-
-        <article class="case-card reveal delay-2">
-          <div class="case-visual visual-temporada" role="img" aria-label="Hospitality de temporada"></div>
-          <div class="case-content">
-            <p class="eyebrow">Hospitality de temporada</p>
-            <h3>Presència digital preparada per als mesos clau</h3>
-            <p>Presència digital preparada per captar millor durant els mesos clau, amb missatges clars, estètica acurada i focus en el marge real.</p>
-          </div>
+        <article class="exp-card reveal delay-1">
+          <span class="exp-num">02</span>
+          <h3>Restauració i experiència gastronòmica</h3>
+          <p>Criteri visual, relat de marca, desig, reputació i presentació digital per a negocis on la percepció importa.</p>
+        </article>
+        <article class="exp-card reveal delay-2">
+          <span class="exp-num">03</span>
+          <h3>Negocis turístics de temporada</h3>
+          <p>Enfocament pràctic per a negocis que concentren gran part de la seva facturació en pocs mesos i necessiten convertir millor cada visita.</p>
         </article>
       </div>
     </section>
@@ -870,7 +883,7 @@
         <h3>Contacte</h3>
         <a href="#contacto">Sol·licitar auditoria</a>
         <span>Roses · Empordà</span>
-        <a href="mailto:terix@byflamastudio.com">terix@byflamastudio.com</a>
+        <a href="mailto:brief@byflamastudio.com">brief@byflamastudio.com</a>
         <div class="fcro-legal-links">
           <button type="button" class="fcro-open-legal">Avís legal</button>
           <button type="button" class="fcro-open-privacy">Política de privacitat</button>
@@ -895,7 +908,7 @@
       <p><strong>Titular del lloc web:</strong> FLAMA Studio — <span class="fcro-pendiente">[NOM I COGNOMS — completar]</span>.</p>
       <p><strong>NIF:</strong> <span class="fcro-pendiente">[NIF — completar]</span>.</p>
       <p><strong>Domicili:</strong> Roses (Girona), Espanya.</p>
-      <p><strong>Email de contacte:</strong> terix@byflamastudio.com.</p>
+      <p><strong>Email de contacte:</strong> brief@byflamastudio.com.</p>
       <h3>Objecte</h3>
       <p>Aquest lloc web té caràcter informatiu i comercial sobre els serveis de consultoria i creixement digital de FLAMA Studio per a negocis del sector hospitality.</p>
       <h3>Propietat intel·lectual</h3>
@@ -912,7 +925,7 @@
       <button type="button" class="fcro-close" aria-label="Tanca">✕</button>
       <h2>Política de privacitat</h2>
       <h3>Responsable del tractament</h3>
-      <p>FLAMA Studio — <span class="fcro-pendiente">[NOM I COGNOMS — completar]</span>, Roses (Girona). Email: terix@byflamastudio.com.</p>
+      <p>FLAMA Studio — <span class="fcro-pendiente">[NOM I COGNOMS — completar]</span>, Roses (Girona). Email: brief@byflamastudio.com.</p>
       <h3>Dades que recollim</h3>
       <p>Les que ens facilites voluntàriament a través dels formularis: nom, nom de l'allotjament, email i la informació que decideixis compartir sobre el teu negoci.</p>
       <h3>Finalitat</h3>
@@ -924,7 +937,7 @@
       <h3>Conservació</h3>
       <p>Conservem les teves dades mentre duri la relació comercial o fins que en sol·licitis la supressió.</p>
       <h3>Els teus drets</h3>
-      <p>Pots exercir els teus drets d'accés, rectificació, supressió, oposició, limitació i portabilitat escrivint a terix@byflamastudio.com. També pots reclamar davant l'Agència Espanyola de Protecció de Dades (aepd.es).</p>
+      <p>Pots exercir els teus drets d'accés, rectificació, supressió, oposició, limitació i portabilitat escrivint a brief@byflamastudio.com. També pots reclamar davant l'Agència Espanyola de Protecció de Dades (aepd.es).</p>
       <h3>Cookies i serveis externs</h3>
       <p>Aquesta web carrega tipografies de Google Fonts i processa els formularis mitjançant Web3Forms; tots dos serveis poden registrar la teva adreça IP en carregar els seus recursos. No fem servir cookies de publicitat ni de seguiment. Si en el futur activem analítica web (Google Tag Manager / Analytics), t'ho demanarem abans mitjançant un avís de cookies.</p>
     </div>
@@ -1010,7 +1023,7 @@
         }).catch(function(){
           leadBtn.disabled = false;
           leadBtn.textContent = "Envia'm el desglossament del meu cas";
-          alert("No s'ha pogut enviar. Torna-ho a provar o escriu-nos a terix@byflamastudio.com.");
+          alert("No s'ha pogut enviar. Torna-ho a provar o escriu-nos a brief@byflamastudio.com.");
         });
       });
     }
