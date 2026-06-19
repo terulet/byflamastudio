@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Atlas Sandbox · Prueba el flujo completo sin datos reales | FLAMA Studio</title>
+  <meta name="description" content="Atlas Sandbox: demo navegable con datos 100% simulados. Email, WhatsApp, llamadas y formularios en una sola bandeja profesional. Atlas ordena el caos, el profesional decide." />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Atlas Sandbox · Atlas ordena el caos. El profesional decide." />
+  <meta property="og:description" content="Demo segura con datos 100% simulados para validar el flujo antes de conectar canales reales." />
+  <meta property="og:site_name" content="FLAMA Studio" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="favicon.svg" />
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="sandbox.css" />
+</head>
+<body>
+  <a href="#main" class="skip-link">Saltar al contenido</a>
+
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a href="./" class="brand" aria-label="FLAMA Studio inicio">
+        <span class="brand-mark">F</span>
+        <span>
+          <strong>FLAMA</strong>
+          <small>Atlas Sandbox</small>
+        </span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-controls="siteNav" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" id="siteNav" aria-label="Navegación principal">
+        <a href="./">Inicio</a>
+        <a href="#privacidad">Modo seguro</a>
+        <a href="#bandeja">Bandeja</a>
+        <a href="./#contacto" class="nav-cta">Solicitar demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="sbx-main">
+    <div class="container">
+
+      <!-- Intro -->
+      <section class="sbx-intro">
+        <p class="eyebrow">Atlas Sandbox · Demo Lab</p>
+        <h1>Atlas ordena el caos. <span>El profesional decide.</span></h1>
+        <p>Prueba el flujo completo sin datos reales. Email, WhatsApp, llamadas y formularios en una sola bandeja simulada. De mensajes dispersos a casos controlados.</p>
+        <div class="sbx-claim">
+          <span>De mensajes dispersos a casos controlados</span>
+          <span>No organizamos tickets. Organizamos trabajo profesional</span>
+          <span>Atlas no enseña al profesional. Le quita ruido</span>
+        </div>
+      </section>
+
+      <!-- Panel de privacidad / sandbox seguro -->
+      <section class="sbx-privacy" id="privacidad" aria-labelledby="privacyTitle">
+        <div class="sbx-privacy-head">
+          <span class="sbx-privacy-badge">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="m9 12 2 2 4-4"/></svg>
+            Modo Sandbox seguro
+          </span>
+          <h3 id="privacyTitle">Datos 100% simulados</h3>
+        </div>
+        <p>Este entorno usa datos 100% simulados. No hay conexión a email real, WhatsApp real ni documentos reales. Atlas permite validar el flujo antes de conectar canales reales con permisos, seguridad y cumplimiento RGPD.</p>
+        <ul class="sbx-privacy-list">
+          <li>Sin datos reales</li>
+          <li>Sin conexión externa</li>
+          <li>Sin decisiones automáticas</li>
+          <li>Revisión humana obligatoria</li>
+          <li>Privacidad desde el diseño</li>
+        </ul>
+      </section>
+
+      <!-- Selector de vertical -->
+      <h2 class="sr-only" style="position:absolute;left:-999px">Selecciona un negocio virtual</h2>
+      <section class="sbx-selector" id="sbxSelector" aria-label="Selector de negocio virtual"></section>
+
+      <!-- Cabecera del negocio -->
+      <section class="sbx-biz-head" id="sbxBizHead"></section>
+
+      <!-- Métricas de orden -->
+      <section class="sbx-metrics" id="sbxMetrics" aria-label="Métricas de orden (simuladas)"></section>
+
+      <!-- Barra de acciones -->
+      <div class="sbx-toolbar" id="bandeja">
+        <div class="sbx-toolbar-left">
+          <h2>Bandeja omnicanal simulada</h2>
+          <p>Email, WhatsApp, llamadas, web y documentos en un solo lugar. Todo simulado.</p>
+        </div>
+        <div class="sbx-toolbar-actions">
+          <button class="sbx-btn sbx-btn-ghost" id="sbxReset" type="button" title="Restablecer la demo a su estado inicial">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 4v4h4"/></svg>
+            Reiniciar
+          </button>
+          <button class="sbx-btn sbx-btn-primary" id="sbxSimulate" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+            Simular entrada de mensajes
+          </button>
+        </div>
+      </div>
+
+      <!-- Workspace: bandeja + panel de caso -->
+      <section class="sbx-workspace" id="sandboxApp">
+        <div class="sbx-inbox-col">
+          <div class="sbx-inbox-head">
+            <h3>Entradas</h3>
+            <p>Ordenadas por Atlas · canales simulados</p>
+          </div>
+          <div class="sbx-filters" id="sbxFilters" role="group" aria-label="Filtros de la bandeja"></div>
+          <div class="sbx-inbox" id="sbxInbox" aria-label="Lista de entradas simuladas"></div>
+        </div>
+
+        <div class="sbx-case-col" id="sbxCasePanel" aria-live="polite"></div>
+      </section>
+
+      <p class="sbx-footnote">
+        Atlas Sandbox es una demostración con datos ficticios. No se conecta a Gmail, Outlook, WhatsApp ni a ninguna
+        API externa, no pide credenciales y no envía ni recibe información real. Preparado para validar antes de conectar.
+      </p>
+
+    </div>
+  </main>
+
+  <div class="sbx-toast" id="sbxToast" role="status" aria-live="polite"></div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <span>© FLAMA Studio · Atlas Sandbox · Datos 100% simulados</span>
+        <span><a href="./">Volver a la web</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="sandbox-data.js"></script>
+  <script src="sandbox.js"></script>
+  <script>
+    /* Menú móvil (mismo comportamiento que la web principal) */
+    (function () {
+      var navToggle = document.getElementById('navToggle');
+      var siteNav = document.getElementById('siteNav');
+      if (navToggle && siteNav) {
+        navToggle.addEventListener('click', function () {
+          var isOpen = siteNav.classList.toggle('open');
+          navToggle.classList.toggle('active', isOpen);
+          navToggle.setAttribute('aria-expanded', String(isOpen));
+          document.body.classList.toggle('nav-open', isOpen);
+        });
+        siteNav.querySelectorAll('a').forEach(function (link) {
+          link.addEventListener('click', function () {
+            siteNav.classList.remove('open');
+            navToggle.classList.remove('active');
+            navToggle.setAttribute('aria-expanded', 'false');
+            document.body.classList.remove('nav-open');
+          });
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
